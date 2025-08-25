@@ -304,14 +304,14 @@ export default function AnalyticsPage() {
 						<div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
 							<Card>
 								<CardHeader>
-									<CardTitle>Revenue Trend</CardTitle>
-									<CardDescription>
+									<CardTitle className="text-white">Revenue Trend</CardTitle>
+									<CardDescription className="text-gray-300">
 										Daily revenue over the selected period
 									</CardDescription>
 								</CardHeader>
 								<CardContent>
 									<div className="h-64 flex items-center justify-center border border-dashed border-border rounded-md">
-										<div className="text-center text-muted-foreground">
+										<div className="text-center text-gray-300">
 											<BarChart3 className="h-12 w-12 mx-auto mb-2" />
 											<p>Revenue Chart Placeholder</p>
 											<p className="text-xs">
@@ -324,14 +324,16 @@ export default function AnalyticsPage() {
 
 							<Card>
 								<CardHeader>
-									<CardTitle>Transaction Volume</CardTitle>
-									<CardDescription>
+									<CardTitle className="text-white">
+										Transaction Volume
+									</CardTitle>
+									<CardDescription className="text-gray-300">
 										Number of transactions per day
 									</CardDescription>
 								</CardHeader>
 								<CardContent>
 									<div className="h-64 flex items-center justify-center border border-dashed border-border rounded-md">
-										<div className="text-center text-muted-foreground">
+										<div className="text-center text-gray-300">
 											<TrendingUp className="h-12 w-12 mx-auto mb-2" />
 											<p>Transaction Volume Chart Placeholder</p>
 											<p className="text-xs">
@@ -421,54 +423,50 @@ export default function AnalyticsPage() {
 						<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
 							<Card>
 								<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-									<CardTitle className="text-sm font-medium">
+									<CardTitle className="text-sm font-medium text-white">
 										Active Links
 									</CardTitle>
 									<LinkIcon className="h-4 w-4 text-muted-foreground" />
 								</CardHeader>
 								<CardContent>
-									<div className="text-2xl font-bold">1,247</div>
-									<p className="text-xs text-muted-foreground">
-										+12% from last month
-									</p>
+									<div className="text-2xl font-bold text-white">1,247</div>
+									<p className="text-xs text-gray-300">+12% from last month</p>
 								</CardContent>
 							</Card>
 
 							<Card>
 								<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-									<CardTitle className="text-sm font-medium">
+									<CardTitle className="text-sm font-medium text-white">
 										Total Clicks
 									</CardTitle>
 									<TrendingUp className="h-4 w-4 text-muted-foreground" />
 								</CardHeader>
 								<CardContent>
-									<div className="text-2xl font-bold">28,472</div>
-									<p className="text-xs text-muted-foreground">
-										+18% from last month
-									</p>
+									<div className="text-2xl font-bold text-white">28,472</div>
+									<p className="text-xs text-gray-300">+18% from last month</p>
 								</CardContent>
 							</Card>
 
 							<Card>
 								<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-									<CardTitle className="text-sm font-medium">
+									<CardTitle className="text-sm font-medium text-white">
 										Conversion Rate
 									</CardTitle>
 									<BarChart3 className="h-4 w-4 text-muted-foreground" />
 								</CardHeader>
 								<CardContent>
-									<div className="text-2xl font-bold">68.4%</div>
-									<p className="text-xs text-muted-foreground">
-										+5.2% from last month
-									</p>
+									<div className="text-2xl font-bold text-white">68.4%</div>
+									<p className="text-xs text-gray-300">+5.2% from last month</p>
 								</CardContent>
 							</Card>
 						</div>
 
 						<Card>
 							<CardHeader>
-								<CardTitle>Payment Link Performance</CardTitle>
-								<CardDescription>
+								<CardTitle className="text-white">
+									Payment Link Performance
+								</CardTitle>
+								<CardDescription className="text-gray-300">
 									Detailed analytics for all payment links
 								</CardDescription>
 							</CardHeader>
@@ -516,7 +514,9 @@ export default function AnalyticsPage() {
 											<div className="flex items-center justify-between">
 												<div className="flex-1">
 													<div className="flex items-center gap-3 mb-2">
-														<h4 className="font-medium">{link.description}</h4>
+														<h4 className="font-medium text-white">
+															{link.description}
+														</h4>
 														<Badge
 															variant={
 																link.status === "Active"
@@ -531,26 +531,34 @@ export default function AnalyticsPage() {
 													</div>
 													<div className="grid grid-cols-2 md:grid-cols-5 gap-4 text-sm">
 														<div>
-															<p className="text-muted-foreground">Clicks</p>
-															<p className="font-medium">{link.clicks}</p>
-														</div>
-														<div>
-															<p className="text-muted-foreground">Payments</p>
-															<p className="font-medium">{link.payments}</p>
-														</div>
-														<div>
-															<p className="text-muted-foreground">Revenue</p>
-															<p className="font-medium">{link.revenue}</p>
-														</div>
-														<div>
-															<p className="text-muted-foreground">
-																Conversion
+															<p className="text-gray-300">Clicks</p>
+															<p className="font-medium text-white">
+																{link.clicks}
 															</p>
-															<p className="font-medium">{link.conversion}</p>
 														</div>
 														<div>
-															<p className="text-muted-foreground">Link ID</p>
-															<p className="font-medium text-xs">{link.id}</p>
+															<p className="text-gray-300">Payments</p>
+															<p className="font-medium text-white">
+																{link.payments}
+															</p>
+														</div>
+														<div>
+															<p className="text-gray-300">Revenue</p>
+															<p className="font-medium text-white">
+																{link.revenue}
+															</p>
+														</div>
+														<div>
+															<p className="text-gray-300">Conversion</p>
+															<p className="font-medium text-white">
+																{link.conversion}
+															</p>
+														</div>
+														<div>
+															<p className="text-gray-300">Link ID</p>
+															<p className="font-medium text-xs text-white">
+																{link.id}
+															</p>
 														</div>
 													</div>
 												</div>
@@ -566,44 +574,40 @@ export default function AnalyticsPage() {
 						<div className="grid grid-cols-1 md:grid-cols-4 gap-6">
 							<Card>
 								<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-									<CardTitle className="text-sm font-medium">
+									<CardTitle className="text-sm font-medium text-white">
 										Total Registrations
 									</CardTitle>
 									<Users className="h-4 w-4 text-muted-foreground" />
 								</CardHeader>
 								<CardContent>
-									<div className="text-2xl font-bold">2,847</div>
-									<p className="text-xs text-muted-foreground">
-										+15% from last month
-									</p>
+									<div className="text-2xl font-bold text-white">2,847</div>
+									<p className="text-xs text-gray-300">+15% from last month</p>
 								</CardContent>
 							</Card>
 
 							<Card>
 								<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-									<CardTitle className="text-sm font-medium">
+									<CardTitle className="text-sm font-medium text-white">
 										Completion Rate
 									</CardTitle>
 									<TrendingUp className="h-4 w-4 text-muted-foreground" />
 								</CardHeader>
 								<CardContent>
-									<div className="text-2xl font-bold">78.4%</div>
-									<p className="text-xs text-muted-foreground">
-										+8.2% from last month
-									</p>
+									<div className="text-2xl font-bold text-white">78.4%</div>
+									<p className="text-xs text-gray-300">+8.2% from last month</p>
 								</CardContent>
 							</Card>
 
 							<Card>
 								<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-									<CardTitle className="text-sm font-medium">
+									<CardTitle className="text-sm font-medium text-white">
 										Avg. Completion Time
 									</CardTitle>
 									<Clock className="h-4 w-4 text-muted-foreground" />
 								</CardHeader>
 								<CardContent>
-									<div className="text-2xl font-bold">4.2 min</div>
-									<p className="text-xs text-muted-foreground">
+									<div className="text-2xl font-bold text-white">4.2 min</div>
+									<p className="text-xs text-gray-300">
 										-1.3 min from last month
 									</p>
 								</CardContent>
@@ -611,24 +615,26 @@ export default function AnalyticsPage() {
 
 							<Card>
 								<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-									<CardTitle className="text-sm font-medium">
+									<CardTitle className="text-sm font-medium text-white">
 										Monthly Recurring
 									</CardTitle>
 									<DollarSign className="h-4 w-4 text-muted-foreground" />
 								</CardHeader>
 								<CardContent>
-									<div className="text-2xl font-bold">R 847K</div>
-									<p className="text-xs text-muted-foreground">
-										+22% from last month
-									</p>
+									<div className="text-2xl font-bold text-white">R 847K</div>
+									<p className="text-xs text-gray-300">+22% from last month</p>
 								</CardContent>
 							</Card>
 						</div>
 
 						<Card>
 							<CardHeader>
-								<CardTitle>Registration Funnel Analysis</CardTitle>
-								<CardDescription>Step-by-step completion rates</CardDescription>
+								<CardTitle className="text-white">
+									Registration Funnel Analysis
+								</CardTitle>
+								<CardDescription className="text-gray-300">
+									Step-by-step completion rates
+								</CardDescription>
 							</CardHeader>
 							<CardContent>
 								<div className="space-y-4">
@@ -669,21 +675,21 @@ export default function AnalyticsPage() {
 											className="flex items-center justify-between p-4 border border-border rounded-md"
 										>
 											<div className="flex items-center gap-4">
-												<div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-sm font-medium">
+												<div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-sm font-medium text-white">
 													{index + 1}
 												</div>
 												<div>
-													<p className="font-medium">{step.step}</p>
-													<p className="text-sm text-muted-foreground">
+													<p className="font-medium text-white">{step.step}</p>
+													<p className="text-sm text-gray-300">
 														{step.completed} of {step.started} completed
 													</p>
 												</div>
 											</div>
 											<div className="text-right">
-												<p className="text-lg font-bold">{step.rate}</p>
-												<p className="text-sm text-muted-foreground">
-													Completion rate
+												<p className="text-lg font-bold text-white">
+													{step.rate}
 												</p>
+												<p className="text-sm text-gray-300">Completion rate</p>
 											</div>
 										</div>
 									))}
@@ -695,8 +701,10 @@ export default function AnalyticsPage() {
 					<TabsContent value="psp" className="space-y-6">
 						<Card>
 							<CardHeader>
-								<CardTitle>Payment Service Provider Performance</CardTitle>
-								<CardDescription>
+								<CardTitle className="text-white">
+									Payment Service Provider Performance
+								</CardTitle>
+								<CardDescription className="text-gray-300">
 									Detailed analytics by payment method
 								</CardDescription>
 							</CardHeader>
@@ -751,26 +759,32 @@ export default function AnalyticsPage() {
 														className={`h-4 w-4 rounded-full ${psp.color}`}
 													></div>
 													<div>
-														<h4 className="font-medium">{psp.psp}</h4>
-														<p className="text-sm text-muted-foreground">
+														<h4 className="font-medium text-white">
+															{psp.psp}
+														</h4>
+														<p className="text-sm text-gray-300">
 															{psp.transactions} transactions
 														</p>
 													</div>
 												</div>
 												<div className="grid grid-cols-3 gap-8 text-right text-sm">
 													<div>
-														<p className="font-medium">{psp.revenue}</p>
-														<p className="text-muted-foreground">Revenue</p>
-													</div>
-													<div>
-														<p className="font-medium">{psp.success}%</p>
-														<p className="text-muted-foreground">
-															Success Rate
+														<p className="font-medium text-white">
+															{psp.revenue}
 														</p>
+														<p className="text-gray-300">Revenue</p>
 													</div>
 													<div>
-														<p className="font-medium">{psp.avgTime}</p>
-														<p className="text-muted-foreground">Avg. Time</p>
+														<p className="font-medium text-white">
+															{psp.success}%
+														</p>
+														<p className="text-gray-300">Success Rate</p>
+													</div>
+													<div>
+														<p className="font-medium text-white">
+															{psp.avgTime}
+														</p>
+														<p className="text-gray-300">Avg. Time</p>
 													</div>
 												</div>
 											</div>
@@ -785,14 +799,16 @@ export default function AnalyticsPage() {
 						<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
 							<Card>
 								<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-									<CardTitle className="text-sm font-medium">
+									<CardTitle className="text-sm font-medium text-white">
 										Total Revenue
 									</CardTitle>
 									<DollarSign className="h-4 w-4 text-muted-foreground" />
 								</CardHeader>
 								<CardContent>
-									<div className="text-2xl font-bold">R 2,847,392</div>
-									<p className="text-xs text-muted-foreground">
+									<div className="text-2xl font-bold text-white">
+										R 2,847,392
+									</div>
+									<p className="text-xs text-gray-300">
 										+18.2% from last period
 									</p>
 								</CardContent>
@@ -800,14 +816,16 @@ export default function AnalyticsPage() {
 
 							<Card>
 								<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-									<CardTitle className="text-sm font-medium">
+									<CardTitle className="text-sm font-medium text-white">
 										Recurring Revenue
 									</CardTitle>
 									<TrendingUp className="h-4 w-4 text-muted-foreground" />
 								</CardHeader>
 								<CardContent>
-									<div className="text-2xl font-bold">R 1,234,567</div>
-									<p className="text-xs text-muted-foreground">
+									<div className="text-2xl font-bold text-white">
+										R 1,234,567
+									</div>
+									<p className="text-xs text-gray-300">
 										+25.4% from last period
 									</p>
 								</CardContent>
@@ -815,14 +833,16 @@ export default function AnalyticsPage() {
 
 							<Card>
 								<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-									<CardTitle className="text-sm font-medium">
+									<CardTitle className="text-sm font-medium text-white">
 										One-time Payments
 									</CardTitle>
 									<CreditCard className="h-4 w-4 text-muted-foreground" />
 								</CardHeader>
 								<CardContent>
-									<div className="text-2xl font-bold">R 1,612,825</div>
-									<p className="text-xs text-muted-foreground">
+									<div className="text-2xl font-bold text-white">
+										R 1,612,825
+									</div>
+									<p className="text-xs text-gray-300">
 										+12.8% from last period
 									</p>
 								</CardContent>
@@ -831,14 +851,14 @@ export default function AnalyticsPage() {
 
 						<Card>
 							<CardHeader>
-								<CardTitle>Revenue Breakdown</CardTitle>
-								<CardDescription>
+								<CardTitle className="text-white">Revenue Breakdown</CardTitle>
+								<CardDescription className="text-gray-300">
 									Revenue by payment type and period
 								</CardDescription>
 							</CardHeader>
 							<CardContent>
 								<div className="h-64 flex items-center justify-center border border-dashed border-border rounded-md">
-									<div className="text-center text-muted-foreground">
+									<div className="text-center text-gray-300">
 										<DollarSign className="h-12 w-12 mx-auto mb-2" />
 										<p>Revenue Breakdown Chart Placeholder</p>
 										<p className="text-xs">
@@ -851,8 +871,10 @@ export default function AnalyticsPage() {
 
 						<Card>
 							<CardHeader>
-								<CardTitle>Top Revenue Sources</CardTitle>
-								<CardDescription>
+								<CardTitle className="text-white">
+									Top Revenue Sources
+								</CardTitle>
+								<CardDescription className="text-gray-300">
 									Highest earning payment methods and products
 								</CardDescription>
 							</CardHeader>
@@ -897,14 +919,18 @@ export default function AnalyticsPage() {
 											<div className="flex items-center gap-3">
 												<Badge variant="outline">#{index + 1}</Badge>
 												<div>
-													<p className="font-medium">{source.source}</p>
-													<p className="text-sm text-muted-foreground">
+													<p className="font-medium text-white">
+														{source.source}
+													</p>
+													<p className="text-sm text-gray-300">
 														{source.percentage} of total revenue
 													</p>
 												</div>
 											</div>
 											<div className="text-right">
-												<p className="font-medium">{source.revenue}</p>
+												<p className="font-medium text-white">
+													{source.revenue}
+												</p>
 												<p className="text-sm text-green-600">
 													{source.growth}
 												</p>
