@@ -1,0 +1,198 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Updated color tokens with valid OKLCH values */
+  --background: oklch(0.985 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(0.269 0 0); /* Dark gray cards like Figma */
+  --card-foreground: oklch(1 0 0); /* White text on dark cards */
+  --popover: oklch(0.269 0 0);
+  --popover-foreground: oklch(1 0 0);
+  --primary: oklch(0.7 0.15 85); /* StratCol yellow/gold */
+  --primary-foreground: oklch(0.145 0 0); /* Dark text on yellow */
+  --secondary: oklch(0.269 0 0); /* Dark gray */
+  --secondary-foreground: oklch(1 0 0);
+  --muted: oklch(0.439 0 0);
+  --muted-foreground: oklch(0.7 0 0); /* Light gray for muted text */
+  --accent: oklch(0.7 0.15 85); /* Same as primary - StratCol yellow */
+  --accent-foreground: oklch(0.145 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.439 0 0);
+  --input: oklch(0.269 0 0); /* Dark inputs */
+  --ring: oklch(0.7 0.15 85); /* Yellow focus rings */
+  --chart-1: oklch(0.7 0.15 85);
+  --chart-2: oklch(0.269 0 0);
+  --chart-3: oklch(0.577 0.245 27.325);
+  --chart-4: oklch(0.6 0.118 184.704);
+  --chart-5: oklch(0.439 0 0);
+  --radius: 0.5rem;
+  --sidebar: oklch(0.269 0 0);
+  --sidebar-foreground: oklch(1 0 0);
+  --sidebar-primary: oklch(0.7 0.15 85);
+  --sidebar-primary-foreground: oklch(0.145 0 0);
+  --sidebar-accent: oklch(0.439 0 0);
+  --sidebar-accent-foreground: oklch(1 0 0);
+  --sidebar-border: oklch(0.439 0 0);
+  --sidebar-ring: oklch(0.7 0.15 85);
+}
+
+.dark {
+  /* Updated dark mode tokens with valid OKLCH values */
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(1 0 0);
+  --card: oklch(0.269 0 0);
+  --card-foreground: oklch(1 0 0);
+  --popover: oklch(0.269 0 0);
+  --popover-foreground: oklch(1 0 0);
+  --primary: oklch(0.7 0.15 85);
+  --primary-foreground: oklch(0.145 0 0);
+  --secondary: oklch(0.439 0 0);
+  --secondary-foreground: oklch(1 0 0);
+  --muted: oklch(0.439 0 0);
+  --muted-foreground: oklch(0.7 0 0);
+  --accent: oklch(0.7 0.15 85);
+  --accent-foreground: oklch(0.145 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.439 0 0);
+  --input: oklch(0.439 0 0);
+  --ring: oklch(0.7 0.15 85);
+  --chart-1: oklch(0.7 0.15 85);
+  --chart-2: oklch(0.269 0 0);
+  --chart-3: oklch(0.577 0.245 27.325);
+  --chart-4: oklch(0.6 0.118 184.704);
+  --chart-5: oklch(0.439 0 0);
+  --radius: 0.5rem;
+  --sidebar: oklch(0.269 0 0);
+  --sidebar-foreground: oklch(1 0 0);
+  --sidebar-primary: oklch(0.7 0.15 85);
+  --sidebar-primary-foreground: oklch(0.145 0 0);
+  --sidebar-accent: oklch(0.439 0 0);
+  --sidebar-accent-foreground: oklch(1 0 0);
+  --sidebar-border: oklch(0.439 0 0);
+  --sidebar-ring: oklch(0.7 0.15 85);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    /* Updated to use the specific StratCol gradient provided by user */
+    background: linear-gradient(0deg, rgba(161, 90, 90, 0.2), rgba(161, 90, 90, 0.2)),
+      radial-gradient(57.07% 126.34% at 14.73% 48.53%, #ffe6b5 0%, #d7ae66 27.88%, #5b4c30 70.86%, #3f3f3f 100%);
+    @apply text-foreground min-h-screen;
+  }
+}
+
+@layer components {
+  .stratcol-card {
+    background: linear-gradient(360deg, #2c2c2c -38.5%, #525050 187.43%);
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+    border-radius: 16px;
+    padding: 24px;
+    color: white;
+    border: none;
+  }
+
+  .stratcol-card-header {
+    border-radius: 16px 16px 0px 0px;
+  }
+
+  .stratcol-input {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    width: 400px;
+    height: 44px;
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    color: white;
+    font-size: 14px;
+  }
+
+  .stratcol-input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .stratcol-input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.2);
+  }
+
+  /* Default button styling */
+  button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 24px;
+    gap: 8px;
+    width: 180px;
+    height: 40px;
+    background: #1e1e1e;
+    color: #bf6a02;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease-in;
+  }
+
+  button:hover {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 24px;
+    background: #ab8926;
+    color: #522504;
+    transition: all 0.2s ease-in;
+  }
+}
