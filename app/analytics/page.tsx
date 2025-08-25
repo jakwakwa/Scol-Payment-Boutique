@@ -34,7 +34,7 @@ export default function AnalyticsPage() {
   const [selectedPeriod, setSelectedPeriod] = useState("30d")
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen">
       {/* Header */}
       <header className="border-b border-border bg-card">
         <div className="container mx-auto px-6 py-4">
@@ -48,7 +48,7 @@ export default function AnalyticsPage() {
               </Link>
               <div className="flex items-center gap-2">
                 <BarChart3 className="h-6 w-6 text-primary" />
-                <h1 className="text-xl font-bold text-foreground">Analytics & Reporting</h1>
+                <h1 className="text-xl font-bold text-white">Analytics & Reporting</h1>
               </div>
             </div>
             <div className="flex items-center gap-2">
@@ -69,13 +69,13 @@ export default function AnalyticsPage() {
         {/* Filters */}
         <Card className="mb-8">
           <CardHeader>
-            <CardTitle className="text-lg">Report Filters</CardTitle>
-            <CardDescription>Customize your analytics view</CardDescription>
+            <CardTitle className="text-lg text-white">Report Filters</CardTitle>
+            <CardDescription className="text-gray-300">Customize your analytics view</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
               <div className="space-y-2">
-                <label className="text-sm font-medium">Time Period</label>
+                <label className="text-sm font-medium text-white">Time Period</label>
                 <Select value={selectedPeriod} onValueChange={setSelectedPeriod}>
                   <SelectTrigger>
                     <SelectValue />
@@ -91,7 +91,7 @@ export default function AnalyticsPage() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm font-medium">Payment Provider</label>
+                <label className="text-sm font-medium text-white">Payment Provider</label>
                 <Select value={selectedPSP} onValueChange={setSelectedPSP}>
                   <SelectTrigger>
                     <SelectValue />
@@ -108,7 +108,7 @@ export default function AnalyticsPage() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm font-medium">From Date</label>
+                <label className="text-sm font-medium text-white">From Date</label>
                 <Popover>
                   <PopoverTrigger asChild>
                     <Button variant="outline" className="w-full justify-start text-left font-normal bg-transparent">
@@ -128,7 +128,7 @@ export default function AnalyticsPage() {
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm font-medium">To Date</label>
+                <label className="text-sm font-medium text-white">To Date</label>
                 <Popover>
                   <PopoverTrigger asChild>
                     <Button variant="outline" className="w-full justify-start text-left font-normal bg-transparent">
@@ -152,11 +152,21 @@ export default function AnalyticsPage() {
 
         <Tabs defaultValue="overview" className="space-y-6">
           <TabsList className="grid w-full grid-cols-5">
-            <TabsTrigger value="overview">Overview</TabsTrigger>
-            <TabsTrigger value="payments">Payment Links</TabsTrigger>
-            <TabsTrigger value="emandate">eMandate</TabsTrigger>
-            <TabsTrigger value="psp">PSP Performance</TabsTrigger>
-            <TabsTrigger value="revenue">Revenue</TabsTrigger>
+            <TabsTrigger value="overview" className="text-white data-[state=active]:text-black">
+              Overview
+            </TabsTrigger>
+            <TabsTrigger value="payments" className="text-white data-[state=active]:text-black">
+              Payment Links
+            </TabsTrigger>
+            <TabsTrigger value="emandate" className="text-white data-[state=active]:text-black">
+              eMandate
+            </TabsTrigger>
+            <TabsTrigger value="psp" className="text-white data-[state=active]:text-black">
+              PSP Performance
+            </TabsTrigger>
+            <TabsTrigger value="revenue" className="text-white data-[state=active]:text-black">
+              Revenue
+            </TabsTrigger>
           </TabsList>
 
           <TabsContent value="overview" className="space-y-6">
@@ -164,11 +174,11 @@ export default function AnalyticsPage() {
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">Total Revenue</CardTitle>
+                  <CardTitle className="text-sm font-medium text-white">Total Revenue</CardTitle>
                   <DollarSign className="h-4 w-4 text-muted-foreground" />
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold">R 2,847,392</div>
+                  <div className="text-2xl font-bold text-white">R 2,847,392</div>
                   <div className="flex items-center text-xs text-muted-foreground">
                     <TrendingUp className="h-3 w-3 mr-1 text-green-500" />
                     +18.2% from last period
@@ -178,11 +188,11 @@ export default function AnalyticsPage() {
 
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">Total Transactions</CardTitle>
+                  <CardTitle className="text-sm font-medium text-white">Total Transactions</CardTitle>
                   <BarChart3 className="h-4 w-4 text-muted-foreground" />
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold">12,847</div>
+                  <div className="text-2xl font-bold text-white">12,847</div>
                   <div className="flex items-center text-xs text-muted-foreground">
                     <TrendingUp className="h-3 w-3 mr-1 text-green-500" />
                     +12.4% from last period
@@ -192,11 +202,11 @@ export default function AnalyticsPage() {
 
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">Success Rate</CardTitle>
+                  <CardTitle className="text-sm font-medium text-white">Success Rate</CardTitle>
                   <TrendingUp className="h-4 w-4 text-muted-foreground" />
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold">94.2%</div>
+                  <div className="text-2xl font-bold text-white">94.2%</div>
                   <div className="flex items-center text-xs text-muted-foreground">
                     <TrendingUp className="h-3 w-3 mr-1 text-green-500" />
                     +2.1% from last period
@@ -206,11 +216,11 @@ export default function AnalyticsPage() {
 
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">Avg. Transaction Value</CardTitle>
+                  <CardTitle className="text-sm font-medium text-white">Avg. Transaction Value</CardTitle>
                   <DollarSign className="h-4 w-4 text-muted-foreground" />
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold">R 221</div>
+                  <div className="text-2xl font-bold text-white">R 221</div>
                   <div className="flex items-center text-xs text-muted-foreground">
                     <TrendingDown className="h-3 w-3 mr-1 text-red-500" />
                     -3.2% from last period

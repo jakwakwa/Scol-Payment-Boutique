@@ -98,11 +98,19 @@ export default function PaymentSystemDashboard() {
         </div>
 
         <Tabs defaultValue="overview" className="mt-8">
-          <TabsList className="grid w-full grid-cols-4">
-            <TabsTrigger value="overview">Overview</TabsTrigger>
-            <TabsTrigger value="create">Create Link</TabsTrigger>
-            <TabsTrigger value="manage">Manage Links</TabsTrigger>
-            <TabsTrigger value="analytics">Analytics</TabsTrigger>
+          <TabsList className="grid w-full grid-cols-4 bg-card border border-border">
+            <TabsTrigger value="overview" className="text-white data-[state=active]:text-primary-foreground">
+              Overview
+            </TabsTrigger>
+            <TabsTrigger value="create" className="text-white data-[state=active]:text-primary-foreground">
+              Create Link
+            </TabsTrigger>
+            <TabsTrigger value="manage" className="text-white data-[state=active]:text-primary-foreground">
+              Manage Links
+            </TabsTrigger>
+            <TabsTrigger value="analytics" className="text-white data-[state=active]:text-primary-foreground">
+              Analytics
+            </TabsTrigger>
           </TabsList>
 
           <TabsContent value="overview" className="space-y-6">

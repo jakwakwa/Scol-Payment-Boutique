@@ -95,13 +95,7 @@ export default function EMandateOnboarding() {
                     >
                       <step.icon className="w-5 h-5" />
                     </div>
-                    <span
-                      className={`text-xs mt-2 text-center ${
-                        currentStep >= step.id ? "text-yellow-400" : "text-yellow-400"
-                      }`}
-                    >
-                      {step.title}
-                    </span>
+                    <span className="text-xs mt-2 text-center text-yellow-200">{step.title}</span>
                   </div>
                   {index < steps.length - 1 && (
                     <div className={`w-16 h-0.5 mx-4 ${currentStep > step.id ? "bg-yellow-400" : "bg-gray-600"}`} />
@@ -140,10 +134,16 @@ export default function EMandateOnboarding() {
                       <SelectTrigger className="stratcol-input">
                         <SelectValue placeholder="Select product type" />
                       </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="client-service">Client Service Testing</SelectItem>
-                        <SelectItem value="training">StratCol Training</SelectItem>
-                        <SelectItem value="consulting">Consulting Services</SelectItem>
+                      <SelectContent className="bg-gray-800 border-gray-600">
+                        <SelectItem value="client-service" className="text-white hover:bg-gray-700">
+                          Client Service Testing
+                        </SelectItem>
+                        <SelectItem value="training" className="text-white hover:bg-gray-700">
+                          StratCol Training
+                        </SelectItem>
+                        <SelectItem value="consulting" className="text-white hover:bg-gray-700">
+                          Consulting Services
+                        </SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
@@ -158,10 +158,16 @@ export default function EMandateOnboarding() {
                       <SelectTrigger className="stratcol-input">
                         <SelectValue placeholder="Select subscription plan" />
                       </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="basic">Basic Plan - R299/month</SelectItem>
-                        <SelectItem value="professional">Professional Plan - R599/month</SelectItem>
-                        <SelectItem value="enterprise">Enterprise Plan - R999/month</SelectItem>
+                      <SelectContent className="bg-gray-800 border-gray-600">
+                        <SelectItem value="basic" className="text-white hover:bg-gray-700">
+                          Basic Plan - R299/month
+                        </SelectItem>
+                        <SelectItem value="professional" className="text-white hover:bg-gray-700">
+                          Professional Plan - R599/month
+                        </SelectItem>
+                        <SelectItem value="enterprise" className="text-white hover:bg-gray-700">
+                          Enterprise Plan - R999/month
+                        </SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
@@ -234,12 +240,22 @@ export default function EMandateOnboarding() {
                       <SelectTrigger className="stratcol-input">
                         <SelectValue placeholder="Select your bank" />
                       </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="absa">ABSA Bank</SelectItem>
-                        <SelectItem value="fnb">First National Bank</SelectItem>
-                        <SelectItem value="standard">Standard Bank</SelectItem>
-                        <SelectItem value="nedbank">Nedbank</SelectItem>
-                        <SelectItem value="capitec">Capitec Bank</SelectItem>
+                      <SelectContent className="bg-gray-800 border-gray-600">
+                        <SelectItem value="absa" className="text-white hover:bg-gray-700">
+                          ABSA Bank
+                        </SelectItem>
+                        <SelectItem value="fnb" className="text-white hover:bg-gray-700">
+                          First National Bank
+                        </SelectItem>
+                        <SelectItem value="standard" className="text-white hover:bg-gray-700">
+                          Standard Bank
+                        </SelectItem>
+                        <SelectItem value="nedbank" className="text-white hover:bg-gray-700">
+                          Nedbank
+                        </SelectItem>
+                        <SelectItem value="capitec" className="text-white hover:bg-gray-700">
+                          Capitec Bank
+                        </SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
@@ -254,10 +270,16 @@ export default function EMandateOnboarding() {
                       <SelectTrigger className="stratcol-input">
                         <SelectValue placeholder="Select account type" />
                       </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="current">Current Account</SelectItem>
-                        <SelectItem value="savings">Savings Account</SelectItem>
-                        <SelectItem value="cheque">Cheque Account</SelectItem>
+                      <SelectContent className="bg-gray-800 border-gray-600">
+                        <SelectItem value="current" className="text-white hover:bg-gray-700">
+                          Current Account
+                        </SelectItem>
+                        <SelectItem value="savings" className="text-white hover:bg-gray-700">
+                          Savings Account
+                        </SelectItem>
+                        <SelectItem value="cheque" className="text-white hover:bg-gray-700">
+                          Cheque Account
+                        </SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
@@ -301,10 +323,16 @@ export default function EMandateOnboarding() {
                       <SelectTrigger className="stratcol-input">
                         <SelectValue placeholder="Select ID type" />
                       </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="sa-id">South African ID</SelectItem>
-                        <SelectItem value="passport">Passport</SelectItem>
-                        <SelectItem value="drivers-license">Driver's License</SelectItem>
+                      <SelectContent className="bg-gray-800 border-gray-600">
+                        <SelectItem value="sa-id" className="text-white hover:bg-gray-700">
+                          South African ID
+                        </SelectItem>
+                        <SelectItem value="passport" className="text-white hover:bg-gray-700">
+                          Passport
+                        </SelectItem>
+                        <SelectItem value="drivers-license" className="text-white hover:bg-gray-700">
+                          Driver's License
+                        </SelectItem>
                       </SelectContent>
                     </Select>
                   </div>

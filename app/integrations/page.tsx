@@ -161,7 +161,7 @@ export default function IntegrationsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen">
       {/* Header */}
       <header className="border-b border-border bg-card">
         <div className="container mx-auto px-6 py-4">
@@ -189,10 +189,18 @@ export default function IntegrationsPage() {
       <div className="container mx-auto px-6 py-8">
         <Tabs defaultValue="providers" className="space-y-6">
           <TabsList className="grid w-full grid-cols-4">
-            <TabsTrigger value="providers">Payment Providers</TabsTrigger>
-            <TabsTrigger value="routing">Payment Routing</TabsTrigger>
-            <TabsTrigger value="settings">Configuration</TabsTrigger>
-            <TabsTrigger value="monitoring">Monitoring</TabsTrigger>
+            <TabsTrigger value="providers" className="text-white">
+              Payment Providers
+            </TabsTrigger>
+            <TabsTrigger value="routing" className="text-white">
+              Payment Routing
+            </TabsTrigger>
+            <TabsTrigger value="settings" className="text-white">
+              Configuration
+            </TabsTrigger>
+            <TabsTrigger value="monitoring" className="text-white">
+              Monitoring
+            </TabsTrigger>
           </TabsList>
 
           <TabsContent value="providers" className="space-y-6">
@@ -200,56 +208,58 @@ export default function IntegrationsPage() {
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">Connected Providers</CardTitle>
+                  <CardTitle className="text-sm font-medium text-white">Connected Providers</CardTitle>
                   <CheckCircle className="h-4 w-4 text-green-500" />
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold">{providers.filter((p) => p.status === "connected").length}</div>
-                  <p className="text-xs text-muted-foreground">of {providers.length} total</p>
+                  <div className="text-2xl font-bold text-white">
+                    {providers.filter((p) => p.status === "connected").length}
+                  </div>
+                  <p className="text-xs text-gray-300">of {providers.length} total</p>
                 </CardContent>
               </Card>
 
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">Active Providers</CardTitle>
+                  <CardTitle className="text-sm font-medium text-white">Active Providers</CardTitle>
                   <Zap className="h-4 w-4 text-primary" />
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold">{providers.filter((p) => p.enabled).length}</div>
-                  <p className="text-xs text-muted-foreground">currently enabled</p>
+                  <div className="text-2xl font-bold text-white">{providers.filter((p) => p.enabled).length}</div>
+                  <p className="text-xs text-gray-300">currently enabled</p>
                 </CardContent>
               </Card>
 
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">Avg Success Rate</CardTitle>
+                  <CardTitle className="text-sm font-medium text-white">Avg Success Rate</CardTitle>
                   <TrendingUp className="h-4 w-4 text-muted-foreground" />
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold">
+                  <div className="text-2xl font-bold text-white">
                     {(
                       providers.filter((p) => p.enabled).reduce((acc, p) => acc + p.successRate, 0) /
                       providers.filter((p) => p.enabled).length
                     ).toFixed(1)}
                     %
                   </div>
-                  <p className="text-xs text-muted-foreground">across active providers</p>
+                  <p className="text-xs text-gray-300">across active providers</p>
                 </CardContent>
               </Card>
 
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">Monthly Fees</CardTitle>
+                  <CardTitle className="text-sm font-medium text-white">Monthly Fees</CardTitle>
                   <CreditCard className="h-4 w-4 text-muted-foreground" />
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold">
+                  <div className="text-2xl font-bold text-white">
                     R{" "}
                     {providers
                       .filter((p) => p.enabled)
                       .reduce((acc, p) => acc + Number.parseInt(p.monthlyFee.replace("R ", "")), 0)}
                   </div>
-                  <p className="text-xs text-muted-foreground">total monthly cost</p>
+                  <p className="text-xs text-gray-300">total monthly cost</p>
                 </CardContent>
               </Card>
             </div>
@@ -267,8 +277,8 @@ export default function IntegrationsPage() {
                             <IconComponent className="h-5 w-5" />
                           </div>
                           <div>
-                            <CardTitle className="text-lg">{provider.name}</CardTitle>
-                            <CardDescription>{provider.description}</CardDescription>
+                            <CardTitle className="text-lg text-white">{provider.name}</CardTitle>
+                            <CardDescription className="text-gray-300">{provider.description}</CardDescription>
                           </div>
                         </div>
                         <div className="flex items-center gap-2">
@@ -280,10 +290,10 @@ export default function IntegrationsPage() {
                     <CardContent className="space-y-4">
                       {/* Features */}
                       <div>
-                        <h4 className="text-sm font-medium mb-2">Features</h4>
+                        <h4 className="text-sm font-medium mb-2 text-white">Features</h4>
                         <div className="flex flex-wrap gap-1">
                           {provider.features.map((feature, index) => (
-                            <Badge key={index} variant="outline" className="text-xs">
+                            <Badge key={index} variant="outline" className="text-xs text-white border-gray-500">
                               {feature}
                             </Badge>
                           ))}
@@ -293,37 +303,37 @@ export default function IntegrationsPage() {
                       {/* Pricing */}
                       <div className="grid grid-cols-3 gap-4 text-sm">
                         <div>
-                          <p className="text-muted-foreground">Transaction Fee</p>
-                          <p className="font-medium">{provider.transactionFee}</p>
+                          <p className="text-gray-300">Transaction Fee</p>
+                          <p className="font-medium text-white">{provider.transactionFee}</p>
                         </div>
                         <div>
-                          <p className="text-muted-foreground">Setup Fee</p>
-                          <p className="font-medium">{provider.setupFee}</p>
+                          <p className="text-gray-300">Setup Fee</p>
+                          <p className="font-medium text-white">{provider.setupFee}</p>
                         </div>
                         <div>
-                          <p className="text-muted-foreground">Monthly Fee</p>
-                          <p className="font-medium">{provider.monthlyFee}</p>
+                          <p className="text-gray-300">Monthly Fee</p>
+                          <p className="font-medium text-white">{provider.monthlyFee}</p>
                         </div>
                       </div>
 
                       {/* Performance */}
                       <div className="grid grid-cols-2 gap-4 text-sm">
                         <div>
-                          <p className="text-muted-foreground">Success Rate</p>
-                          <p className="font-medium">{provider.successRate}%</p>
+                          <p className="text-gray-300">Success Rate</p>
+                          <p className="font-medium text-white">{provider.successRate}%</p>
                         </div>
                         <div>
-                          <p className="text-muted-foreground">Avg Processing</p>
-                          <p className="font-medium">{provider.avgProcessingTime}</p>
+                          <p className="text-gray-300">Avg Processing</p>
+                          <p className="font-medium text-white">{provider.avgProcessingTime}</p>
                         </div>
                       </div>
 
                       {/* Supported Currencies */}
                       <div>
-                        <p className="text-muted-foreground text-sm mb-1">Supported Currencies</p>
+                        <p className="text-gray-300 text-sm mb-1">Supported Currencies</p>
                         <div className="flex gap-1">
                           {provider.supportedCurrencies.map((currency) => (
-                            <Badge key={currency} variant="secondary" className="text-xs">
+                            <Badge key={currency} variant="secondary" className="text-xs text-white bg-gray-600">
                               {currency}
                             </Badge>
                           ))}
@@ -338,7 +348,7 @@ export default function IntegrationsPage() {
                             onCheckedChange={() => toggleProvider(provider.id)}
                             disabled={provider.status !== "connected"}
                           />
-                          <span className="text-sm">{provider.enabled ? "Enabled" : "Disabled"}</span>
+                          <span className="text-sm text-white">{provider.enabled ? "Enabled" : "Disabled"}</span>
                         </div>
                         <div className="flex gap-2">
                           {provider.status === "connected" ? (
@@ -364,39 +374,41 @@ export default function IntegrationsPage() {
           <TabsContent value="routing" className="space-y-6">
             <Card>
               <CardHeader>
-                <CardTitle>Payment Routing Rules</CardTitle>
-                <CardDescription>Configure how payments are routed across different providers</CardDescription>
+                <CardTitle className="text-white">Payment Routing Rules</CardTitle>
+                <CardDescription className="text-gray-300">
+                  Configure how payments are routed across different providers
+                </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="space-y-4">
-                  <h3 className="text-lg font-semibold">Primary Routing Strategy</h3>
+                  <h3 className="text-lg font-semibold text-white">Primary Routing Strategy</h3>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <Card className="p-4 cursor-pointer border-2 border-primary">
                       <div className="text-center">
                         <TrendingUp className="h-8 w-8 mx-auto mb-2 text-primary" />
-                        <h4 className="font-medium">Success Rate</h4>
-                        <p className="text-sm text-muted-foreground">Route to highest success rate</p>
+                        <h4 className="font-medium text-white">Success Rate</h4>
+                        <p className="text-sm text-gray-300">Route to highest success rate</p>
                       </div>
                     </Card>
                     <Card className="p-4 cursor-pointer">
                       <div className="text-center">
                         <CreditCard className="h-8 w-8 mx-auto mb-2 text-muted-foreground" />
-                        <h4 className="font-medium">Lowest Cost</h4>
-                        <p className="text-sm text-muted-foreground">Route to lowest fees</p>
+                        <h4 className="font-medium text-white">Lowest Cost</h4>
+                        <p className="text-sm text-gray-300">Route to lowest fees</p>
                       </div>
                     </Card>
                     <Card className="p-4 cursor-pointer">
                       <div className="text-center">
                         <Zap className="h-8 w-8 mx-auto mb-2 text-muted-foreground" />
-                        <h4 className="font-medium">Fastest</h4>
-                        <p className="text-sm text-muted-foreground">Route to fastest processing</p>
+                        <h4 className="font-medium text-white">Fastest</h4>
+                        <p className="text-sm text-gray-300">Route to fastest processing</p>
                       </div>
                     </Card>
                   </div>
                 </div>
 
                 <div className="space-y-4">
-                  <h3 className="text-lg font-semibold">Fallback Configuration</h3>
+                  <h3 className="text-lg font-semibold text-white">Fallback Configuration</h3>
                   <div className="space-y-3">
                     {[
                       { priority: 1, provider: "ABSA Pay", reason: "Highest success rate (96.2%)" },
@@ -409,10 +421,12 @@ export default function IntegrationsPage() {
                         className="flex items-center justify-between p-3 border border-border rounded-md"
                       >
                         <div className="flex items-center gap-3">
-                          <Badge variant="outline">#{rule.priority}</Badge>
+                          <Badge variant="outline" className="text-white border-gray-500">
+                            #{rule.priority}
+                          </Badge>
                           <div>
-                            <p className="font-medium">{rule.provider}</p>
-                            <p className="text-sm text-muted-foreground">{rule.reason}</p>
+                            <p className="font-medium text-white">{rule.provider}</p>
+                            <p className="text-sm text-gray-300">{rule.reason}</p>
                           </div>
                         </div>
                         <Button variant="ghost" size="sm">
@@ -424,26 +438,26 @@ export default function IntegrationsPage() {
                 </div>
 
                 <div className="space-y-4">
-                  <h3 className="text-lg font-semibold">Smart Routing Rules</h3>
+                  <h3 className="text-lg font-semibold text-white">Smart Routing Rules</h3>
                   <div className="space-y-3">
                     <div className="flex items-center justify-between p-3 border border-border rounded-md">
                       <div>
-                        <p className="font-medium">Amount-based routing</p>
-                        <p className="text-sm text-muted-foreground">Use PayShap for amounts under R 100</p>
+                        <p className="font-medium text-white">Amount-based routing</p>
+                        <p className="text-sm text-gray-300">Use PayShap for amounts under R 100</p>
                       </div>
                       <Switch defaultChecked />
                     </div>
                     <div className="flex items-center justify-between p-3 border border-border rounded-md">
                       <div>
-                        <p className="font-medium">Currency-based routing</p>
-                        <p className="text-sm text-muted-foreground">Use Card Payments for non-ZAR transactions</p>
+                        <p className="font-medium text-white">Currency-based routing</p>
+                        <p className="text-sm text-gray-300">Use Card Payments for non-ZAR transactions</p>
                       </div>
                       <Switch defaultChecked />
                     </div>
                     <div className="flex items-center justify-between p-3 border border-border rounded-md">
                       <div>
-                        <p className="font-medium">Time-based routing</p>
-                        <p className="text-sm text-muted-foreground">Prefer faster providers during business hours</p>
+                        <p className="font-medium text-white">Time-based routing</p>
+                        <p className="text-sm text-gray-300">Prefer faster providers during business hours</p>
                       </div>
                       <Switch />
                     </div>
@@ -457,35 +471,37 @@ export default function IntegrationsPage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               <Card>
                 <CardHeader>
-                  <CardTitle>Global Settings</CardTitle>
-                  <CardDescription>Configure global payment processing settings</CardDescription>
+                  <CardTitle className="text-white">Global Settings</CardTitle>
+                  <CardDescription className="text-gray-300">
+                    Configure global payment processing settings
+                  </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="font-medium">Auto-retry failed payments</p>
-                      <p className="text-sm text-muted-foreground">Automatically retry with fallback providers</p>
+                      <p className="font-medium text-white">Auto-retry failed payments</p>
+                      <p className="text-sm text-gray-300">Automatically retry with fallback providers</p>
                     </div>
                     <Switch defaultChecked />
                   </div>
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="font-medium">Real-time notifications</p>
-                      <p className="text-sm text-muted-foreground">Send webhooks for payment events</p>
+                      <p className="font-medium text-white">Real-time notifications</p>
+                      <p className="text-sm text-gray-300">Send webhooks for payment events</p>
                     </div>
                     <Switch defaultChecked />
                   </div>
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="font-medium">Fraud detection</p>
-                      <p className="text-sm text-muted-foreground">Enable advanced fraud screening</p>
+                      <p className="font-medium text-white">Fraud detection</p>
+                      <p className="text-sm text-gray-300">Enable advanced fraud screening</p>
                     </div>
                     <Switch defaultChecked />
                   </div>
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="font-medium">3D Secure</p>
-                      <p className="text-sm text-muted-foreground">Require 3D Secure for card payments</p>
+                      <p className="font-medium text-white">3D Secure</p>
+                      <p className="text-sm text-gray-300">Require 3D Secure for card payments</p>
                     </div>
                     <Switch />
                   </div>
@@ -494,12 +510,12 @@ export default function IntegrationsPage() {
 
               <Card>
                 <CardHeader>
-                  <CardTitle>Retry Configuration</CardTitle>
-                  <CardDescription>Configure retry logic for failed payments</CardDescription>
+                  <CardTitle className="text-white">Retry Configuration</CardTitle>
+                  <CardDescription className="text-gray-300">Configure retry logic for failed payments</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="space-y-2">
-                    <label className="text-sm font-medium">Maximum retry attempts</label>
+                    <label className="text-sm font-medium text-white">Maximum retry attempts</label>
                     <select className="w-full px-3 py-2 border border-border rounded-md bg-input" defaultValue="3">
                       <option value="1">1 attempt</option>
                       <option value="2">2 attempts</option>
@@ -508,7 +524,7 @@ export default function IntegrationsPage() {
                     </select>
                   </div>
                   <div className="space-y-2">
-                    <label className="text-sm font-medium">Retry delay</label>
+                    <label className="text-sm font-medium text-white">Retry delay</label>
                     <select className="w-full px-3 py-2 border border-border rounded-md bg-input" defaultValue="1m">
                       <option value="immediate">Immediate</option>
                       <option value="30s">30 seconds</option>
@@ -517,7 +533,7 @@ export default function IntegrationsPage() {
                     </select>
                   </div>
                   <div className="space-y-2">
-                    <label className="text-sm font-medium">Timeout duration</label>
+                    <label className="text-sm font-medium text-white">Timeout duration</label>
                     <select className="w-full px-3 py-2 border border-border rounded-md bg-input" defaultValue="60s">
                       <option value="30s">30 seconds</option>
                       <option value="60s">60 seconds</option>
@@ -531,12 +547,14 @@ export default function IntegrationsPage() {
 
             <Card>
               <CardHeader>
-                <CardTitle>Webhook Configuration</CardTitle>
-                <CardDescription>Configure webhook endpoints for payment events</CardDescription>
+                <CardTitle className="text-white">Webhook Configuration</CardTitle>
+                <CardDescription className="text-gray-300">
+                  Configure webhook endpoints for payment events
+                </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="space-y-2">
-                  <label className="text-sm font-medium">Webhook URL</label>
+                  <label className="text-sm font-medium text-white">Webhook URL</label>
                   <input
                     type="url"
                     placeholder="https://your-domain.com/webhooks/payments"
@@ -544,7 +562,7 @@ export default function IntegrationsPage() {
                   />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-sm font-medium">Events to send</label>
+                  <label className="text-sm font-medium text-white">Events to send</label>
                   <div className="grid grid-cols-2 gap-2">
                     {[
                       "payment.completed",
@@ -556,7 +574,7 @@ export default function IntegrationsPage() {
                     ].map((event) => (
                       <label key={event} className="flex items-center space-x-2">
                         <input type="checkbox" className="rounded border-border" defaultChecked />
-                        <span className="text-sm">{event}</span>
+                        <span className="text-sm text-white">{event}</span>
                       </label>
                     ))}
                   </div>
@@ -570,53 +588,53 @@ export default function IntegrationsPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">System Health</CardTitle>
+                  <CardTitle className="text-sm font-medium text-white">System Health</CardTitle>
                   <CheckCircle className="h-4 w-4 text-green-500" />
                 </CardHeader>
                 <CardContent>
                   <div className="text-2xl font-bold text-green-600">Healthy</div>
-                  <p className="text-xs text-muted-foreground">All systems operational</p>
+                  <p className="text-xs text-gray-300">All systems operational</p>
                 </CardContent>
               </Card>
 
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">Response Time</CardTitle>
+                  <CardTitle className="text-sm font-medium text-white">Response Time</CardTitle>
                   <Zap className="h-4 w-4 text-muted-foreground" />
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold">247ms</div>
-                  <p className="text-xs text-muted-foreground">Average API response</p>
+                  <div className="text-2xl font-bold text-white">247ms</div>
+                  <p className="text-xs text-gray-300">Average API response</p>
                 </CardContent>
               </Card>
 
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">Uptime</CardTitle>
+                  <CardTitle className="text-sm font-medium text-white">Uptime</CardTitle>
                   <TrendingUp className="h-4 w-4 text-muted-foreground" />
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold">99.9%</div>
-                  <p className="text-xs text-muted-foreground">Last 30 days</p>
+                  <div className="text-2xl font-bold text-white">99.9%</div>
+                  <p className="text-xs text-gray-300">Last 30 days</p>
                 </CardContent>
               </Card>
 
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">Error Rate</CardTitle>
+                  <CardTitle className="text-sm font-medium text-white">Error Rate</CardTitle>
                   <AlertCircle className="h-4 w-4 text-muted-foreground" />
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold">0.1%</div>
-                  <p className="text-xs text-muted-foreground">Last 24 hours</p>
+                  <div className="text-2xl font-bold text-white">0.1%</div>
+                  <p className="text-xs text-gray-300">Last 24 hours</p>
                 </CardContent>
               </Card>
             </div>
 
             <Card>
               <CardHeader>
-                <CardTitle>Provider Status</CardTitle>
-                <CardDescription>Real-time status of all payment providers</CardDescription>
+                <CardTitle className="text-white">Provider Status</CardTitle>
+                <CardDescription className="text-gray-300">Real-time status of all payment providers</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
@@ -630,22 +648,22 @@ export default function IntegrationsPage() {
                         <div className="flex items-center gap-3">
                           <div className="h-3 w-3 rounded-full bg-green-500"></div>
                           <div>
-                            <p className="font-medium">{provider.name}</p>
-                            <p className="text-sm text-muted-foreground">Last transaction: 2 minutes ago</p>
+                            <p className="font-medium text-white">{provider.name}</p>
+                            <p className="text-sm text-gray-300">Last transaction: 2 minutes ago</p>
                           </div>
                         </div>
                         <div className="grid grid-cols-3 gap-6 text-right text-sm">
                           <div>
-                            <p className="font-medium">156ms</p>
-                            <p className="text-muted-foreground">Response time</p>
+                            <p className="font-medium text-white">156ms</p>
+                            <p className="text-gray-300">Response time</p>
                           </div>
                           <div>
-                            <p className="font-medium">{provider.successRate}%</p>
-                            <p className="text-muted-foreground">Success rate</p>
+                            <p className="font-medium text-white">{provider.successRate}%</p>
+                            <p className="text-gray-300">Success rate</p>
                           </div>
                           <div>
-                            <p className="font-medium">1,247</p>
-                            <p className="text-muted-foreground">Transactions today</p>
+                            <p className="font-medium text-white">1,247</p>
+                            <p className="text-gray-300">Transactions today</p>
                           </div>
                         </div>
                       </div>
@@ -656,8 +674,8 @@ export default function IntegrationsPage() {
 
             <Card>
               <CardHeader>
-                <CardTitle>Recent Events</CardTitle>
-                <CardDescription>Latest system events and alerts</CardDescription>
+                <CardTitle className="text-white">Recent Events</CardTitle>
+                <CardDescription className="text-gray-300">Latest system events and alerts</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="space-y-3">
@@ -679,12 +697,12 @@ export default function IntegrationsPage() {
                                 : "bg-red-500"
                           }`}
                         ></div>
-                        <span>{event.event}</span>
-                        <Badge variant="outline" className="text-xs">
+                        <span className="text-white">{event.event}</span>
+                        <Badge variant="outline" className="text-xs text-white border-gray-500">
                           {event.provider}
                         </Badge>
                       </div>
-                      <span className="text-muted-foreground">{event.time}</span>
+                      <span className="text-gray-300">{event.time}</span>
                     </div>
                   ))}
                 </div>
