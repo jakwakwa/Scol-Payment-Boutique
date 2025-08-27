@@ -1,3 +1,24 @@
+"use client";
+
+import { format } from "date-fns";
+import {
+	BarChart3,
+	Bell,
+	CalendarIcon,
+	Clock,
+	Copy,
+	CreditCard,
+	DollarSign,
+	ExternalLink,
+	Settings,
+	TrendingUp,
+	Users,
+} from "lucide-react";
+import Link from "next/link";
+import { useState } from "react";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
 import {
 	Card,
 	CardContent,
@@ -5,24 +26,32 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import Link from "next/link";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import {
-	CreditCard,
-	Users,
-	BarChart3,
-	Settings,
-	Bell,
-	Copy,
-	ExternalLink,
-	DollarSign,
-	TrendingUp,
-	Clock,
-} from "lucide-react";
+	Popover,
+	PopoverContent,
+	PopoverTrigger,
+} from "@/components/ui/popover";
+import {
+	Select,
+	SelectContent,
+	SelectItem,
+	SelectTrigger,
+	SelectValue,
+} from "@/components/ui/select";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export default function PaymentSystemDashboard() {
+	const [dateRange, setDateRange] = useState<{
+		from: Date | undefined;
+		to: Date | undefined;
+	}>({
+		from: new Date(2024, 0, 1),
+		to: new Date(),
+	});
+
 	return (
 		<div className="min-h-screen">
 			{/* Header */}
@@ -176,32 +205,35 @@ export default function PaymentSystemDashboard() {
 								<CardContent className="space-y-4">
 									<div className="grid grid-cols-2 gap-4">
 										<div className="space-y-2">
-											<label className="text-sm font-medium text-card-foreground">
-												Amount
-											</label>
-											<input
+											<Input
 												type="text"
 												placeholder="R 0.00"
 												className="w-full px-3 py-2 border border-border rounded-md bg-input text-card-foreground placeholder:text-muted-foreground"
 											/>
 										</div>
 										<div className="space-y-2">
-											<label className="text-sm font-medium text-card-foreground">
-												Currency
-											</label>
-											<select className="w-full px-3 py-2 border border-border rounded-md bg-input text-card-foreground">
-												<option>ZAR</option>
-												<option>USD</option>
-												<option>EUR</option>
-											</select>
+											<Select>
+												<SelectTrigger>
+													<SelectValue placeholder="Select a currency" />
+												</SelectTrigger>
+												<SelectContent>
+													<SelectItem value="ZAR">ZAR</SelectItem>
+													<SelectItem value="USD">USD</SelectItem>
+													<SelectItem value="EUR">EUR</SelectItem>
+												</SelectContent>
+											</Select>
 										</div>
 									</div>
 
 									<div className="space-y-2">
-										<label className="text-sm font-medium text-card-foreground">
+										<label
+											className="text-sm font-medium text-card-foreground"
+											htmlFor="description"
+										>
 											Description
 										</label>
 										<input
+											id="description"
 											type="text"
 											placeholder="Payment for..."
 											className="w-full px-3 py-2 border border-border rounded-md bg-input text-card-foreground placeholder:text-muted-foreground"
@@ -333,7 +365,7 @@ export default function PaymentSystemDashboard() {
 										},
 									].map((activity, index) => (
 										<div
-											key={index}
+											key={`${activity.type}-${index}`}
 											className="flex items-center justify-between p-3 border border-border rounded-md"
 										>
 											<div className="flex items-center gap-3">
@@ -349,7 +381,7 @@ export default function PaymentSystemDashboard() {
 												<Badge
 													variant={
 														activity.status === "Completed" ||
-														activity.status === "Paid"
+															activity.status === "Paid"
 															? "default"
 															: "secondary"
 													}
@@ -380,10 +412,14 @@ export default function PaymentSystemDashboard() {
 								<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 									<div className="space-y-4">
 										<div className="space-y-2">
-											<label className="text-sm font-medium text-card-foreground">
+											<label
+												className="text-sm font-medium text-card-foreground"
+												htmlFor="amount"
+											>
 												Payment Amount
 											</label>
 											<input
+												id="amount"
 												type="text"
 												placeholder="R 0.00"
 												className="w-full px-3 py-2 border border-border rounded-md bg-input text-card-foreground placeholder:text-muted-foreground"
@@ -391,29 +427,101 @@ export default function PaymentSystemDashboard() {
 										</div>
 
 										<div className="space-y-2">
-											<label className="text-sm font-medium text-card-foreground">
+											<label
+												className="text-sm font-medium text-card-foreground"
+												htmlFor="description"
+											>
 												Payment Description
 											</label>
 											<textarea
+												id="description"
 												placeholder="Detailed payment description..."
 												className="w-full px-3 py-2 border border-border rounded-md bg-input h-20 resize-none text-card-foreground placeholder:text-muted-foreground"
 											/>
 										</div>
 
 										<div className="space-y-2">
-											<label className="text-sm font-medium text-card-foreground">
+											<label
+												className="text-sm font-medium text-card-foreground"
+												htmlFor="fromDate"
+											>
 												Expiry Date
 											</label>
-											<input
-												type="date"
-												className="w-full px-3 py-2 border border-border rounded-md bg-input"
-											/>
+											<div className="space-y-2">
+												<label
+													className="text-sm font-medium text-white"
+													htmlFor="fromDate"
+												>
+													From Date
+												</label>
+												<Popover>
+													<PopoverTrigger asChild>
+														<Button
+															variant="outline"
+															className="w-full justify-start text-left font-normal bg-transparent"
+														>
+															<CalendarIcon className="mr-2 h-4 w-4" />
+															{dateRange.from
+																? format(dateRange.from, "PPP")
+																: "Pick a date"}
+														</Button>
+													</PopoverTrigger>
+													<PopoverContent className="w-auto p-0" align="start">
+														<Calendar
+															mode="single"
+															selected={dateRange.from}
+															onSelect={(date) =>
+																setDateRange((prev) => ({
+																	...prev,
+																	from: date,
+																}))
+															}
+															initialFocus
+														/>
+													</PopoverContent>
+												</Popover>
+											</div>
+
+											<div className="space-y-2">
+												<label
+													className="text-sm font-medium text-white"
+													htmlFor="toDate"
+												>
+													To Date
+												</label>
+												<Popover>
+													<PopoverTrigger asChild>
+														<Button
+															variant="outline"
+															className="w-full justify-start text-left font-normal bg-transparent"
+														>
+															<CalendarIcon className="mr-2 h-4 w-4" />
+															{dateRange.to
+																? format(dateRange.to, "PPP")
+																: "Pick a date"}
+														</Button>
+													</PopoverTrigger>
+													<PopoverContent className="w-auto p-0" align="start">
+														<Calendar
+															mode="single"
+															selected={dateRange.to}
+															onSelect={(date) =>
+																setDateRange((prev) => ({ ...prev, to: date }))
+															}
+															initialFocus
+														/>
+													</PopoverContent>
+												</Popover>
+											</div>
 										</div>
 									</div>
 
 									<div className="space-y-4">
 										<div className="space-y-2">
-											<label className="text-sm font-medium text-card-foreground">
+											<label
+												className="text-sm font-medium text-card-foreground"
+												htmlFor="psp"
+											>
 												Payment Service Providers
 											</label>
 											<div className="grid grid-cols-2 gap-2">
@@ -425,49 +533,46 @@ export default function PaymentSystemDashboard() {
 													"EFT",
 													"Instant EFT",
 												].map((psp) => (
-													<label
-														key={psp}
-														className="flex items-center space-x-2"
-													>
-														<input
-															type="checkbox"
-															className="rounded border-border"
-															defaultChecked
-														/>
-														<span className="text-sm">{psp}</span>
-													</label>
+													<Checkbox key={psp} defaultChecked />
 												))}
 											</div>
 										</div>
 
 										<div className="space-y-2">
-											<label className="text-sm font-medium text-card-foreground">
+											<label
+												className="text-sm font-medium text-card-foreground"
+												htmlFor="notificationSettings"
+											>
 												Notification Settings
 											</label>
 											<div className="space-y-2">
-												<label className="flex items-center space-x-2">
-													<input
-														type="checkbox"
-														className="rounded border-border"
-														defaultChecked
-													/>
-													<span className="text-sm">Email notifications</span>
-												</label>
-												<label className="flex items-center space-x-2">
-													<input
-														type="checkbox"
-														className="rounded border-border"
-													/>
-													<span className="text-sm">SMS notifications</span>
-												</label>
-												<label className="flex items-center space-x-2">
-													<input
-														type="checkbox"
-														className="rounded border-border"
-														defaultChecked
-													/>
-													<span className="text-sm">Webhook notifications</span>
-												</label>
+												<Label
+													htmlFor="emailNotifications"
+													className="flex items-center space-x-2"
+												>
+													<Checkbox />
+
+													Email notifications
+
+												</Label>
+
+												<Label
+													htmlFor="smsNotifications"
+													className="flex items-center space-x-2"
+												>
+													<Checkbox />
+													Email notifications
+												</Label>
+
+												<Label
+													htmlFor="webhookNotifications"
+													className="flex items-center space-x-2"
+												>
+													<Checkbox defaultChecked />
+													<span className="text-sm">
+														Webhook notifications
+													</span>
+												</Label>
 											</div>
 										</div>
 									</div>

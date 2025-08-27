@@ -1,9 +1,15 @@
 "use client";
 
+import {
+	ArrowLeft,
+	ArrowRight,
+	CheckCircle,
+	CreditCard,
+	Shield,
+	User,
+} from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import {
 	Card,
 	CardContent,
@@ -11,6 +17,9 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import {
 	Select,
 	SelectContent,
@@ -18,15 +27,6 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "@/components/ui/select";
-import { Checkbox } from "@/components/ui/checkbox";
-import {
-	User,
-	CreditCard,
-	Shield,
-	CheckCircle,
-	ArrowLeft,
-	ArrowRight,
-} from "lucide-react";
 
 export default function EMandateOnboarding() {
 	const [currentStep, setCurrentStep] = useState(1);
@@ -86,7 +86,7 @@ export default function EMandateOnboarding() {
 	};
 
 	return (
-		<div className="min-h-screen">
+		<div className="bg-gradient-to-t from-gray-950 to-stone-950/90 min-h-screen">
 			<div className="flex items-center justify-center min-h-screen p-4">
 				<div className="w-full max-w-4xl">
 					{/* Header */}
@@ -99,26 +99,25 @@ export default function EMandateOnboarding() {
 							eMandate Onboarding
 						</h2>
 						<p className="text-gray-300">
-							Streamlined debit order registration
+							Streamlined debit order registrations
 						</p>
 					</div>
 
 					{/* Progress Steps */}
-					<div className="flex justify-center mb-8">
-						<div className="flex items-center space-x-4">
+					<div className="flex justify-center mb-4">
+						<div className="flex items-center">
 							{steps.map((step, index) => (
 								<div key={step.id} className="flex items-center">
 									<div className="flex flex-col items-center">
 										<div
-											className={`w-12 h-12 rounded-full flex items-center justify-center border-2 bg-secondary text-accent-foreground ${
-												currentStep >= step.id
-													? "bg-yellow-400 border-yellow-400 text-black"
-													: "border-gray-600 text-gray-400"
-											}`}
+											className={`w-9 h-9 rounded-full flex items-center justify-center border-2 bg-secondary text-accent-background ${currentStep >= step.id
+												? "border-yellow-800 text-black bg-transparent text-yellow-600"
+												: "border-yellow-900 bg-yellow-900/10 text-yellow-900/40"
+												}`}
 										>
 											<step.icon className="w-5 h-5" />
 										</div>
-										<span className="text-xs mt-2 text-center text-yellow-200">
+										<span className={`${currentStep >= step.id ? "text-yellow-600" : "text-yellow-900/40"} 	text-sm w-full mt-2 text-center font-medium`}>
 											{step.title}
 										</span>
 									</div>
@@ -133,7 +132,7 @@ export default function EMandateOnboarding() {
 					</div>
 
 					{/* Form Content */}
-					<Card className="stratcol-card border-gray-600">
+					<Card >
 						<CardHeader>
 							<CardTitle className="text-white text-xl">
 								Step {currentStep}: {steps[currentStep - 1].title}
@@ -151,9 +150,9 @@ export default function EMandateOnboarding() {
 						<CardContent className="space-y-6">
 							{/* Step 1: Product Selection */}
 							{currentStep === 1 && (
-								<div className="space-y-4">
-									<div>
-										<Label htmlFor="productType" className="text-white">
+								<div className="space-y-4 py-2">
+									<div className="flex flex-col gap-3">
+										<Label htmlFor="productType" className="text-yellow-600/50">
 											Product Type
 										</Label>
 										<Select
@@ -165,7 +164,7 @@ export default function EMandateOnboarding() {
 											<SelectTrigger className="stratcol-input">
 												<SelectValue placeholder="Select product type" />
 											</SelectTrigger>
-											<SelectContent className="bg-gray-800 border-gray-600">
+											<SelectContent className="bg-stone-600/10 border-gray-600 backdrop-blur-sm">
 												<SelectItem
 													value="client-service"
 													className="text-white hover:bg-gray-700"
@@ -187,8 +186,8 @@ export default function EMandateOnboarding() {
 											</SelectContent>
 										</Select>
 									</div>
-									<div>
-										<Label htmlFor="subscriptionPlan" className="text-white">
+									<div className="flex flex-col gap-3">
+										<Label htmlFor="subscriptionPlan" className="text-yellow-600/50">
 											Subscription Plan
 										</Label>
 										<Select
@@ -200,7 +199,7 @@ export default function EMandateOnboarding() {
 											<SelectTrigger className="stratcol-input">
 												<SelectValue placeholder="Select subscription plan" />
 											</SelectTrigger>
-											<SelectContent className="bg-gray-800 border-gray-600">
+											<SelectContent className="bg-stone-900/10 border-gray-600 backdrop-blur-md">
 												<SelectItem
 													value="basic"
 													className="text-white hover:bg-gray-700"

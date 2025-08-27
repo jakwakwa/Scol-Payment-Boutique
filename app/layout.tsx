@@ -1,6 +1,6 @@
-import type React from "react";
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
+import type React from "react";
 import "./globals.css";
 
 const inter = Inter({
@@ -16,7 +16,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-	title: "v0 App",
+	title: "SCol Dashboard Sandbox",
 	description: "Created with v0",
 	generator: "v0.app",
 };
