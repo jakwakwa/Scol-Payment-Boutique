@@ -1,0 +1,11 @@
+{
+	"debug.console.wordWrap": false,
+	"html.format.wrapAttributes": "preserve",
+	"editor.wordWrapColumn": 70,
+	"editor.wordWrap": "bounded",
+	"html.format.wrapLineLength": 0,
+	"editor.wrappingIndent": "deepIndent",
+	"diffEditor.wordWrap": "on",
+	"editor.wrappingStrategy": "advanced",
+	"workbench.editor.wrapTabs": true
+}

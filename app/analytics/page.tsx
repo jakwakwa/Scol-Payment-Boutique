@@ -1,6 +1,25 @@
 "use client";
 
+import { format } from "date-fns";
+import {
+	ArrowLeft,
+	BarChart3,
+	CalendarIcon,
+	Clock,
+	CreditCard,
+	DollarSign,
+	Download,
+	Filter,
+	LinkIcon,
+	TrendingDown,
+	TrendingUp,
+	Users,
+} from "lucide-react";
+import Link from "next/link";
 import { useState } from "react";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
 import {
 	Card,
 	CardContent,
@@ -8,9 +27,11 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+	Popover,
+	PopoverContent,
+	PopoverTrigger,
+} from "@/components/ui/popover";
 import {
 	Select,
 	SelectContent,
@@ -18,28 +39,7 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "@/components/ui/select";
-import { Calendar } from "@/components/ui/calendar";
-import {
-	Popover,
-	PopoverContent,
-	PopoverTrigger,
-} from "@/components/ui/popover";
-import {
-	ArrowLeft,
-	BarChart3,
-	TrendingUp,
-	TrendingDown,
-	DollarSign,
-	Users,
-	LinkIcon,
-	Clock,
-	Download,
-	Filter,
-	CalendarIcon,
-	CreditCard,
-} from "lucide-react";
-import { format } from "date-fns";
-import Link from "next/link";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export default function AnalyticsPage() {
 	const [dateRange, setDateRange] = useState<{
@@ -96,10 +96,11 @@ export default function AnalyticsPage() {
 					<CardContent>
 						<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 							<div className="space-y-2">
-								<label className="text-sm font-medium text-white">
+								<label className="text-sm font-medium text-white" htmlFor="timePeriod">
 									Time Period
 								</label>
 								<Select
+
 									value={selectedPeriod}
 									onValueChange={setSelectedPeriod}
 								>
@@ -117,8 +118,8 @@ export default function AnalyticsPage() {
 							</div>
 
 							<div className="space-y-2">
-								<label className="text-sm font-medium text-white">
-									Payment Provider
+								<label className="text-sm font-medium text-white" htmlFor="psp">
+									Payment Service Provider
 								</label>
 								<Select value={selectedPSP} onValueChange={setSelectedPSP}>
 									<SelectTrigger>
@@ -136,7 +137,7 @@ export default function AnalyticsPage() {
 							</div>
 
 							<div className="space-y-2">
-								<label className="text-sm font-medium text-white">
+								<label className="text-sm font-medium text-white" htmlFor="fromDate">
 									From Date
 								</label>
 								<Popover>
@@ -165,7 +166,7 @@ export default function AnalyticsPage() {
 							</div>
 
 							<div className="space-y-2">
-								<label className="text-sm font-medium text-white">
+								<label className="text-sm font-medium text-white" htmlFor="toDate">
 									To Date
 								</label>
 								<Popover>
@@ -196,43 +197,44 @@ export default function AnalyticsPage() {
 					</CardContent>
 				</Card>
 
-				<Tabs defaultValue="overview" className="space-y-6">
-					<TabsList className="grid w-full grid-cols-5">
+				<Tabs defaultValue="account" className="w-full">
+
+					<TabsList className="grid w-full grid-cols-5 ">
 						<TabsTrigger
 							value="overview"
-							className="text-white data-[state=active]:text-black"
+
 						>
 							Overview
 						</TabsTrigger>
 						<TabsTrigger
 							value="payments"
-							className="text-white data-[state=active]:text-black"
+
 						>
 							Payment Links
 						</TabsTrigger>
 						<TabsTrigger
 							value="emandate"
-							className="text-white data-[state=active]:text-black"
+
 						>
 							eMandate
 						</TabsTrigger>
 						<TabsTrigger
 							value="psp"
-							className="text-white data-[state=active]:text-black"
+
 						>
 							PSP Performance
 						</TabsTrigger>
 						<TabsTrigger
 							value="revenue"
-							className="text-white data-[state=active]:text-black"
+
 						>
 							Revenue
 						</TabsTrigger>
 					</TabsList>
 
-					<TabsContent value="overview" className="space-y-6">
+					<TabsContent value="overview" className="space-y-4">
 						{/* Key Metrics */}
-						<div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+						<div className="grid grid-cols-1 md:grid-cols-4 gap-2">
 							<Card>
 								<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
 									<CardTitle className="text-sm font-medium text-white">
@@ -942,7 +944,7 @@ export default function AnalyticsPage() {
 						</Card>
 					</TabsContent>
 				</Tabs>
-			</div>
-		</div>
+			</div >
+		</div >
 	);
 }
