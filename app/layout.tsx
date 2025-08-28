@@ -16,9 +16,8 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-	title: "SCol Dashboard Sandbox",
-	description: "Created with v0",
-	generator: "v0.app",
+	title: "STRATCOL DEMO - Boutique Dashboard Sandbox",
+	description: "Created by jacofrontend.dev",
 };
 
 export default function RootLayout({
