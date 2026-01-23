@@ -1,4 +1,4 @@
-# https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
+version: 2
 updates:
   - package-ecosystem: "bun"
     directory: "/"
@@ -9,3 +9,5 @@ updates:
       - "vendor/**"
       - "src/*.js"
       - "src/test/helper.js"
+      
+# https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
