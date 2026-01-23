@@ -2,7 +2,8 @@
 
 A modern, comprehensive payment management dashboard designed to streamline payment link generation, eMandate onboarding, and transaction analytics. Built with performance and user experience in mind using the latest Next.js 15 stack.
 
-![Dashboard Preview](public/placeholder-logo.png)
+![image](https://github.com/user-attachments/assets/b4f5d863-831f-4f5a-ba0f-d7ad8dca833d)
+
 
 ## 🚀 Overview
 
