@@ -1,2 +1,2 @@
-# Payment Boutique
+# SCOL Payment Boutique
 
