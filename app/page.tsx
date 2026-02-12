@@ -42,11 +42,6 @@ import {
 	SelectValue,
 } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import {
-	Tooltip,
-	TooltipTrigger,
-	TooltipContent,
-} from "@/components/ui/tooltip";
 
 export default function PaymentSystemDashboard() {
 	const [dateRange, setDateRange] = useState<{
@@ -78,42 +73,19 @@ export default function PaymentSystemDashboard() {
 								Payment Hub
 							</Badge>
 						</div>
-					<div className="flex items-center gap-1">
-						<Tooltip>
-							<TooltipTrigger asChild>
-								<Link href="/analytics">
-									<Button variant="ghost" size="icon" className="size-9">
-										<BarChart3 className="h-4 w-4" />
-									</Button>
-								</Link>
-							</TooltipTrigger>
-							<TooltipContent side="bottom">View Analytics</TooltipContent>
-						</Tooltip>
-						<Tooltip>
-							<TooltipTrigger asChild>
-								<Link href="/integrations">
-									<Button variant="ghost" size="icon" className="size-9">
-										<Settings className="h-4 w-4" />
-									</Button>
-								</Link>
-							</TooltipTrigger>
-							<TooltipContent side="bottom">Manage Integrations</TooltipContent>
-						</Tooltip>
-						<div className="w-px h-5 bg-border mx-2" />
-						<Tooltip>
-							<TooltipTrigger asChild>
-								<Button variant="ghost" size="icon" className="size-9">
-									<Bell className="h-4 w-4" />
-								</Button>
-							</TooltipTrigger>
-							<TooltipContent side="bottom">Notifications</TooltipContent>
-						</Tooltip>
-						<div className="h-8 w-8 rounded-full bg-primary flex items-center justify-center ml-2">
-							<span className="text-primary-foreground text-sm font-medium">
-								JD
-							</span>
+						<div className="flex items-center gap-4">
+							<Button variant="ghost" size="sm">
+								<Bell className="h-4 w-4" />
+							</Button>
+							<Button variant="ghost" size="sm">
+								<Settings className="h-4 w-4" />
+							</Button>
+							<div className="h-8 w-8 rounded-full bg-primary flex items-center justify-center">
+								<span className="text-primary-foreground text-sm font-medium">
+									JD
+								</span>
+							</div>
 						</div>
-					</div>
 					</div>
 				</div>
 			</header>
@@ -340,7 +312,23 @@ export default function PaymentSystemDashboard() {
 							</Card>
 						</div>
 
-					{/* Recent Activity */}
+						{/* Quick Actions */}
+						<div className="flex justify-center gap-4">
+							<Link href="/analytics">
+								<Button className="flex items-center gap-2">
+									<BarChart3 className="h-4 w-4" />
+									View Analytics
+								</Button>
+							</Link>
+							<Link href="/integrations">
+								<Button className="flex items-center gap-2">
+									<Settings className="h-4 w-4" />
+									Manage Integrations
+								</Button>
+							</Link>
+						</div>
+
+						{/* Recent Activity */}
 						<Card>
 							<CardHeader>
 								<CardTitle>Recent Activity</CardTitle>
