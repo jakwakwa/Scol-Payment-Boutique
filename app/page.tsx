@@ -247,9 +247,9 @@ export default function PaymentSystemDashboard() {
 							{/* eMandate Onboarding */}
 							<Card className="col-span-1">
 								<CardHeader>
-									<CardTitle className="flex items-center gap-2 text-card-foreground">
+									<CardTitle className="flex items-center gap-2 text-yellow-200/70 text-xl">
 										<Users className="h-5 w-5 text-primary" />
-										eMandate Onboarding
+										eMandate Registration
 									</CardTitle>
 									<CardDescription>
 										Streamlined debit order registration
@@ -381,7 +381,7 @@ export default function PaymentSystemDashboard() {
 												<Badge
 													variant={
 														activity.status === "Completed" ||
-															activity.status === "Paid"
+														activity.status === "Paid"
 															? "default"
 															: "secondary"
 													}
@@ -551,9 +551,7 @@ export default function PaymentSystemDashboard() {
 													className="flex items-center space-x-2"
 												>
 													<Checkbox />
-
 													Email notifications
-
 												</Label>
 
 												<Label
@@ -569,9 +567,7 @@ export default function PaymentSystemDashboard() {
 													className="flex items-center space-x-2"
 												>
 													<Checkbox defaultChecked />
-													<span className="text-sm">
-														Webhook notifications
-													</span>
+													<span className="text-sm">Webhook notifications</span>
 												</Label>
 											</div>
 										</div>
