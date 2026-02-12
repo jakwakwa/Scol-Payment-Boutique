@@ -20,39 +20,146 @@
   --gold-800: #8B520F;
   --gold-900: #6B3F0D; */
 
-	--gold-50: rgba(255, 225, 105, 1);
---gold-100: rgba(250, 214, 67, 1);
---gold-200: rgba(237, 197, 49, 1);
---gold-300: rgba(219, 180, 44, 1);
---gold-400: rgba(201, 162, 39, 1);
---gold-500: rgba(182, 145, 33, 1);
---gold-600: rgba(164, 126, 27, 1);
---gold-700: rgba(146, 108, 21, 1);
---gold-800: rgba(128, 91, 16, 1);
---gold-900: rgba(110, 76, 13, 1);
---dark-goldenrod: rgba(92, 61, 10, 1);
+  --gold-50: rgba(255, 225, 105, 1);
+  --gold-100: rgba(250, 214, 67, 1);
+  --gold-200: rgba(237, 197, 49, 1);
+  --gold-300: rgba(219, 180, 44, 1);
+  --gold-400: rgba(201, 162, 39, 1);
+  --gold-500: rgba(182, 145, 33, 1);
+  --gold-600: rgba(164, 126, 27, 1);
+  --gold-700: rgba(146, 108, 21, 1);
+  --gold-800: rgba(128, 91, 16, 1);
+  --gold-900: rgba(110, 76, 13, 1);
+  --dark-goldenrod: rgba(92, 61, 10, 1);
 
-/* SCSS Gradient */
---gradient-top: linear-gradient(0deg, #ffe169ff, #fad643ff, #edc531ff, #dbb42cff, #c9a227ff, #b69121ff, #a47e1bff, #926c15ff, #805b10ff, #6e4c0dff);
---gradient-right: linear-gradient(90deg, #ffe169ff, #fad643ff, #edc531ff, #dbb42cff, #c9a227ff, #b69121ff, #a47e1bff, #926c15ff, #805b10ff, #6e4c0dff);
---gradient-bottom: linear-gradient(180deg, #ffe169ff, #fad643ff, #edc531ff, #dbb42cff, #c9a227ff, #b69121ff, #a47e1bff, #926c15ff, #805b10ff, #6e4c0dff);
---gradient-left: linear-gradient(270deg, #ffe169ff, #fad643ff, #edc531ff, #dbb42cff, #c9a227ff, #b69121ff, #a47e1bff, #926c15ff, #805b10ff, #6e4c0dff);
---gradient-top-right: linear-gradient(45deg, #ffe169ff, #fad643ff, #edc531ff, #dbb42cff, #c9a227ff, #b69121ff, #a47e1bff, #926c15ff, #805b10ff, #6e4c0dff);
---gradient-bottom-right: linear-gradient(135deg, #ffe169ff, #fad643ff, #edc531ff, #dbb42cff, #c9a227ff, #b69121ff, #a47e1bff, #926c15ff, #805b10ff, #6e4c0dff);
---gradient-top-left: linear-gradient(225deg, #ffe169ff, #fad643ff, #edc531ff, #dbb42cff, #c9a227ff, #b69121ff, #a47e1bff, #926c15ff, #805b10ff, #6e4c0dff);
---gradient-bottom-left: linear-gradient(315deg, #ffe169ff, #fad643ff, #edc531ff, #dbb42cff, #c9a227ff, #b69121ff, #a47e1bff, #926c15ff, #805b10ff, #6e4c0dff);
---gradient-radial: radial-gradient(#ffe169ff, #fad643ff, #edc531ff, #dbb42cff, #c9a227ff, #b69121ff, #a47e1bff, #926c15ff, #805b10ff, #6e4c0dff);
+  /* SCSS Gradient */
+  --gradient-top: linear-gradient(
+    0deg,
+    #ffe169ff,
+    #fad643ff,
+    #edc531ff,
+    #dbb42cff,
+    #c9a227ff,
+    #b69121ff,
+    #a47e1bff,
+    #926c15ff,
+    #805b10ff,
+    #6e4c0dff
+  );
+  --gradient-right: linear-gradient(
+    90deg,
+    #ffe169ff,
+    #fad643ff,
+    #edc531ff,
+    #dbb42cff,
+    #c9a227ff,
+    #b69121ff,
+    #a47e1bff,
+    #926c15ff,
+    #805b10ff,
+    #6e4c0dff
+  );
+  --gradient-bottom: linear-gradient(
+    180deg,
+    #ffe169ff,
+    #fad643ff,
+    #edc531ff,
+    #dbb42cff,
+    #c9a227ff,
+    #b69121ff,
+    #a47e1bff,
+    #926c15ff,
+    #805b10ff,
+    #6e4c0dff
+  );
+  --gradient-left: linear-gradient(
+    270deg,
+    #ffe169ff,
+    #fad643ff,
+    #edc531ff,
+    #dbb42cff,
+    #c9a227ff,
+    #b69121ff,
+    #a47e1bff,
+    #926c15ff,
+    #805b10ff,
+    #6e4c0dff
+  );
+  --gradient-top-right: linear-gradient(
+    45deg,
+    #ffe169ff,
+    #fad643ff,
+    #edc531ff,
+    #dbb42cff,
+    #c9a227ff,
+    #b69121ff,
+    #a47e1bff,
+    #926c15ff,
+    #805b10ff,
+    #6e4c0dff
+  );
+  --gradient-bottom-right: linear-gradient(
+    135deg,
+    #ffe169ff,
+    #fad643ff,
+    #edc531ff,
+    #dbb42cff,
+    #c9a227ff,
+    #b69121ff,
+    #a47e1bff,
+    #926c15ff,
+    #805b10ff,
+    #6e4c0dff
+  );
+  --gradient-top-left: linear-gradient(
+    225deg,
+    #ffe169ff,
+    #fad643ff,
+    #edc531ff,
+    #dbb42cff,
+    #c9a227ff,
+    #b69121ff,
+    #a47e1bff,
+    #926c15ff,
+    #805b10ff,
+    #6e4c0dff
+  );
+  --gradient-bottom-left: linear-gradient(
+    315deg,
+    #ffe169ff,
+    #fad643ff,
+    #edc531ff,
+    #dbb42cff,
+    #c9a227ff,
+    #b69121ff,
+    #a47e1bff,
+    #926c15ff,
+    #805b10ff,
+    #6e4c0dff
+  );
+  --gradient-radial: radial-gradient(
+    #ffe169ff,
+    #fad643ff,
+    #edc531ff,
+    #dbb42cff,
+    #c9a227ff,
+    #b69121ff,
+    #a47e1bff,
+    #926c15ff,
+    #805b10ff,
+    #6e4c0dff
+  );
 
   --charcoal-50: #f5f5f5;
   --charcoal-100: #e0e0e0;
   --charcoal-200: #9e9e9e;
   --charcoal-300: #616161;
   --charcoal-400: #424242;
-  --charcoal-500: #2C2C2E;
+  --charcoal-500: #2c2c2e;
   --charcoal-600: #242426;
-  --charcoal-700: #1C1C1E;
+  --charcoal-700: #1c1c1e;
   --charcoal-800: #151517;
-  --charcoal-900: #0E0E10;
+  --charcoal-900: #0e0e10;
 
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.147 0.004 49.25);
@@ -96,41 +203,41 @@
      Every shadcn component reads these tokens, so changing them here
      propagates the palette across the entire application.
      ========================================================================== */
-  .dark {
-    --background: #0E0E10;          /* charcoal-900 — deepest surface  */
-    --foreground: #F5F0E8;          /* warm white — primary text       */
-    --card: #1C1C1E;                /* charcoal-700 — card surfaces    */
-    --card-foreground: #ebdbc1;
-    --popover: #1C1C1E;
-    --popover-foreground: #F5F0E8;
-    --primary: #b08c53; /* gold-500 — main accent / CTAs   */
-    --primary-foreground: #0E0E10;  /* dark text on gold buttons       */
-    --secondary: #2C2C2E;           /* charcoal-500 — secondary bg     */
-    --secondary-foreground: #F5F0E8;
-    --muted: #242426;   /* charcoal-600 — muted surfaces   */
-    --muted-foreground: #9A9590;    /* warm gray — secondary text      */
-    --accent: #2C2C2E;
-    --accent-foreground: #F5F0E8;
-    --destructive: #E5484D;         /* warm red                        */
-    --destructive-foreground: #F5F0E8;
-    --border: rgba(255 255 255 / 0.08);
-    --input: rgba(255 255 255 / 0.06);
-    --ring: #0b7089;    /* gold focus ring                 */
-    --chart-1: #f5c87e; /* gold-500                        */
-    --chart-2: #1ad42a; /* gold-600                        */
-    --chart-3: #E5484D; /* warm red                        */
-    --chart-4: #4ADE80; /* green (success)                 */
-    --chart-5: #FFC12E; /* gold-400                        */
-    --radius: 0.875rem; /* 14px — premium rounded feel     */
-    --sidebar: #151517; /* charcoal-800                    */
-    --sidebar-foreground: #F5F0E8;
-    --sidebar-primary: #6a5d4a;
-    --sidebar-primary-foreground: #0E0E10;
-    --sidebar-accent: #242426;
-    --sidebar-accent-foreground: #F5F0E8;
-    --sidebar-border: rgba(255 255 255 / 0.06);
-    --sidebar-ring: #F5A623;
-  }
+.dark {
+  --background: #0e0e10; /* charcoal-900 — deepest surface  */
+  --foreground: #f5f0e8; /* warm white — primary text       */
+  --card: #1c1c1e; /* charcoal-700 — card surfaces    */
+  --card-foreground: #ebdbc1;
+  --popover: #1c1c1e;
+  --popover-foreground: #f5f0e8;
+  --primary: #b08c53; /* gold-500 — main accent / CTAs   */
+  --primary-foreground: #0e0e10; /* dark text on gold buttons       */
+  --secondary: #2c2c2e; /* charcoal-500 — secondary bg     */
+  --secondary-foreground: #f5f0e8;
+  --muted: #242426; /* charcoal-600 — muted surfaces   */
+  --muted-foreground: #9a9590; /* warm gray — secondary text      */
+  --accent: #2c2c2e;
+  --accent-foreground: #f5f0e8;
+  --destructive: #e5484d; /* warm red                        */
+  --destructive-foreground: #f5f0e8;
+  --border: rgba(255 255 255 / 0.08);
+  --input: rgba(255 255 255 / 0.06);
+  --ring: #0b7089; /* gold focus ring                 */
+  --chart-1: #f5c87e; /* gold-500                        */
+  --chart-2: #1ad42a; /* gold-600                        */
+  --chart-3: #e5484d; /* warm red                        */
+  --chart-4: #4ade80; /* green (success)                 */
+  --chart-5: #ffc12e; /* gold-400                        */
+  --radius: 0.875rem; /* 14px — premium rounded feel     */
+  --sidebar: #151517; /* charcoal-800                    */
+  --sidebar-foreground: #f5f0e8;
+  --sidebar-primary: #6a5d4a;
+  --sidebar-primary-foreground: #0e0e10;
+  --sidebar-accent: #242426;
+  --sidebar-accent-foreground: #f5f0e8;
+  --sidebar-border: rgba(255 255 255 / 0.06);
+  --sidebar-ring: #f5a623;
+}
 
 @theme inline {
   --font-sans: var(--font-inter);
@@ -178,7 +285,12 @@
     @apply border-border outline-ring/50;
   }
   body {
-    background: linear-gradient(170deg, var(--charcoal-700) 0%, var(--charcoal-800) 40%, var(--charcoal-900) 100%);
+    background: linear-gradient(
+      170deg,
+      var(--charcoal-700) 0%,
+      var(--charcoal-800) 40%,
+      var(--charcoal-900) 100%
+    );
     @apply text-foreground min-h-screen;
   }
 }
@@ -186,7 +298,9 @@
 @layer components {
   .stratcol-card {
     background: linear-gradient(360deg, #1f1f1f -38.5%, #293139 187.43%);
-    box-shadow: 0px 8px 12px 0px rgba(0, 0, 0, 0.9), 0px 4px 3px 1px rgba(38 36 35 / 0.9);
+    box-shadow:
+      0px 8px 12px 0px rgba(0, 0, 0, 0.9),
+      0px 4px 3px 1px rgba(38 36 35 / 0.9);
     border-radius: 16px;
     padding: 24px;
     color: linen;
@@ -210,7 +324,7 @@
     background: rgba(255 255 255 / 0.04);
     border: 1px solid rgba(255 255 255 / 0.08);
     border-radius: 14px;
-    color: #F5F0E8;
+    color: #f5f0e8;
     font-size: 14px;
     transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
@@ -290,7 +404,11 @@
      Like the "Get Started" and "Easy Payment" buttons in the reference
      ================================================================ */
   .gold-button {
-    background: linear-gradient(135deg, var(--gold-400) 0%, var(--gold-500) 100%);
+    background: linear-gradient(
+      135deg,
+      var(--gold-400) 0%,
+      var(--gold-500) 100%
+    );
     color: var(--charcoal-900);
     font-weight: 600;
     border: none;
@@ -307,7 +425,11 @@
   }
 
   .gold-button:hover {
-    background: linear-gradient(135deg, var(--gold-300) 0%, var(--gold-400) 100%);
+    background: linear-gradient(
+      135deg,
+      var(--gold-300) 0%,
+      var(--gold-400) 100%
+    );
     color: var(--charcoal-900);
     transform: translateY(-1px);
     box-shadow:
@@ -318,8 +440,7 @@
 
   .gold-button:active {
     transform: translateY(0) scale(0.98);
-    box-shadow:
-      0 2px 8px rgba(245 166 35 / 0.2);
+    box-shadow: 0 2px 8px rgba(245 166 35 / 0.2);
   }
 
   /* Ghost/outline back button */
@@ -366,9 +487,15 @@
     pointer-events: none;
   }
 
-  .progress-track[data-phase="1"] { background-size: 33% 100%; }
-  .progress-track[data-phase="2"] { background-size: 66% 100%; }
-  .progress-track[data-phase="3"] { background-size: 100% 100%; }
+  .progress-track[data-phase="1"] {
+    background-size: 33% 100%;
+  }
+  .progress-track[data-phase="2"] {
+    background-size: 66% 100%;
+  }
+  .progress-track[data-phase="3"] {
+    background-size: 100% 100%;
+  }
 
   /* ================================================================
      FIELD GROUP — subtle warm spotlight on focus
@@ -419,16 +546,30 @@
   }
 
   @keyframes morph-out {
-    to { transform: translateX(-20px) scale(0.97); opacity: 0; filter: blur(4px); }
+    to {
+      transform: translateX(-20px) scale(0.97);
+      opacity: 0;
+      filter: blur(4px);
+    }
   }
   @keyframes morph-in {
-    from { transform: translateX(20px) scale(0.97); opacity: 0; filter: blur(4px); }
+    from {
+      transform: translateX(20px) scale(0.97);
+      opacity: 0;
+      filter: blur(4px);
+    }
   }
   @keyframes header-out {
-    to { transform: translateY(-6px); opacity: 0; }
+    to {
+      transform: translateY(-6px);
+      opacity: 0;
+    }
   }
   @keyframes header-in {
-    from { transform: translateY(6px); opacity: 0; }
+    from {
+      transform: translateY(6px);
+      opacity: 0;
+    }
   }
 
   .phase-backward::view-transition-old(form-content) {
@@ -439,10 +580,18 @@
   }
 
   @keyframes morph-out-reverse {
-    to { transform: translateX(20px) scale(0.97); opacity: 0; filter: blur(4px); }
+    to {
+      transform: translateX(20px) scale(0.97);
+      opacity: 0;
+      filter: blur(4px);
+    }
   }
   @keyframes morph-in-reverse {
-    from { transform: translateX(-20px) scale(0.97); opacity: 0; filter: blur(4px); }
+    from {
+      transform: translateX(-20px) scale(0.97);
+      opacity: 0;
+      filter: blur(4px);
+    }
   }
 
   /* ================================================================
@@ -451,12 +600,24 @@
   .field-enter {
     animation: field-rise 400ms cubic-bezier(0.16, 1, 0.3, 1) both;
   }
-  .field-enter:nth-child(1) { animation-delay: 0ms; }
-  .field-enter:nth-child(2) { animation-delay: 70ms; }
-  .field-enter:nth-child(3) { animation-delay: 140ms; }
-  .field-enter:nth-child(4) { animation-delay: 210ms; }
-  .field-enter:nth-child(5) { animation-delay: 280ms; }
-  .field-enter:nth-child(6) { animation-delay: 350ms; }
+  .field-enter:nth-child(1) {
+    animation-delay: 0ms;
+  }
+  .field-enter:nth-child(2) {
+    animation-delay: 70ms;
+  }
+  .field-enter:nth-child(3) {
+    animation-delay: 140ms;
+  }
+  .field-enter:nth-child(4) {
+    animation-delay: 210ms;
+  }
+  .field-enter:nth-child(5) {
+    animation-delay: 280ms;
+  }
+  .field-enter:nth-child(6) {
+    animation-delay: 350ms;
+  }
 
   @keyframes field-rise {
     from {
@@ -479,10 +640,23 @@
   }
 
   @keyframes shake {
-    10%, 90% { transform: translateX(-1px); }
-    20%, 80% { transform: translateX(2px); }
-    30%, 50%, 70% { transform: translateX(-3px); }
-    40%, 60% { transform: translateX(3px); }
+    10%,
+    90% {
+      transform: translateX(-1px);
+    }
+    20%,
+    80% {
+      transform: translateX(2px);
+    }
+    30%,
+    50%,
+    70% {
+      transform: translateX(-3px);
+    }
+    40%,
+    60% {
+      transform: translateX(3px);
+    }
   }
 
   .success-pulse {
@@ -490,9 +664,15 @@
   }
 
   @keyframes success-pulse {
-    0% { box-shadow: 0 0 0 0 rgba(74 222 128 / 0.4); }
-    70% { box-shadow: 0 0 0 12px rgba(74 222 128 / 0); }
-    100% { box-shadow: 0 0 0 0 rgba(74 222 128 / 0); }
+    0% {
+      box-shadow: 0 0 0 0 rgba(74 222 128 / 0.4);
+    }
+    70% {
+      box-shadow: 0 0 0 12px rgba(74 222 128 / 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(74 222 128 / 0);
+    }
   }
 
   .celebrate {
@@ -500,10 +680,18 @@
   }
 
   @keyframes celebrate {
-    0% { transform: scale(1); }
-    30% { transform: scale(1.02); }
-    60% { transform: scale(0.99); }
-    100% { transform: scale(1); }
+    0% {
+      transform: scale(1);
+    }
+    30% {
+      transform: scale(1.02);
+    }
+    60% {
+      transform: scale(0.99);
+    }
+    100% {
+      transform: scale(1);
+    }
   }
 
   .float {
@@ -511,8 +699,13 @@
   }
 
   @keyframes gentle-float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-6px); }
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-6px);
+    }
   }
 
   .glow-pulse {
@@ -520,11 +713,16 @@
   }
 
   @keyframes glow-pulse {
-    0%, 100% {
-      box-shadow: 0 0 8px rgba(245 166 35 / 0.3), 0 0 20px rgba(245 166 35 / 0.1);
+    0%,
+    100% {
+      box-shadow:
+        0 0 8px rgba(245 166 35 / 0.3),
+        0 0 20px rgba(245 166 35 / 0.1);
     }
     50% {
-      box-shadow: 0 0 16px rgba(245 166 35 / 0.5), 0 0 40px rgba(245 166 35 / 0.15);
+      box-shadow:
+        0 0 16px rgba(245 166 35 / 0.5),
+        0 0 40px rgba(245 166 35 / 0.15);
     }
   }
 
@@ -577,8 +775,37 @@
   }
 
   @keyframes ambient-drift {
-    0% { transform: translate(0, 0) scale(1); }
-    100% { transform: translate(20px, -15px) scale(1.05); }
+    0% {
+      transform: translate(0, 0) scale(1);
+    }
+    100% {
+      transform: translate(20px, -15px) scale(1.05);
+    }
   }
 
+  /* ================================================================
+     GOLD GRADIENT ICON — reusable gold gradient for SVG icons
+     Uses the existing --gradient-right variable from the design system
+     ================================================================ */
+  .gold-gradient-icon {
+    color: var(--gold-400);
+    filter: drop-shadow(0 0 6px rgba(201, 162, 39, 0.25));
+  }
+
+  .gold-gradient-icon svg {
+    stroke: url(#gold-icon-gradient);
+  }
+
+  /* CSS-only gradient text approach for icons */
+  .gold-gradient-text {
+    background: linear-gradient(
+      135deg,
+      var(--gold-200) 0%,
+      var(--gold-400) 40%,
+      var(--gold-600) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
 }
