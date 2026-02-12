@@ -77,14 +77,14 @@
     --background: #0E0E10;          /* charcoal-900 — deepest surface  */
     --foreground: #F5F0E8;          /* warm white — primary text       */
     --card: #1C1C1E;                /* charcoal-700 — card surfaces    */
-    --card-foreground: #F5F0E8;
+    --card-foreground: #ebdbc1;
     --popover: #1C1C1E;
     --popover-foreground: #F5F0E8;
-    --primary: #F5A623;             /* gold-500 — main accent / CTAs   */
+    --primary: #b08c53; /* gold-500 — main accent / CTAs   */
     --primary-foreground: #0E0E10;  /* dark text on gold buttons       */
     --secondary: #2C2C2E;           /* charcoal-500 — secondary bg     */
     --secondary-foreground: #F5F0E8;
-    --muted: #242426;               /* charcoal-600 — muted surfaces   */
+    --muted: #242426;   /* charcoal-600 — muted surfaces   */
     --muted-foreground: #9A9590;    /* warm gray — secondary text      */
     --accent: #2C2C2E;
     --accent-foreground: #F5F0E8;
@@ -92,16 +92,16 @@
     --destructive-foreground: #F5F0E8;
     --border: rgba(255 255 255 / 0.08);
     --input: rgba(255 255 255 / 0.06);
-    --ring: #F5A623;                /* gold focus ring                 */
-    --chart-1: #F5A623;             /* gold-500                        */
-    --chart-2: #D4891A;             /* gold-600                        */
-    --chart-3: #E5484D;             /* warm red                        */
-    --chart-4: #4ADE80;             /* green (success)                 */
-    --chart-5: #FFC12E;             /* gold-400                        */
-    --radius: 0.875rem;             /* 14px — premium rounded feel     */
-    --sidebar: #151517;             /* charcoal-800                    */
+    --ring: #0b7089;    /* gold focus ring                 */
+    --chart-1: #f5c87e; /* gold-500                        */
+    --chart-2: #1ad42a; /* gold-600                        */
+    --chart-3: #E5484D; /* warm red                        */
+    --chart-4: #4ADE80; /* green (success)                 */
+    --chart-5: #FFC12E; /* gold-400                        */
+    --radius: 0.875rem; /* 14px — premium rounded feel     */
+    --sidebar: #151517; /* charcoal-800                    */
     --sidebar-foreground: #F5F0E8;
-    --sidebar-primary: #F5A623;
+    --sidebar-primary: #6a5d4a;
     --sidebar-primary-foreground: #0E0E10;
     --sidebar-accent: #242426;
     --sidebar-accent-foreground: #F5F0E8;
@@ -237,7 +237,7 @@
     background: linear-gradient(
       90deg,
       transparent 0%,
-      rgba(245 166 35 / 0.3) 30%,
+      rgba(201, 182, 151, 0.911) 30%,
       rgba(245 166 35 / 0.5) 50%,
       rgba(245 166 35 / 0.3) 70%,
       transparent 100%
@@ -503,6 +503,43 @@
     50% {
       box-shadow: 0 0 16px rgba(245 166 35 / 0.5), 0 0 40px rgba(245 166 35 / 0.15);
     }
+  }
+
+  /* ================================================================
+     CONFIRMATION DIALOG — premium dark surface matching the card style
+     ================================================================ */
+  .confirmation-dialog {
+    background: linear-gradient(
+      168deg,
+      var(--charcoal-600) 0%,
+      var(--charcoal-700) 50%,
+      var(--charcoal-800) 100%
+    );
+    box-shadow:
+      0 2px 0 rgba(255 255 255 / 0.03) inset,
+      0 32px 64px -16px rgba(0 0 0 / 0.7),
+      0 16px 32px -8px rgba(0 0 0 / 0.4),
+      0 0 80px rgba(245 166 35 / 0.05);
+  }
+
+  /* Top gold edge glow */
+  .confirmation-dialog::before {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(201, 182, 151, 0.7) 30%,
+      rgba(245 166 35 / 0.45) 50%,
+      rgba(245 166 35 / 0.25) 70%,
+      transparent 100%
+    );
+    pointer-events: none;
+    z-index: 1;
   }
 
   /* Ambient light spots — warm gold tones */

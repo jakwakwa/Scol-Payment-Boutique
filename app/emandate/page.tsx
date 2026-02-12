@@ -28,6 +28,7 @@ import PhaseProgress from "@/components/shared/phase-progress";
 import PhasePlan from "@/components/emandate/phase-plan";
 import PhaseDetails from "@/components/emandate/phase-details";
 import PhasePayment from "@/components/emandate/phase-payment";
+import ConfirmationDialog from "@/components/emandate/confirmation-dialog";
 import { cn } from "@/lib/utils";
 
 const STORAGE_KEY = "emandate-form-draft";
@@ -74,6 +75,7 @@ export default function EMandateOnboarding() {
 	const [currentPhase, setCurrentPhase] = useState(1);
 	const [isSubmitted, setIsSubmitted] = useState(false);
 	const [showCelebrate, setShowCelebrate] = useState(false);
+	const [showConfirmation, setShowConfirmation] = useState(false);
 	const directionRef = useRef<"forward" | "backward">("forward");
 	const saveTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 	const draftRef = useRef(typeof window !== "undefined" ? loadDraft() : null);
@@ -177,15 +179,33 @@ export default function EMandateOnboarding() {
 		if (currentPhase > 1) transitionToPhase(currentPhase - 1);
 	}, [currentPhase, transitionToPhase]);
 
-	const onSubmit = useCallback((data: EMandateFormData) => {
-		console.log("eMandate registration submitted:", data);
+	const handleOpenConfirmation = useCallback(async () => {
+		const schema = phaseSchemas[3];
+		const fieldNames = Object.keys(schema.shape) as (keyof EMandateFormData)[];
+		const valid = await trigger(fieldNames);
+		if (!valid) return;
+		setShowConfirmation(true);
+	}, [trigger]);
+
+	const handleConfirmedSubmit = useCallback(() => {
+		const data = getValues();
+		console.info("eMandate registration submitted:", data);
 		clearDraft();
+		setShowConfirmation(false);
 		setIsSubmitted(true);
 		toast.success(pageCopy.successTitle, {
 			description: pageCopy.successMessage,
 			duration: 5000,
 		});
-	}, []);
+	}, [getValues]);
+
+	const onSubmit = useCallback(
+		(_data: EMandateFormData) => {
+			// Form submit is handled via the confirmation dialog flow
+			handleOpenConfirmation();
+		},
+		[handleOpenConfirmation],
+	);
 
 	const handleKeyDown = useCallback(
 		(e: React.KeyboardEvent) => {
@@ -206,13 +226,13 @@ export default function EMandateOnboarding() {
 	// -----------------------------------------------------------------------
 	if (isSubmitted) {
 		return (
-		<div className="min-h-screen relative overflow-hidden">
+		<div className="min-h-screen relative overflow-hidden w-screen">
 			{/* Ambient lights */}
 			<div className="ambient-light w-72 h-72 top-1/4 left-1/4 bg-chart-4/[0.08]" />
 			<div className="ambient-light w-56 h-56 bottom-1/3 right-1/4 bg-primary/[0.06]" style={{ animationDelay: '4s' }} />
 
 			<div className="flex items-center justify-center min-h-screen p-4 relative z-10">
-				<div className="glass-card w-full max-w-md text-center p-12 space-y-6 celebrate">
+				<div className="glass-card w-full text-center p-12 space-y-6 celebrate">
 					<div className="mx-auto w-20 h-20 rounded-full flex items-center justify-center success-pulse bg-chart-4/[0.08]">
 						<CheckCircle className="w-10 h-10 text-chart-4" />
 					</div>
@@ -235,35 +255,36 @@ export default function EMandateOnboarding() {
 	// Main form
 	// -----------------------------------------------------------------------
 	return (
-		<div className="min-h-screen relative overflow-hidden">
+		<div className="min-h-screen relative m-0 p-0 overflow-hidden w-full max-w-screen">
 			{/* Ambient background lights — warm gold tones */}
 			<div className="ambient-light w-80 h-80 -top-24 -right-24 bg-primary/[0.06]" />
 			<div className="ambient-light w-64 h-64 bottom-16 -left-20 bg-primary/[0.05]" style={{ animationDelay: '3s' }} />
 			<div className="ambient-light w-48 h-48 top-1/2 right-1/4 bg-chart-5/[0.04]" style={{ animationDelay: '6s' }} />
 
-			<div className="flex items-center justify-center min-h-screen p-4 md:p-6 relative z-10">
-				<div className="w-full max-w-2xl">
-					{/* Header */}
-					<div className="mb-10 text-center">
-						<div className="flex items-center justify-center gap-2.5 mb-4">
-							<Sparkles className="w-5 h-5 float text-primary" />
-							<h1 className="text-foreground text-2xl font-bold tracking-tight">
-								{pageCopy.brandName}
-							</h1>
-						</div>
-						<h2 className="text-foreground/80 text-xl font-semibold mb-2">
-							{pageCopy.pageTitle}
-						</h2>
-						<p className="text-muted-foreground text-sm">
-							{pageCopy.pageSubtitle}
-						</p>
-					</div>
+			<div className="flex items-center justify-center w-screen min-h-screen p-0 md:p-0 relative z-10">
+				<div className="w-screen max-w-screen bg-chart-1/10 pt-3 rounded-2xl">
 
-					{/* Progress bar */}
+				<div className="flex flex-row-reverse w-full px-40 max-w-screen card-glass justify-between items-center pt-3 rounded-2xl">
+					{/* Header */}
 					<PhaseProgress
 						currentPhase={currentPhase}
 						labels={phases.map((p) => p.label)}
 					/>
+					<div className="mb-10 text-left">
+
+						<h2 className=" text-primary text-3xl font-bold mb-2">
+							{pageCopy.pageTitle}
+						</h2>
+						<p className="text-muted-foreground text-sm">
+							{pageCopy.pageSubtitle}
+
+						</p>
+						</div>
+
+					{/* Progress bar */}
+
+					</div>
+
 
 					{/* Premium form card */}
 					<FormProvider {...methods}>
@@ -274,7 +295,7 @@ export default function EMandateOnboarding() {
 						>
 							<div
 								className={cn(
-									"glass-card transition-transform duration-500",
+									"glass-card px-40 transition-transform duration-500",
 									showCelebrate && "celebrate",
 								)}
 							>
@@ -285,11 +306,7 @@ export default function EMandateOnboarding() {
 								<CardDescription className="text-muted-foreground text-sm">
 									{currentPhaseConfig.description}
 								</CardDescription>
-								{phaseHint && (
-									<p className="text-sm mt-2 font-medium animate-in fade-in-0 duration-700 text-primary/40">
-										{phaseHint}
-									</p>
-								)}
+
 								</CardHeader>
 
 								<CardContent className="phase-content space-y-4 px-8 py-7">
@@ -312,29 +329,38 @@ export default function EMandateOnboarding() {
 											{pageCopy.backButton}
 										</button>
 
-										{currentPhase < 3 ? (
-											<button
-												type="button"
-												onClick={handleNext}
-												className="gold-button flex items-center gap-2 text-sm"
-											>
-												{continueLabel}
-												<ArrowRight className="w-4 h-4" />
-											</button>
-										) : (
-											<button
-												type="submit"
-												className="gold-button flex items-center gap-2 text-sm"
-											>
-												<CheckCircle className="w-4 h-4" />
-												{pageCopy.submitButton}
-											</button>
-										)}
+									{currentPhase < 3 ? (
+										<button
+											type="button"
+											onClick={handleNext}
+											className="gold-button flex items-center gap-2 text-sm"
+										>
+											{continueLabel}
+											<ArrowRight className="w-4 h-4" />
+										</button>
+									) : (
+										<button
+											type="button"
+											onClick={handleOpenConfirmation}
+											className="gold-button flex items-center gap-2 text-sm"
+										>
+											<CheckCircle className="w-4 h-4" />
+											{pageCopy.submitButton}
+										</button>
+									)}
 									</div>
 								</CardContent>
 							</div>
 						</form>
 					</FormProvider>
+
+					{/* Confirmation dialog */}
+					<ConfirmationDialog
+						open={showConfirmation}
+						onOpenChange={setShowConfirmation}
+						data={getValues() as EMandateFormData}
+						onConfirm={handleConfirmedSubmit}
+					/>
 				</div>
 			</div>
 		</div>
