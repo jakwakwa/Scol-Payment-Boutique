@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useFormContext } from "react-hook-form";
-import { Lock, Pencil } from "lucide-react";
+import { Lock, Pencil, Shield, PartyPopper } from "lucide-react";
 import type { EMandateFormData } from "@/app/emandate/types";
 import {
 	bankOptions,
@@ -28,13 +28,7 @@ import { cn } from "@/lib/utils";
 
 /**
  * Phase 3: Set Up Payment
- * Banking details + inline confirmation summary.
- *
- * Smart features:
- * - Bank selection auto-fills branch code (read-only by default)
- * - Account type as visual toggle pills instead of dropdown
- * - Inline confirmation summary at the bottom
- * - Account number character counter
+ * Banking details + inline glassmorphism summary + emotionally intelligent copy.
  */
 const PhasePayment = () => {
 	const {
@@ -75,14 +69,16 @@ const PhasePayment = () => {
 		setValue("accountNumber", value, { shouldValidate: true });
 	};
 
+	const isReady = termsAccepted && privacyAccepted && bankName && accountNumber.length >= 6;
+
 	return (
-		<div className="space-y-2">
+		<div className="space-y-3">
 			{/* Bank selection */}
 			<FieldGroup label="Bank">
-				<div className="flex flex-col gap-2">
+				<div className="flex flex-col gap-2.5">
 					<Label
 						htmlFor="bankName"
-						className="text-yellow-600/60 text-xs uppercase tracking-wider font-semibold"
+						className="text-yellow-500/50 text-xs uppercase tracking-widest font-semibold"
 					>
 						Bank
 					</Label>
@@ -94,15 +90,21 @@ const PhasePayment = () => {
 							})
 						}
 					>
-						<SelectTrigger className="stratcol-input" id="bankName">
+						<SelectTrigger
+							className={cn(
+								"stratcol-input transition-all duration-300",
+								bankName && "border-yellow-500/20",
+							)}
+							id="bankName"
+						>
 							<SelectValue placeholder="Select your bank" />
 						</SelectTrigger>
-						<SelectContent className="bg-stone-900/95 border-gray-600 backdrop-blur-md">
+						<SelectContent className="bg-stone-950/95 border-white/10 backdrop-blur-xl">
 							{bankOptions.map((opt) => (
 								<SelectItem
 									key={opt.value}
 									value={opt.value}
-									className="text-white hover:bg-gray-700"
+									className="text-white/80 hover:bg-yellow-500/10 hover:text-yellow-200 focus:bg-yellow-500/10 focus:text-yellow-200 transition-colors"
 								>
 									{opt.label}
 								</SelectItem>
@@ -110,17 +112,17 @@ const PhasePayment = () => {
 						</SelectContent>
 					</Select>
 					{errors.bankName && (
-						<p className="text-red-400 text-xs mt-1">
+						<p className="text-red-400 text-xs mt-0.5 shake">
 							{errors.bankName.message}
 						</p>
 					)}
 				</div>
 			</FieldGroup>
 
-			{/* Account type – visual toggle pills */}
+			{/* Account type – glowing toggle pills */}
 			<FieldGroup label="Account Type">
-				<div className="flex flex-col gap-2">
-					<Label className="text-yellow-600/60 text-xs uppercase tracking-wider font-semibold">
+				<div className="flex flex-col gap-2.5">
+					<Label className="text-yellow-500/50 text-xs uppercase tracking-widest font-semibold">
 						Account Type
 					</Label>
 					<div className="flex gap-2">
@@ -134,10 +136,10 @@ const PhasePayment = () => {
 									})
 								}
 								className={cn(
-									"flex-1 py-2.5 px-3 rounded-lg text-sm font-medium transition-all duration-200 border w-auto h-auto",
+									"flex-1 py-2.5 px-3 rounded-xl text-sm font-medium transition-all duration-300 border w-auto h-auto",
 									accountType === opt.value
-										? "bg-yellow-500/15 border-yellow-500/40 text-yellow-300"
-										: "bg-white/3 border-white/10 text-white/50 hover:border-white/20 hover:text-white/70",
+										? "bg-yellow-500/10 border-yellow-500/30 text-yellow-300 shadow-[0_0_20px_rgba(245,158,11,0.08)]"
+										: "bg-white/3 border-white/8 text-white/40 hover:border-white/15 hover:text-white/60 hover:bg-white/5",
 								)}
 							>
 								{opt.label}
@@ -145,7 +147,7 @@ const PhasePayment = () => {
 						))}
 					</div>
 					{errors.accountType && (
-						<p className="text-red-400 text-xs mt-1">
+						<p className="text-red-400 text-xs mt-0.5 shake">
 							{errors.accountType.message}
 						</p>
 					)}
@@ -153,19 +155,19 @@ const PhasePayment = () => {
 			</FieldGroup>
 
 			{/* Account number + Branch code row */}
-			<div className="grid grid-cols-1 md:grid-cols-3 gap-2">
+			<div className="grid grid-cols-1 md:grid-cols-3 gap-3">
 				<div className="md:col-span-2">
 					<FieldGroup label="Account Number">
 						<div className="flex flex-col gap-2">
 							<Label
 								htmlFor="accountNumber"
-								className="text-yellow-600/60 text-xs uppercase tracking-wider font-semibold"
+								className="text-yellow-500/50 text-xs uppercase tracking-widest font-semibold"
 							>
 								Account Number
 							</Label>
 							<Input
 								id="accountNumber"
-								className="stratcol-input"
+								className={cn("stratcol-input", errors.accountNumber && "shake")}
 								placeholder="Enter account number"
 								inputMode="numeric"
 								value={accountNumber}
@@ -180,7 +182,10 @@ const PhasePayment = () => {
 								) : (
 									<span />
 								)}
-								<span className="text-white/30 text-xs">
+								<span className={cn(
+									"text-xs transition-colors",
+									accountNumber.length >= 6 ? "text-green-400/50" : "text-white/20",
+								)}>
 									{accountNumber?.length || 0}/16
 								</span>
 							</div>
@@ -193,7 +198,7 @@ const PhasePayment = () => {
 						<div className="flex items-center justify-between">
 							<Label
 								htmlFor="branchCode"
-								className="text-yellow-600/60 text-xs uppercase tracking-wider font-semibold"
+								className="text-yellow-500/50 text-xs uppercase tracking-widest font-semibold"
 							>
 								Branch Code
 							</Label>
@@ -201,7 +206,7 @@ const PhasePayment = () => {
 								<button
 									type="button"
 									onClick={() => setBranchEditable(true)}
-									className="text-yellow-500/50 hover:text-yellow-400 text-xs flex items-center gap-1 bg-transparent border-none w-auto h-auto p-0"
+									className="text-yellow-500/40 hover:text-yellow-400 text-xs flex items-center gap-1 bg-transparent border-none w-auto h-auto p-0 transition-colors"
 								>
 									<Pencil className="w-2.5 h-2.5" />
 									Edit
@@ -215,7 +220,7 @@ const PhasePayment = () => {
 									"stratcol-input",
 									!branchEditable &&
 										branchCode &&
-										"opacity-70",
+										"opacity-60",
 								)}
 								placeholder="Branch code"
 								inputMode="numeric"
@@ -234,65 +239,77 @@ const PhasePayment = () => {
 								aria-invalid={!!errors.branchCode}
 							/>
 							{!branchEditable && branchCode && (
-								<Lock className="absolute right-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-yellow-500/40" />
+								<Lock className="absolute right-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-yellow-500/30" />
 							)}
 						</div>
-						{errors.branchCode && (
-							<p className="text-red-400 text-xs mt-1">
+						{errors.branchCode ? (
+							<p className="text-red-400 text-xs mt-0.5">
 								{errors.branchCode.message}
 							</p>
-						)}
-						{bankName && !branchEditable && (
-							<p className="text-white/25 text-xs">
+						) : bankName && !branchEditable ? (
+							<p className="text-white/20 text-xs">
 								Auto-filled for{" "}
 								{bankLabelMap[bankName] || bankName}
 							</p>
-						)}
+						) : null}
 					</div>
 				</FieldGroup>
 			</div>
 
-			{/* Inline confirmation summary */}
-			<div className="bg-white/3 border border-white/6 rounded-xl p-5 mt-3 space-y-3">
-				<h3 className="text-white/80 font-semibold text-sm">
+			{/* Glassmorphism confirmation summary */}
+			<div className="relative rounded-2xl p-5 mt-2 space-y-3 overflow-hidden bg-white/3 backdrop-blur-sm border border-white/6">
+				{/* Subtle inner glow */}
+				<div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-px bg-gradient-to-r from-transparent via-yellow-500/20 to-transparent" />
+
+				<h3 className="text-white/70 font-semibold text-sm flex items-center gap-2">
 					{pageCopy.confirmationTitle}
+					{isReady && (
+						<PartyPopper className="w-3.5 h-3.5 text-yellow-400/60 animate-in zoom-in-50 duration-300" />
+					)}
 				</h3>
-				<div className="grid grid-cols-2 gap-x-6 gap-y-2 text-xs">
+				<div className="grid grid-cols-2 gap-x-6 gap-y-2.5 text-xs">
 					<SummaryRow
 						label="Product"
-						value={productLabelMap[productType] || "—"}
+						value={productLabelMap[productType] || "\u2014"}
 					/>
 					<SummaryRow
 						label="Plan"
-						value={planLabelMap[subscriptionPlan] || "—"}
+						value={planLabelMap[subscriptionPlan] || "\u2014"}
 					/>
 					<SummaryRow
 						label="Name"
 						value={
 							firstName || lastName
 								? `${firstName} ${lastName}`.trim()
-								: "—"
+								: "\u2014"
 						}
 					/>
-					<SummaryRow label="Email" value={email || "—"} />
+					<SummaryRow label="Email" value={email || "\u2014"} />
 					<SummaryRow
 						label="Bank"
-						value={bankLabelMap[bankName] || "—"}
+						value={bankLabelMap[bankName] || "\u2014"}
 					/>
 					<SummaryRow
 						label="Account"
 						value={
 							accountNumber
-								? `***${accountNumber.slice(-4)}`
-								: "—"
+								? `\u2022\u2022\u2022${accountNumber.slice(-4)}`
+								: "\u2014"
 						}
 					/>
 				</div>
 			</div>
 
-			{/* Terms & Privacy */}
-			<div className="space-y-3 mt-3">
-				<div className="flex items-start space-x-3">
+			{/* Terms & Privacy with security note */}
+			<div className="space-y-3 mt-2">
+				<div className="bg-yellow-400/3 border border-yellow-400/8 rounded-xl p-3 backdrop-blur-sm">
+					<p className="text-yellow-200/50 text-xs flex items-center gap-2">
+						<Shield className="w-3.5 h-3.5 shrink-0" />
+						{pageCopy.securityNotice}
+					</p>
+				</div>
+
+				<div className="flex items-start space-x-3 group">
 					<Checkbox
 						id="terms"
 						checked={termsAccepted}
@@ -301,21 +318,22 @@ const PhasePayment = () => {
 								shouldValidate: true,
 							})
 						}
+						className="mt-0.5"
 					/>
 					<Label
 						htmlFor="terms"
-						className="text-white/70 text-sm leading-relaxed cursor-pointer"
+						className="text-white/60 text-sm leading-relaxed cursor-pointer group-hover:text-white/80 transition-colors"
 					>
 						{pageCopy.termsLabel}
 					</Label>
 				</div>
 				{errors.termsAccepted && (
-					<p className="text-red-400 text-xs ml-7">
+					<p className="text-red-400 text-xs ml-7 shake">
 						{errors.termsAccepted.message}
 					</p>
 				)}
 
-				<div className="flex items-start space-x-3">
+				<div className="flex items-start space-x-3 group">
 					<Checkbox
 						id="privacy"
 						checked={privacyAccepted}
@@ -324,16 +342,17 @@ const PhasePayment = () => {
 								shouldValidate: true,
 							})
 						}
+						className="mt-0.5"
 					/>
 					<Label
 						htmlFor="privacy"
-						className="text-white/70 text-sm leading-relaxed cursor-pointer"
+						className="text-white/60 text-sm leading-relaxed cursor-pointer group-hover:text-white/80 transition-colors"
 					>
 						{pageCopy.privacyLabel}
 					</Label>
 				</div>
 				{errors.privacyAccepted && (
-					<p className="text-red-400 text-xs ml-7">
+					<p className="text-red-400 text-xs ml-7 shake">
 						{errors.privacyAccepted.message}
 					</p>
 				)}
@@ -342,12 +361,18 @@ const PhasePayment = () => {
 	);
 };
 
-/** Small helper for the summary grid */
+/** Glassmorphism summary row */
 function SummaryRow({ label, value }: { label: string; value: string }) {
+	const isFilled = value !== "\u2014";
 	return (
-		<div>
-			<span className="text-white/30">{label}:</span>
-			<span className="text-white/70 ml-1.5">{value}</span>
+		<div className="flex items-baseline gap-1.5">
+			<span className="text-white/25 shrink-0">{label}:</span>
+			<span className={cn(
+				"transition-colors duration-300",
+				isFilled ? "text-white/70" : "text-white/15",
+			)}>
+				{value}
+			</span>
 		</div>
 	);
 }

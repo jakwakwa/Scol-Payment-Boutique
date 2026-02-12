@@ -9,25 +9,51 @@ import type {
 } from "./types";
 
 // ---------------------------------------------------------------------------
-// Phase configuration
+// Phase configuration — emotionally intelligent descriptions
 // ---------------------------------------------------------------------------
 export const phases: PhaseConfig[] = [
 	{
 		id: 1,
 		label: "Plan",
-		description: "Select your product and subscription plan",
+		description: "Let\u2019s find the perfect plan for you",
 	},
 	{
 		id: 2,
 		label: "Details",
-		description: "Tell us about yourself",
+		description: "Just a few details so we know who you are",
 	},
 	{
 		id: 3,
 		label: "Payment",
-		description: "Set up your debit order",
+		description: "Almost there \u2014 set up your easy debit order",
 	},
 ];
+
+// ---------------------------------------------------------------------------
+// Emotionally intelligent per-phase copy
+// ---------------------------------------------------------------------------
+export const phaseEmotions = {
+	/** Shown as a subtle hint below the phase title */
+	hints: [
+		"Two quick taps and you\u2019re on your way.",
+		"We keep your data safe \u2014 always.",
+		"You\u2019re one step from done!",
+	] as const,
+
+	/** Celebration messages when completing a phase */
+	celebrations: [
+		"Great choice! Let\u2019s get to know you.",
+		"Looking good! Just one more step.",
+		"",
+	] as const,
+
+	/** Button labels that feel encouraging */
+	continueLabels: [
+		"Next: Your Details",
+		"Next: Set Up Payment",
+		"",
+	] as const,
+};
 
 // ---------------------------------------------------------------------------
 // Phase 1 – Choose Your Plan
@@ -50,7 +76,7 @@ export const planOptions: PlanOption[] = [
 export const idTypeOptions: IdTypeOption[] = [
 	{ value: "sa-id", label: "South African ID" },
 	{ value: "passport", label: "Passport" },
-	{ value: "drivers-license", label: "Driver's License" },
+	{ value: "drivers-license", label: "Driver\u2019s License" },
 ];
 
 // ---------------------------------------------------------------------------
@@ -83,7 +109,7 @@ export const productLabelMap: Record<string, string> = Object.fromEntries(
 
 /** Lookup map for human-readable plan labels (includes price) */
 export const planLabelMap: Record<string, string> = Object.fromEntries(
-	planOptions.map((p) => [p.value, `${p.label} – ${p.price}`]),
+	planOptions.map((p) => [p.value, `${p.label} \u2013 ${p.price}`]),
 );
 
 export const accountTypeOptions: AccountTypeOption[] = [
@@ -113,28 +139,25 @@ export const defaultFormValues: EMandateFormData = {
 };
 
 // ---------------------------------------------------------------------------
-// Static copy
+// Static copy — emotionally intelligent
 // ---------------------------------------------------------------------------
 export const pageCopy = {
 	brandName: "StratCol",
 	pageTitle: "eMandate Registration",
-	pageSubtitle: "Streamlined debit order registration",
-	phase1Title: "Choose Your Plan",
-	phase2Title: "Your Details",
-	phase3Title: "Set Up Payment",
-	confirmationTitle: "Registration Summary",
+	pageSubtitle: "Set up your debit order in under 2 minutes",
+	confirmationTitle: "Your Registration at a Glance",
 	termsLabel:
 		"I agree to the Terms and Conditions and authorize StratCol to process debit orders from my account",
 	privacyLabel:
 		"I acknowledge that I have read and understood the Privacy Policy",
 	securityNotice:
-		"Your information is encrypted and stored securely in compliance with POPIA regulations.",
+		"Your information is encrypted and stored securely in compliance with POPIA regulations. We never share your data.",
 	submitButton: "Complete Registration",
 	continueButton: "Continue",
 	backButton: "Back",
 	restoredToast: "Welcome back! We\u2019ve restored your progress.",
 	startOverLabel: "Start Over",
-	successTitle: "Registration Complete",
+	successTitle: "You\u2019re All Set!",
 	successMessage:
-		"Your eMandate has been submitted successfully. You will receive a confirmation email shortly.",
+		"Your eMandate has been submitted successfully. You\u2019ll receive a confirmation email shortly. Thank you for choosing StratCol.",
 };
