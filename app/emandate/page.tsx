@@ -206,28 +206,28 @@ export default function EMandateOnboarding() {
 	// -----------------------------------------------------------------------
 	if (isSubmitted) {
 		return (
-			<div className="min-h-screen relative overflow-hidden" style={{ background: 'linear-gradient(170deg, #1C1C1E 0%, #151517 40%, #0E0E10 100%)' }}>
-				{/* Ambient lights */}
-				<div className="ambient-light w-72 h-72 top-1/4 left-1/4" style={{ background: 'rgba(74, 222, 128, 0.08)' }} />
-				<div className="ambient-light w-56 h-56 bottom-1/3 right-1/4" style={{ background: 'rgba(245, 166, 35, 0.06)', animationDelay: '4s' }} />
+		<div className="min-h-screen relative overflow-hidden">
+			{/* Ambient lights */}
+			<div className="ambient-light w-72 h-72 top-1/4 left-1/4 bg-chart-4/[0.08]" />
+			<div className="ambient-light w-56 h-56 bottom-1/3 right-1/4 bg-primary/[0.06]" style={{ animationDelay: '4s' }} />
 
-				<div className="flex items-center justify-center min-h-screen p-4 relative z-10">
-					<div className="glass-card w-full max-w-md text-center p-12 space-y-6 celebrate">
-						<div className="mx-auto w-20 h-20 rounded-full flex items-center justify-center success-pulse" style={{ background: 'rgba(74, 222, 128, 0.08)' }}>
-							<CheckCircle className="w-10 h-10 text-green-400" />
-						</div>
-						<h2 className="text-white text-2xl font-bold tracking-tight">
-							{pageCopy.successTitle}
-						</h2>
-						<p className="text-white/40 text-sm max-w-xs mx-auto leading-relaxed">
-							{pageCopy.successMessage}
-						</p>
-						<div className="pt-2">
-							<div className="w-16 h-px mx-auto" style={{ background: 'linear-gradient(90deg, transparent, rgba(245,166,35,0.3), transparent)' }} />
-						</div>
+			<div className="flex items-center justify-center min-h-screen p-4 relative z-10">
+				<div className="glass-card w-full max-w-md text-center p-12 space-y-6 celebrate">
+					<div className="mx-auto w-20 h-20 rounded-full flex items-center justify-center success-pulse bg-chart-4/[0.08]">
+						<CheckCircle className="w-10 h-10 text-chart-4" />
+					</div>
+					<h2 className="text-foreground text-2xl font-bold tracking-tight">
+						{pageCopy.successTitle}
+					</h2>
+					<p className="text-muted-foreground text-sm max-w-xs mx-auto leading-relaxed">
+						{pageCopy.successMessage}
+					</p>
+					<div className="pt-2">
+						<div className="w-16 h-px mx-auto bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
 					</div>
 				</div>
 			</div>
+		</div>
 		);
 	}
 
@@ -235,26 +235,26 @@ export default function EMandateOnboarding() {
 	// Main form
 	// -----------------------------------------------------------------------
 	return (
-		<div className="min-h-screen relative overflow-hidden" style={{ background: 'linear-gradient(170deg, #1C1C1E 0%, #151517 40%, #0E0E10 100%)' }}>
+		<div className="min-h-screen relative overflow-hidden">
 			{/* Ambient background lights — warm gold tones */}
-			<div className="ambient-light w-80 h-80 -top-24 -right-24" style={{ background: 'rgba(245, 166, 35, 0.06)' }} />
-			<div className="ambient-light w-64 h-64 bottom-16 -left-20" style={{ background: 'rgba(212, 137, 26, 0.05)', animationDelay: '3s' }} />
-			<div className="ambient-light w-48 h-48 top-1/2 right-1/4" style={{ background: 'rgba(255, 193, 46, 0.04)', animationDelay: '6s' }} />
+			<div className="ambient-light w-80 h-80 -top-24 -right-24 bg-primary/[0.06]" />
+			<div className="ambient-light w-64 h-64 bottom-16 -left-20 bg-primary/[0.05]" style={{ animationDelay: '3s' }} />
+			<div className="ambient-light w-48 h-48 top-1/2 right-1/4 bg-chart-5/[0.04]" style={{ animationDelay: '6s' }} />
 
 			<div className="flex items-center justify-center min-h-screen p-4 md:p-6 relative z-10">
 				<div className="w-full max-w-2xl">
 					{/* Header */}
 					<div className="mb-10 text-center">
 						<div className="flex items-center justify-center gap-2.5 mb-4">
-							<Sparkles className="w-5 h-5 float" style={{ color: '#F5A623' }} />
-							<h1 className="text-white text-2xl font-bold tracking-tight">
+							<Sparkles className="w-5 h-5 float text-primary" />
+							<h1 className="text-foreground text-2xl font-bold tracking-tight">
 								{pageCopy.brandName}
 							</h1>
 						</div>
-						<h2 className="text-white/80 text-xl font-semibold mb-2">
+						<h2 className="text-foreground/80 text-xl font-semibold mb-2">
 							{pageCopy.pageTitle}
 						</h2>
-						<p className="text-white/30 text-sm">
+						<p className="text-muted-foreground text-sm">
 							{pageCopy.pageSubtitle}
 						</p>
 					</div>
@@ -279,17 +279,17 @@ export default function EMandateOnboarding() {
 								)}
 							>
 								<CardHeader className="phase-header px-8 pt-8 pb-0">
-									<CardTitle className="text-white text-xl font-semibold">
-										{currentPhaseConfig.label}
-									</CardTitle>
-									<CardDescription className="text-white/35 text-sm">
-										{currentPhaseConfig.description}
-									</CardDescription>
-									{phaseHint && (
-										<p className="text-sm mt-2 font-medium animate-in fade-in-0 duration-700" style={{ color: 'rgba(245, 166, 35, 0.35)' }}>
-											{phaseHint}
-										</p>
-									)}
+							<CardTitle className="text-foreground text-xl font-semibold">
+									{currentPhaseConfig.label}
+								</CardTitle>
+								<CardDescription className="text-muted-foreground text-sm">
+									{currentPhaseConfig.description}
+								</CardDescription>
+								{phaseHint && (
+									<p className="text-sm mt-2 font-medium animate-in fade-in-0 duration-700 text-primary/40">
+										{phaseHint}
+									</p>
+								)}
 								</CardHeader>
 
 								<CardContent className="phase-content space-y-4 px-8 py-7">

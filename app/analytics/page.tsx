@@ -55,7 +55,7 @@ export default function AnalyticsPage() {
 	return (
 		<div className="min-h-screen">
 			{/* Header */}
-			<header className="border-b border-border bg-card">
+			<header className="border-b border-border bg-card/80 backdrop-blur-sm">
 				<div className="container mx-auto px-6 py-4">
 					<div className="flex items-center justify-between">
 						<div className="flex items-center gap-4">
@@ -67,7 +67,7 @@ export default function AnalyticsPage() {
 							</Link>
 							<div className="flex items-center gap-2">
 								<BarChart3 className="h-6 w-6 text-primary" />
-								<h1 className="text-xl font-bold text-white">
+								<h1 className="text-xl font-bold text-foreground">
 									Analytics & Reporting
 								</h1>
 							</div>
@@ -88,15 +88,15 @@ export default function AnalyticsPage() {
 				{/* Filters */}
 				<Card className="mb-8">
 					<CardHeader>
-						<CardTitle className="text-lg text-white">Report Filters</CardTitle>
-						<CardDescription className="text-gray-300">
+						<CardTitle className="text-lg text-foreground">Report Filters</CardTitle>
+						<CardDescription className="text-muted-foreground">
 							Customize your analytics view
 						</CardDescription>
 					</CardHeader>
 					<CardContent>
 						<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 							<div className="space-y-2">
-								<label className="text-sm font-medium text-white" htmlFor="timePeriod">
+								<label className="text-sm font-medium text-foreground" htmlFor="timePeriod">
 									Time Period
 								</label>
 								<Select
@@ -118,7 +118,7 @@ export default function AnalyticsPage() {
 							</div>
 
 							<div className="space-y-2">
-								<label className="text-sm font-medium text-white" htmlFor="psp">
+								<label className="text-sm font-medium text-foreground" htmlFor="psp">
 									Payment Service Provider
 								</label>
 								<Select value={selectedPSP} onValueChange={setSelectedPSP}>
@@ -137,7 +137,7 @@ export default function AnalyticsPage() {
 							</div>
 
 							<div className="space-y-2">
-								<label className="text-sm font-medium text-white" htmlFor="fromDate">
+								<label className="text-sm font-medium text-foreground" htmlFor="fromDate">
 									From Date
 								</label>
 								<Popover>
@@ -166,7 +166,7 @@ export default function AnalyticsPage() {
 							</div>
 
 							<div className="space-y-2">
-								<label className="text-sm font-medium text-white" htmlFor="toDate">
+								<label className="text-sm font-medium text-foreground" htmlFor="toDate">
 									To Date
 								</label>
 								<Popover>
@@ -237,16 +237,16 @@ export default function AnalyticsPage() {
 						<div className="grid grid-cols-1 md:grid-cols-4 gap-2">
 							<Card>
 								<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-									<CardTitle className="text-sm font-medium text-white">
+									<CardTitle className="text-sm font-medium text-foreground">
 										Total Revenue
 									</CardTitle>
-									<DollarSign className="h-4 w-4 text-gray-400" />
+									<DollarSign className="h-4 w-4 text-muted-foreground" />
 								</CardHeader>
 								<CardContent>
-									<div className="text-2xl font-bold text-white">
+									<div className="text-2xl font-bold text-foreground">
 										R 2,847,392
 									</div>
-									<div className="flex items-center text-xs text-gray-300">
+									<div className="flex items-center text-xs text-muted-foreground">
 										<TrendingUp className="h-3 w-3 mr-1 text-chart-3" />
 										+18.2% from last period
 									</div>
@@ -255,14 +255,14 @@ export default function AnalyticsPage() {
 
 							<Card>
 								<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-									<CardTitle className="text-sm font-medium text-white">
+									<CardTitle className="text-sm font-medium text-foreground">
 										Total Transactions
 									</CardTitle>
-									<BarChart3 className="h-4 w-4 text-gray-400" />
+									<BarChart3 className="h-4 w-4 text-muted-foreground" />
 								</CardHeader>
 								<CardContent>
-									<div className="text-2xl font-bold text-white">12,847</div>
-									<div className="flex items-center text-xs text-gray-300">
+									<div className="text-2xl font-bold text-foreground">12,847</div>
+									<div className="flex items-center text-xs text-muted-foreground">
 										<TrendingUp className="h-3 w-3 mr-1 text-chart-4" />
 										+12.4% from last period
 									</div>
@@ -271,14 +271,14 @@ export default function AnalyticsPage() {
 
 							<Card>
 								<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-									<CardTitle className="text-sm font-medium text-white">
+									<CardTitle className="text-sm font-medium text-foreground">
 										Success Rate
 									</CardTitle>
-									<TrendingUp className="h-4 w-4 text-gray-400" />
+									<TrendingUp className="h-4 w-4 text-muted-foreground" />
 								</CardHeader>
 								<CardContent>
-									<div className="text-2xl font-bold text-white">94.2%</div>
-									<div className="flex items-center text-xs text-gray-300">
+									<div className="text-2xl font-bold text-foreground">94.2%</div>
+									<div className="flex items-center text-xs text-muted-foreground">
 										<TrendingUp className="h-3 w-3 mr-1 text-chart-4" />
 										+2.1% from last period
 									</div>
@@ -287,14 +287,14 @@ export default function AnalyticsPage() {
 
 							<Card>
 								<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-									<CardTitle className="text-sm font-medium text-white">
+									<CardTitle className="text-sm font-medium text-foreground">
 										Avg. Transaction Value
 									</CardTitle>
-									<DollarSign className="h-4 w-4 text-gray-400" />
+									<DollarSign className="h-4 w-4 text-muted-foreground" />
 								</CardHeader>
 								<CardContent>
-									<div className="text-2xl font-bold text-white">R 221</div>
-									<div className="flex items-center text-xs text-gray-300">
+									<div className="text-2xl font-bold text-foreground">R 221</div>
+									<div className="flex items-center text-xs text-muted-foreground">
 										<TrendingDown className="h-3 w-3 mr-1 text-chart-3" />
 										-3.2% from last period
 									</div>
@@ -306,14 +306,14 @@ export default function AnalyticsPage() {
 						<div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
 							<Card>
 								<CardHeader>
-									<CardTitle className="text-white">Revenue Trend</CardTitle>
-									<CardDescription className="text-gray-300">
+									<CardTitle className="text-foreground">Revenue Trend</CardTitle>
+									<CardDescription className="text-muted-foreground">
 										Daily revenue over the selected period
 									</CardDescription>
 								</CardHeader>
 								<CardContent>
 									<div className="h-64 flex items-center justify-center border border-dashed border-border rounded-md">
-										<div className="text-center text-gray-300">
+										<div className="text-center text-muted-foreground">
 											<BarChart3 className="h-12 w-12 mx-auto mb-2" />
 											<p>Revenue Chart Placeholder</p>
 											<p className="text-xs">
@@ -326,16 +326,16 @@ export default function AnalyticsPage() {
 
 							<Card>
 								<CardHeader>
-									<CardTitle className="text-white">
+									<CardTitle className="text-foreground">
 										Transaction Volume
 									</CardTitle>
-									<CardDescription className="text-gray-300">
+									<CardDescription className="text-muted-foreground">
 										Number of transactions per day
 									</CardDescription>
 								</CardHeader>
 								<CardContent>
 									<div className="h-64 flex items-center justify-center border border-dashed border-border rounded-md">
-										<div className="text-center text-gray-300">
+										<div className="text-center text-muted-foreground">
 											<TrendingUp className="h-12 w-12 mx-auto mb-2" />
 											<p>Transaction Volume Chart Placeholder</p>
 											<p className="text-xs">
@@ -403,15 +403,15 @@ export default function AnalyticsPage() {
 											<div className="grid grid-cols-3 gap-6 text-right text-sm">
 												<div>
 													<p className="font-medium">{link.revenue}</p>
-													<p className="text-gray-300">Revenue</p>
+													<p className="text-muted-foreground">Revenue</p>
 												</div>
 												<div>
 													<p className="font-medium">{link.transactions}</p>
-													<p className="text-gray-300">Transactions</p>
+													<p className="text-muted-foreground">Transactions</p>
 												</div>
 												<div>
 													<p className="font-medium">{link.conversion}</p>
-													<p className="text-gray-300">Conversion</p>
+													<p className="text-muted-foreground">Conversion</p>
 												</div>
 											</div>
 										</div>
@@ -425,50 +425,50 @@ export default function AnalyticsPage() {
 						<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
 							<Card>
 								<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-									<CardTitle className="text-sm font-medium text-white">
+									<CardTitle className="text-sm font-medium text-foreground">
 										Active Links
 									</CardTitle>
-									<LinkIcon className="h-4 w-4 text-gray-400" />
+									<LinkIcon className="h-4 w-4 text-muted-foreground" />
 								</CardHeader>
 								<CardContent>
-									<div className="text-2xl font-bold text-white">1,247</div>
-									<p className="text-xs text-gray-300">+12% from last month</p>
+									<div className="text-2xl font-bold text-foreground">1,247</div>
+									<p className="text-xs text-muted-foreground">+12% from last month</p>
 								</CardContent>
 							</Card>
 
 							<Card>
 								<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-									<CardTitle className="text-sm font-medium text-white">
+									<CardTitle className="text-sm font-medium text-foreground">
 										Total Clicks
 									</CardTitle>
-									<TrendingUp className="h-4 w-4 text-gray-400" />
+									<TrendingUp className="h-4 w-4 text-muted-foreground" />
 								</CardHeader>
 								<CardContent>
-									<div className="text-2xl font-bold text-white">28,472</div>
-									<p className="text-xs text-gray-300">+18% from last month</p>
+									<div className="text-2xl font-bold text-foreground">28,472</div>
+									<p className="text-xs text-muted-foreground">+18% from last month</p>
 								</CardContent>
 							</Card>
 
 							<Card>
 								<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-									<CardTitle className="text-sm font-medium text-white">
+									<CardTitle className="text-sm font-medium text-foreground">
 										Conversion Rate
 									</CardTitle>
-									<BarChart3 className="h-4 w-4 text-gray-400" />
+									<BarChart3 className="h-4 w-4 text-muted-foreground" />
 								</CardHeader>
 								<CardContent>
-									<div className="text-2xl font-bold text-white">68.4%</div>
-									<p className="text-xs text-gray-300">+5.2% from last month</p>
+									<div className="text-2xl font-bold text-foreground">68.4%</div>
+									<p className="text-xs text-muted-foreground">+5.2% from last month</p>
 								</CardContent>
 							</Card>
 						</div>
 
 						<Card>
 							<CardHeader>
-								<CardTitle className="text-white">
+								<CardTitle className="text-foreground">
 									Payment Link Performance
 								</CardTitle>
-								<CardDescription className="text-gray-300">
+								<CardDescription className="text-muted-foreground">
 									Detailed analytics for all payment links
 								</CardDescription>
 							</CardHeader>
@@ -516,7 +516,7 @@ export default function AnalyticsPage() {
 											<div className="flex items-center justify-between">
 												<div className="flex-1">
 													<div className="flex items-center gap-3 mb-2">
-														<h4 className="font-medium text-white">
+														<h4 className="font-medium text-foreground">
 															{link.description}
 														</h4>
 														<Badge
@@ -533,32 +533,32 @@ export default function AnalyticsPage() {
 													</div>
 													<div className="grid grid-cols-2 md:grid-cols-5 gap-4 text-sm">
 														<div>
-															<p className="text-gray-300">Clicks</p>
-															<p className="font-medium text-white">
+															<p className="text-muted-foreground">Clicks</p>
+															<p className="font-medium text-foreground">
 																{link.clicks}
 															</p>
 														</div>
 														<div>
-															<p className="text-gray-300">Payments</p>
-															<p className="font-medium text-white">
+															<p className="text-muted-foreground">Payments</p>
+															<p className="font-medium text-foreground">
 																{link.payments}
 															</p>
 														</div>
 														<div>
-															<p className="text-gray-300">Revenue</p>
-															<p className="font-medium text-white">
+															<p className="text-muted-foreground">Revenue</p>
+															<p className="font-medium text-foreground">
 																{link.revenue}
 															</p>
 														</div>
 														<div>
-															<p className="text-gray-300">Conversion</p>
-															<p className="font-medium text-white">
+															<p className="text-muted-foreground">Conversion</p>
+															<p className="font-medium text-foreground">
 																{link.conversion}
 															</p>
 														</div>
 														<div>
-															<p className="text-gray-300">Link ID</p>
-															<p className="font-medium text-xs text-white">
+															<p className="text-muted-foreground">Link ID</p>
+															<p className="font-medium text-xs text-foreground">
 																{link.id}
 															</p>
 														</div>
@@ -576,40 +576,40 @@ export default function AnalyticsPage() {
 						<div className="grid grid-cols-1 md:grid-cols-4 gap-6">
 							<Card>
 								<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-									<CardTitle className="text-sm font-medium text-white">
+									<CardTitle className="text-sm font-medium text-foreground">
 										Total Registrations
 									</CardTitle>
-									<Users className="h-4 w-4 text-gray-400" />
+									<Users className="h-4 w-4 text-muted-foreground" />
 								</CardHeader>
 								<CardContent>
-									<div className="text-2xl font-bold text-white">2,847</div>
-									<p className="text-xs text-gray-300">+15% from last month</p>
+									<div className="text-2xl font-bold text-foreground">2,847</div>
+									<p className="text-xs text-muted-foreground">+15% from last month</p>
 								</CardContent>
 							</Card>
 
 							<Card>
 								<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-									<CardTitle className="text-sm font-medium text-white">
+									<CardTitle className="text-sm font-medium text-foreground">
 										Completion Rate
 									</CardTitle>
-									<TrendingUp className="h-4 w-4 text-gray-400" />
+									<TrendingUp className="h-4 w-4 text-muted-foreground" />
 								</CardHeader>
 								<CardContent>
-									<div className="text-2xl font-bold text-white">78.4%</div>
-									<p className="text-xs text-gray-300">+8.2% from last month</p>
+									<div className="text-2xl font-bold text-foreground">78.4%</div>
+									<p className="text-xs text-muted-foreground">+8.2% from last month</p>
 								</CardContent>
 							</Card>
 
 							<Card>
 								<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-									<CardTitle className="text-sm font-medium text-white">
+									<CardTitle className="text-sm font-medium text-foreground">
 										Avg. Completion Time
 									</CardTitle>
-									<Clock className="h-4 w-4 text-gray-400" />
+									<Clock className="h-4 w-4 text-muted-foreground" />
 								</CardHeader>
 								<CardContent>
-									<div className="text-2xl font-bold text-white">4.2 min</div>
-									<p className="text-xs text-gray-300">
+									<div className="text-2xl font-bold text-foreground">4.2 min</div>
+									<p className="text-xs text-muted-foreground">
 										-1.3 min from last month
 									</p>
 								</CardContent>
@@ -617,24 +617,24 @@ export default function AnalyticsPage() {
 
 							<Card>
 								<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-									<CardTitle className="text-sm font-medium text-white">
+									<CardTitle className="text-sm font-medium text-foreground">
 										Monthly Recurring
 									</CardTitle>
-									<DollarSign className="h-4 w-4 text-gray-400" />
+									<DollarSign className="h-4 w-4 text-muted-foreground" />
 								</CardHeader>
 								<CardContent>
-									<div className="text-2xl font-bold text-white">R 847K</div>
-									<p className="text-xs text-gray-300">+22% from last month</p>
+									<div className="text-2xl font-bold text-foreground">R 847K</div>
+									<p className="text-xs text-muted-foreground">+22% from last month</p>
 								</CardContent>
 							</Card>
 						</div>
 
 						<Card>
 							<CardHeader>
-								<CardTitle className="text-white">
+								<CardTitle className="text-foreground">
 									Registration Funnel Analysis
 								</CardTitle>
-								<CardDescription className="text-gray-300">
+								<CardDescription className="text-muted-foreground">
 									Step-by-step completion rates
 								</CardDescription>
 							</CardHeader>
@@ -677,21 +677,21 @@ export default function AnalyticsPage() {
 											className="flex items-center justify-between p-4 border border-border rounded-md"
 										>
 											<div className="flex items-center gap-4">
-												<div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-sm font-medium text-white">
+												<div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-sm font-medium text-foreground">
 													{index + 1}
 												</div>
 												<div>
-													<p className="font-medium text-white">{step.step}</p>
-													<p className="text-sm text-gray-300">
+													<p className="font-medium text-foreground">{step.step}</p>
+													<p className="text-sm text-muted-foreground">
 														{step.completed} of {step.started} completed
 													</p>
 												</div>
 											</div>
 											<div className="text-right">
-												<p className="text-lg font-bold text-white">
+												<p className="text-lg font-bold text-foreground">
 													{step.rate}
 												</p>
-												<p className="text-sm text-gray-300">Completion rate</p>
+												<p className="text-sm text-muted-foreground">Completion rate</p>
 											</div>
 										</div>
 									))}
@@ -703,10 +703,10 @@ export default function AnalyticsPage() {
 					<TabsContent value="psp" className="space-y-6">
 						<Card>
 							<CardHeader>
-								<CardTitle className="text-white">
+								<CardTitle className="text-foreground">
 									Payment Service Provider Performance
 								</CardTitle>
-								<CardDescription className="text-gray-300">
+								<CardDescription className="text-muted-foreground">
 									Detailed analytics by payment method
 								</CardDescription>
 							</CardHeader>
@@ -761,32 +761,32 @@ export default function AnalyticsPage() {
 														className={`h-4 w-4 rounded-full ${psp.color}`}
 													></div>
 													<div>
-														<h4 className="font-medium text-white">
+														<h4 className="font-medium text-foreground">
 															{psp.psp}
 														</h4>
-														<p className="text-sm text-gray-300">
+														<p className="text-sm text-muted-foreground">
 															{psp.transactions} transactions
 														</p>
 													</div>
 												</div>
 												<div className="grid grid-cols-3 gap-8 text-right text-sm">
 													<div>
-														<p className="font-medium text-white">
+														<p className="font-medium text-foreground">
 															{psp.revenue}
 														</p>
-														<p className="text-gray-300">Revenue</p>
+														<p className="text-muted-foreground">Revenue</p>
 													</div>
 													<div>
-														<p className="font-medium text-white">
+														<p className="font-medium text-foreground">
 															{psp.success}%
 														</p>
-														<p className="text-gray-300">Success Rate</p>
+														<p className="text-muted-foreground">Success Rate</p>
 													</div>
 													<div>
-														<p className="font-medium text-white">
+														<p className="font-medium text-foreground">
 															{psp.avgTime}
 														</p>
-														<p className="text-gray-300">Avg. Time</p>
+														<p className="text-muted-foreground">Avg. Time</p>
 													</div>
 												</div>
 											</div>
@@ -801,16 +801,16 @@ export default function AnalyticsPage() {
 						<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
 							<Card>
 								<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-									<CardTitle className="text-sm font-medium text-white">
+									<CardTitle className="text-sm font-medium text-foreground">
 										Total Revenue
 									</CardTitle>
-									<DollarSign className="h-4 w-4 text-gray-400" />
+									<DollarSign className="h-4 w-4 text-muted-foreground" />
 								</CardHeader>
 								<CardContent>
-									<div className="text-2xl font-bold text-white">
+									<div className="text-2xl font-bold text-foreground">
 										R 2,847,392
 									</div>
-									<p className="text-xs text-gray-300">
+									<p className="text-xs text-muted-foreground">
 										+18.2% from last period
 									</p>
 								</CardContent>
@@ -818,16 +818,16 @@ export default function AnalyticsPage() {
 
 							<Card>
 								<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-									<CardTitle className="text-sm font-medium text-white">
+									<CardTitle className="text-sm font-medium text-foreground">
 										Recurring Revenue
 									</CardTitle>
-									<TrendingUp className="h-4 w-4 text-gray-400" />
+									<TrendingUp className="h-4 w-4 text-muted-foreground" />
 								</CardHeader>
 								<CardContent>
-									<div className="text-2xl font-bold text-white">
+									<div className="text-2xl font-bold text-foreground">
 										R 1,234,567
 									</div>
-									<p className="text-xs text-gray-300">
+									<p className="text-xs text-muted-foreground">
 										+25.4% from last period
 									</p>
 								</CardContent>
@@ -835,16 +835,16 @@ export default function AnalyticsPage() {
 
 							<Card>
 								<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-									<CardTitle className="text-sm font-medium text-white">
+									<CardTitle className="text-sm font-medium text-foreground">
 										One-time Payments
 									</CardTitle>
-									<CreditCard className="h-4 w-4 text-gray-400" />
+									<CreditCard className="h-4 w-4 text-muted-foreground" />
 								</CardHeader>
 								<CardContent>
-									<div className="text-2xl font-bold text-white">
+									<div className="text-2xl font-bold text-foreground">
 										R 1,612,825
 									</div>
-									<p className="text-xs text-gray-300">
+									<p className="text-xs text-muted-foreground">
 										+12.8% from last period
 									</p>
 								</CardContent>
@@ -853,14 +853,14 @@ export default function AnalyticsPage() {
 
 						<Card>
 							<CardHeader>
-								<CardTitle className="text-white">Revenue Breakdown</CardTitle>
-								<CardDescription className="text-gray-300">
+								<CardTitle className="text-foreground">Revenue Breakdown</CardTitle>
+								<CardDescription className="text-muted-foreground">
 									Revenue by payment type and period
 								</CardDescription>
 							</CardHeader>
 							<CardContent>
 								<div className="h-64 flex items-center justify-center border border-dashed border-border rounded-md">
-									<div className="text-center text-gray-300">
+									<div className="text-center text-muted-foreground">
 										<DollarSign className="h-12 w-12 mx-auto mb-2" />
 										<p>Revenue Breakdown Chart Placeholder</p>
 										<p className="text-xs">
@@ -873,10 +873,10 @@ export default function AnalyticsPage() {
 
 						<Card>
 							<CardHeader>
-								<CardTitle className="text-white">
+								<CardTitle className="text-foreground">
 									Top Revenue Sources
 								</CardTitle>
-								<CardDescription className="text-gray-300">
+								<CardDescription className="text-muted-foreground">
 									Highest earning payment methods and products
 								</CardDescription>
 							</CardHeader>
@@ -921,19 +921,19 @@ export default function AnalyticsPage() {
 											<div className="flex items-center gap-3">
 												<Badge variant="outline">#{index + 1}</Badge>
 												<div>
-													<p className="font-medium text-white">
+													<p className="font-medium text-foreground">
 														{source.source}
 													</p>
-													<p className="text-sm text-gray-300">
+													<p className="text-sm text-muted-foreground">
 														{source.percentage} of total revenue
 													</p>
 												</div>
 											</div>
 											<div className="text-right">
-												<p className="font-medium text-white">
+												<p className="font-medium text-foreground">
 													{source.revenue}
 												</p>
-												<p className="text-sm text-green-600">
+												<p className="text-sm text-chart-4">
 													{source.growth}
 												</p>
 											</div>

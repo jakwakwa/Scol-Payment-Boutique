@@ -68,41 +68,46 @@
   --foreground: oklch(0.147 0.004 49.25);
 }
 
-.dark {
-  --background: oklch(0.147 0.004 49.25);
-  --foreground: oklch(0.985 0.001 106.423);
-  --card: oklch(0.216 0.006 56.043);
-  --card-foreground: oklch(0.985 0.001 106.423);
-  --popover: oklch(0.216 0.006 56.043);
-  --popover-foreground: oklch(0.985 0.001 106.423);
-  --primary: oklch(0.923 0.003 48.717);
-  --primary-foreground: oklch(0.216 0.006 56.043);
-  --secondary: oklch(0.268 0.007 34.298);
-  --secondary-foreground: oklch(0.985 0.001 106.423);
-  --muted: oklch(0.268 0.007 34.298);
-  --muted-foreground: oklch(0.709 0.01 56.259);
-  --accent: oklch(0.268 0.007 34.298);
-  --accent-foreground: oklch(0.985 0.001 106.423);
-  --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(1 0 0);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.553 0.013 58.071);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --radius: 0.5rem;
-  --sidebar: oklch(0.216 0.006 56.043);
-  --sidebar-foreground: oklch(0.985 0.001 106.423);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0.001 106.423);
-  --sidebar-accent: oklch(0.268 0.007 34.298);
-  --sidebar-accent-foreground: oklch(0.985 0.001 106.423);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.553 0.013 58.071);
-}
+/* ==========================================================================
+     DARK THEME — Premium Fintech: Warm Charcoal + Rich Gold
+     Every shadcn component reads these tokens, so changing them here
+     propagates the palette across the entire application.
+     ========================================================================== */
+  .dark {
+    --background: #0E0E10;          /* charcoal-900 — deepest surface  */
+    --foreground: #F5F0E8;          /* warm white — primary text       */
+    --card: #1C1C1E;                /* charcoal-700 — card surfaces    */
+    --card-foreground: #F5F0E8;
+    --popover: #1C1C1E;
+    --popover-foreground: #F5F0E8;
+    --primary: #F5A623;             /* gold-500 — main accent / CTAs   */
+    --primary-foreground: #0E0E10;  /* dark text on gold buttons       */
+    --secondary: #2C2C2E;           /* charcoal-500 — secondary bg     */
+    --secondary-foreground: #F5F0E8;
+    --muted: #242426;               /* charcoal-600 — muted surfaces   */
+    --muted-foreground: #9A9590;    /* warm gray — secondary text      */
+    --accent: #2C2C2E;
+    --accent-foreground: #F5F0E8;
+    --destructive: #E5484D;         /* warm red                        */
+    --destructive-foreground: #F5F0E8;
+    --border: rgba(255 255 255 / 0.08);
+    --input: rgba(255 255 255 / 0.06);
+    --ring: #F5A623;                /* gold focus ring                 */
+    --chart-1: #F5A623;             /* gold-500                        */
+    --chart-2: #D4891A;             /* gold-600                        */
+    --chart-3: #E5484D;             /* warm red                        */
+    --chart-4: #4ADE80;             /* green (success)                 */
+    --chart-5: #FFC12E;             /* gold-400                        */
+    --radius: 0.875rem;             /* 14px — premium rounded feel     */
+    --sidebar: #151517;             /* charcoal-800                    */
+    --sidebar-foreground: #F5F0E8;
+    --sidebar-primary: #F5A623;
+    --sidebar-primary-foreground: #0E0E10;
+    --sidebar-accent: #242426;
+    --sidebar-accent-foreground: #F5F0E8;
+    --sidebar-border: rgba(255 255 255 / 0.06);
+    --sidebar-ring: #F5A623;
+  }
 
 @theme inline {
   --font-sans: var(--font-inter);
@@ -150,22 +155,8 @@
     @apply border-border outline-ring/50;
   }
   body {
-    background: linear-gradient(0deg, rgba(122 102 62 / 0.2), rgba(123 82 56 / 0.2)),
-      radial-gradient(57.07% 126.34% at 14.73% 48.53%, #9D814B 0%, #BE9B5E 27.88%, #5b4c30 70.86%, #3f3f3f 100%);
+    background: linear-gradient(170deg, var(--charcoal-700) 0%, var(--charcoal-800) 40%, var(--charcoal-900) 100%);
     @apply text-foreground min-h-screen;
-    color: var(--foreground);
-  }
-
-  .dark body {
-    color: white;
-  }
-
-  .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
-    color: white !important;
-  }
-
-  .dark p, .dark span, .dark div {
-    color: inherit;
   }
 }
 
@@ -184,7 +175,7 @@
   }
 
   /* ================================================================
-     EMANDATE INPUT — warm charcoal surface
+     PREMIUM INPUT — warm charcoal surface (global)
      ================================================================ */
   .stratcol-input {
     display: flex;
@@ -530,42 +521,4 @@
     100% { transform: translate(20px, -15px) scale(1.05); }
   }
 
-  /* Default button styling */
-  button {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 10px 24px;
-    gap: 8px;
-    width: 180px;
-    height: 40px;
-    background: #191716;
-    color: #bf6a02;
-    border: none;
-    border-radius: 8px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s ease-in;
-  }
-
-  button:hover {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 10px 24px;
-    background: #AE7605;
-    color: #9A501B;
-    transition: all 0.2s ease-in;
-  }
-}
-
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
 }

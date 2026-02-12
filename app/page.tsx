@@ -55,7 +55,7 @@ export default function PaymentSystemDashboard() {
 	return (
 		<div className="min-h-screen">
 			{/* Header */}
-			<header className="border-b border-border bg-card">
+			<header className="border-b border-border bg-card/80 backdrop-blur-sm">
 				<div className="container mx-auto px-6 py-4">
 					<div className="flex items-center justify-between">
 						<div className="flex items-center gap-4">
@@ -164,25 +164,25 @@ export default function PaymentSystemDashboard() {
 					<TabsList className="grid w-full grid-cols-4 bg-card border border-border">
 						<TabsTrigger
 							value="overview"
-							className="text-white data-[state=active]:text-primary-foreground"
+							className="text-foreground data-[state=active]:text-primary"
 						>
 							Overview
 						</TabsTrigger>
 						<TabsTrigger
 							value="create"
-							className="text-white data-[state=active]:text-primary-foreground"
+							className="text-foreground data-[state=active]:text-primary"
 						>
 							Create Link
 						</TabsTrigger>
 						<TabsTrigger
 							value="manage"
-							className="text-white data-[state=active]:text-primary-foreground"
+							className="text-foreground data-[state=active]:text-primary"
 						>
 							Manage Links
 						</TabsTrigger>
 						<TabsTrigger
 							value="analytics"
-							className="text-white data-[state=active]:text-primary-foreground"
+							className="text-foreground data-[state=active]:text-primary"
 						>
 							Analytics
 						</TabsTrigger>
@@ -247,7 +247,7 @@ export default function PaymentSystemDashboard() {
 							{/* eMandate Onboarding */}
 							<Card className="col-span-1">
 								<CardHeader>
-									<CardTitle className="flex items-center gap-2 text-yellow-200/70 text-xl">
+									<CardTitle className="flex items-center gap-2 text-primary/70 text-xl">
 										<Users className="h-5 w-5 text-primary" />
 										eMandate Registration
 									</CardTitle>
@@ -278,7 +278,7 @@ export default function PaymentSystemDashboard() {
 													Account information
 												</p>
 											</div>
-											<Badge variant="secondary" className="text-yellow-200">
+											<Badge variant="secondary" className="text-primary">
 												Step 2
 											</Badge>
 										</div>
@@ -292,7 +292,7 @@ export default function PaymentSystemDashboard() {
 													Identity confirmation
 												</p>
 											</div>
-											<Badge variant="secondary" className="text-yellow-200">
+											<Badge variant="secondary" className="text-primary">
 												Step 3
 											</Badge>
 										</div>
@@ -449,7 +449,7 @@ export default function PaymentSystemDashboard() {
 											</label>
 											<div className="space-y-2">
 												<label
-													className="text-sm font-medium text-white"
+													className="text-sm font-medium text-foreground"
 													htmlFor="fromDate"
 												>
 													From Date
@@ -484,7 +484,7 @@ export default function PaymentSystemDashboard() {
 
 											<div className="space-y-2">
 												<label
-													className="text-sm font-medium text-white"
+													className="text-sm font-medium text-foreground"
 													htmlFor="toDate"
 												>
 													To Date
