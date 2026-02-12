@@ -39,62 +39,59 @@ export function isValidSaId(id: string): boolean {
  * Returns a formatted string like "15 Jan 1985" or null if invalid.
  */
 export function extractDobFromSaId(id: string): string | null {
-	if (!/^\d{13}$/.test(id)) return null;
+  if (!/^\d{13}$/.test(id)) return null;
 
-	const yy = Number.parseInt(id.substring(0, 2), 10);
-	const mm = Number.parseInt(id.substring(2, 4), 10);
-	const dd = Number.parseInt(id.substring(4, 6), 10);
+  const yy = Number.parseInt(id.substring(0, 2), 10);
+  const mm = Number.parseInt(id.substring(2, 4), 10);
+  const dd = Number.parseInt(id.substring(4, 6), 10);
 
-	// Century pivot: 00-current two-digit year = 2000s, else 1900s
-	const currentTwoDigitYear = new Date().getFullYear() % 100;
-	const century = yy <= currentTwoDigitYear ? 2000 : 1900;
-	const year = century + yy;
+  // Century pivot: 00-current two-digit year = 2000s, else 1900s
+  const currentTwoDigitYear = new Date().getFullYear() % 100;
+  const century = yy <= currentTwoDigitYear ? 2000 : 1900;
+  const year = century + yy;
 
-	const date = new Date(year, mm - 1, dd);
-	if (
-		date.getFullYear() !== year ||
-		date.getMonth() !== mm - 1 ||
-		date.getDate() !== dd
-	) {
-		return null;
-	}
+  const date = new Date(year, mm - 1, dd);
+  if (
+    date.getFullYear() !== year ||
+    date.getMonth() !== mm - 1 ||
+    date.getDate() !== dd
+  ) {
+    return null;
+  }
 
-	return date.toLocaleDateString("en-ZA", {
-		day: "numeric",
-		month: "short",
-		year: "numeric",
-	});
+  return date.toLocaleDateString("en-ZA", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  });
 }
 
 // ---------------------------------------------------------------------------
 // Phase 1 – Choose Your Plan
 // ---------------------------------------------------------------------------
 export const phasePlanSchema = z.object({
-	productType: z.string().min(1, "Please select a product"),
-	subscriptionPlan: z.string().min(1, "Please select a plan"),
+  mandateType: z.string().min(1, "Please select a mandate type"),
+  productType: z.string().min(1, "Please select a product type"),
 });
 
 // ---------------------------------------------------------------------------
 // Phase 2 – Your Details
 // ---------------------------------------------------------------------------
 export const phaseDetailsSchema = z.object({
-	firstName: z
-		.string()
-		.min(2, "First name must be at least 2 characters")
-		.max(50, "First name is too long"),
-	lastName: z
-		.string()
-		.min(2, "Last name must be at least 2 characters")
-		.max(50, "Last name is too long"),
-	email: z.string().email("Please enter a valid email address"),
-	phone: z
-		.string()
-		.regex(
-			/^\+27\d{9}$/,
-			"Enter a valid SA phone number (e.g. +27821234567)",
-		),
-	idNumber: z.string().min(6, "Enter a valid ID or passport number"),
-	idType: z.string().min(1, "ID type is required"),
+  firstName: z
+    .string()
+    .min(2, "First name must be at least 2 characters")
+    .max(50, "First name is too long"),
+  lastName: z
+    .string()
+    .min(2, "Last name must be at least 2 characters")
+    .max(50, "Last name is too long"),
+  email: z.string().email("Please enter a valid email address"),
+  phone: z
+    .string()
+    .regex(/^\+27\d{9}$/, "Enter a valid SA phone number (e.g. +27821234567)"),
+  idNumber: z.string().min(6, "Enter a valid ID or passport number"),
+  idType: z.string().min(1, "ID type is required"),
 });
 
 /**
@@ -102,47 +99,47 @@ export const phaseDetailsSchema = z.object({
  * This is separated so we can compose it with the base schema.
  */
 export const phaseDetailsRefined = phaseDetailsSchema.refine(
-	(data) => {
-		if (data.idType === "sa-id") {
-			return isValidSaId(data.idNumber);
-		}
-		return true;
-	},
-	{
-		message:
-			"This ID number doesn\u2019t appear to be valid. Please check for typos.",
-		path: ["idNumber"],
-	},
+  (data) => {
+    if (data.idType === "sa-id") {
+      return isValidSaId(data.idNumber);
+    }
+    return true;
+  },
+  {
+    message:
+      "This ID number doesn\u2019t appear to be valid. Please check for typos.",
+    path: ["idNumber"],
+  },
 );
 
 // ---------------------------------------------------------------------------
 // Phase 3 – Set Up Payment
 // ---------------------------------------------------------------------------
 export const phasePaymentSchema = z.object({
-	bankName: z.string().min(1, "Please select a bank"),
-	accountType: z.string().min(1, "Please select an account type"),
-	accountNumber: z
-		.string()
-		.min(6, "Account number is too short (min 6 digits)")
-		.max(16, "Account number is too long (max 16 digits)")
-		.regex(/^\d+$/, "Account number must contain only digits"),
-	branchCode: z
-		.string()
-		.length(6, "Branch code must be exactly 6 digits")
-		.regex(/^\d+$/, "Branch code must contain only digits"),
-	termsAccepted: z.literal(true, {
-		errorMap: () => ({ message: "You must accept the terms to continue" }),
-	}),
-	privacyAccepted: z.literal(true, {
-		errorMap: () => ({
-			message: "You must accept the privacy policy to continue",
-		}),
-	}),
+  bankName: z.string().min(1, "Please select a bank"),
+  accountType: z.string().min(1, "Please select an account type"),
+  accountNumber: z
+    .string()
+    .min(6, "Account number is too short (min 6 digits)")
+    .max(16, "Account number is too long (max 16 digits)")
+    .regex(/^\d+$/, "Account number must contain only digits"),
+  branchCode: z
+    .string()
+    .length(6, "Branch code must be exactly 6 digits")
+    .regex(/^\d+$/, "Branch code must contain only digits"),
+  termsAccepted: z.literal(true, {
+    errorMap: () => ({ message: "You must accept the terms to continue" }),
+  }),
+  privacyAccepted: z.literal(true, {
+    errorMap: () => ({
+      message: "You must accept the privacy policy to continue",
+    }),
+  }),
 });
 
 // ---------------------------------------------------------------------------
 // Full form schema (union of all phases)
 // ---------------------------------------------------------------------------
 export const fullFormSchema = phasePlanSchema
-	.merge(phaseDetailsSchema)
-	.merge(phasePaymentSchema);
+  .merge(phaseDetailsSchema)
+  .merge(phasePaymentSchema);
