@@ -1,30 +1,98 @@
-# Vercel AI chat
+# SCOL Payment Boutique (StratCol Payment Hub)
 
-*Automatically synced with your [v0.app](https://v0.app) deployments*
+A modern, comprehensive payment management dashboard designed to streamline payment link generation, eMandate onboarding, and transaction analytics. Built with performance and user experience in mind using the latest Next.js 15 stack.
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/jaco-ks-projects/v0-vercel-ai-chat)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.app-black?style=for-the-badge)](https://v0.app/chat/projects/kkDusFsB8OD)
+![image](https://github.com/user-attachments/assets/b4f5d863-831f-4f5a-ba0f-d7ad8dca833d)
 
-## Overview
 
-This repository will stay in sync with your deployed chats on [v0.app](https://v0.app).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.app](https://v0.app).
+## 🚀 Overview
 
-## Deployment
+The **SCOL Payment Boutique** serves as a centralised hub for merchants and administrators to manage financial interactions. It simplifies the complexity of payment processing by offering tools to create quick payment requests, manage recurring debit orders (eMandates), and visualise financial performance through interactive analytics.
 
-Your project is live at:
+## ✨ Key Features
 
-**[https://vercel.com/jaco-ks-projects/v0-vercel-ai-chat](https://vercel.com/jaco-ks-projects/v0-vercel-ai-chat)**
+* **📊 Interactive Dashboard**
+    * Real-time "Quick Stats" view (Active Links, Revenue, Success Rates).
+    * Visual performance metrics comparing current data with previous months.
 
-## Build your app
+* **🔗 Smart Payment Links**
+    * **Quick Link:** Generate instant payment requests with amount, currency (ZAR, USD, EUR), and description.
+    * **Advanced Link:** Create detailed links with specific expiry dates, multi-PSP selection (ABSA Pay, Capitec Pay, PayShap, etc.), and custom notification settings (Email, SMS, Webhook).
 
-Continue building your app on:
+* **📝 eMandate Onboarding**
+    * Streamlined 3-step wizard for debit order registration:
+        1.  Product Selection
+        2.  Banking Details
+        3.  Identity Verification
 
-**[https://v0.app/chat/projects/kkDusFsB8OD](https://v0.app/chat/projects/kkDusFsB8OD)**
+* **📈 Analytics & Reporting**
+    * Detailed charts for Total Link Clicks, Conversion Rates, and Average Payment Time.
+    * **Payment Method Performance:** Comparative analysis of success rates across different providers (e.g., ABSA Pay vs. Capitec Pay).
 
-## How It Works
+* **🛠️ Link Management**
+    * Centralised table to track link status (Active, Paid, Expired).
+    * Monitor engagement metrics like clicks and payment counts per link.
 
-1. Create and modify your project using [v0.app](https://v0.app)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+## 🛠️ Tech Stack
+
+This project leverages the latest cutting-edge web technologies:
+
+* **Framework:** [Next.js 15](https://nextjs.org/) (App Router)
+* **UI Library:** [React 19](https://react.dev/)
+* **Styling:** [Tailwind CSS v4](https://tailwindcss.com/) & [PostCSS](https://postcss.org/)
+* **Components:** [Radix UI](https://www.radix-ui.com/) (Primitive UI components)
+* **Charts:** [Recharts](https://recharts.org/)
+* **Forms & Validation:** [React Hook Form](https://react-hook-form.com/) + [Zod](https://zod.dev/)
+* **Date Handling:** [date-fns](https://date-fns.org/)
+* **Icons:** [Lucide React](https://lucide.dev/)
+
+## ⚡ Getting Started
+
+Follow these steps to set up the project locally.
+
+### Prerequisites
+
+* Node.js 18+ (LTS recommended)
+* bun (recommended), npm, or yarn
+
+### Installation
+
+1.  **Clone the repository:**
+    ```bash
+    git clone [https://github.com/your-username/scol-payment-boutique.git](https://github.com/your-username/scol-payment-boutique.git)
+    cd scol-payment-boutique
+    ```
+
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    # or
+    bun install
+    # or
+    yarn install
+    ```
+
+3.  **Run the development server:**
+    ```bash
+    npm run dev
+    # or
+    bun dev
+    ```
+
+4.  **Open your browser:**
+    Navigate to [http://localhost:3000](http://localhost:3000) to view the application.
+
+## 📂 Project Structure
+
+```bash
+├── app/                  # Next.js App Router pages
+│   ├── analytics/        # Analytics route
+│   ├── dashboard/        # Dashboard specific components/data
+│   ├── emandate/         # eMandate wizard route
+│   ├── layout.tsx        # Root layout (Metadata, Fonts)
+│   └── page.tsx          # Main Dashboard view
+├── components/           # Reusable UI components
+│   ├── ui/               # Primitive components (Button, Card, Input, etc.)
+│   └── ...               # Feature-specific components
+├── public/               # Static assets
+└── styles/               # Global styles
