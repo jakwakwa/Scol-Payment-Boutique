@@ -11,7 +11,7 @@ interface PhaseProgressProps {
  */
 const PhaseProgress = ({ currentPhase, labels }: PhaseProgressProps) => {
 	return (
-		<div className="w-full max-w-md mx-auto mb-8">
+		<div className="w-100 mb-8">
 			{/* Labels row */}
 			<div className="flex justify-between mb-4 px-1">
 				{labels.map((label, i) => {
@@ -88,5 +88,4 @@ const PhaseProgress = ({ currentPhase, labels }: PhaseProgressProps) => {
 		</div>
 	);
 };
-
 export default PhaseProgress;

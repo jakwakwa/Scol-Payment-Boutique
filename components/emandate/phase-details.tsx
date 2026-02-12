@@ -88,7 +88,7 @@ const PhaseDetails = () => {
 			<div className="grid grid-cols-1 md:grid-cols-2 gap-3">
 				<FieldGroup label="First Name">
 					<div className="flex flex-col gap-2">
-						<Label htmlFor="firstName" className="text-xs uppercase tracking-widest font-semibold" style={LABEL_STYLE}>
+						<Label htmlFor="firstName" className="text-xs uppercase tracking-widest" >
 							First Name
 						</Label>
 						<Input
@@ -105,7 +105,7 @@ const PhaseDetails = () => {
 
 				<FieldGroup label="Last Name">
 					<div className="flex flex-col gap-2">
-						<Label htmlFor="lastName" className="text-xs uppercase tracking-widest font-semibold" style={LABEL_STYLE}>
+						<Label htmlFor="lastName" className="text-xs uppercase tracking-widest" >
 							Last Name
 						</Label>
 						<Input
@@ -125,7 +125,7 @@ const PhaseDetails = () => {
 			<div className="grid grid-cols-1 md:grid-cols-2 gap-3">
 				<FieldGroup label="Email">
 					<div className="flex flex-col gap-2">
-						<Label htmlFor="email" className="text-xs uppercase tracking-widest font-semibold" style={LABEL_STYLE}>
+						<Label htmlFor="email" className="text-xs uppercase tracking-widest" >
 							Email Address
 						</Label>
 						<Input
@@ -143,7 +143,7 @@ const PhaseDetails = () => {
 
 				<FieldGroup label="Phone">
 					<div className="flex flex-col gap-2">
-						<Label htmlFor="phone" className="text-xs uppercase tracking-widest font-semibold" style={LABEL_STYLE}>
+						<Label htmlFor="phone" className="text-xs uppercase tracking-widest" >
 							Phone Number
 						</Label>
 						<Input
@@ -171,7 +171,7 @@ const PhaseDetails = () => {
 				<div className="md:col-span-2">
 					<FieldGroup label="ID Number">
 						<div className="flex flex-col gap-2">
-							<Label htmlFor="idNumber" className="text-xs uppercase tracking-widest font-semibold" style={LABEL_STYLE}>
+							<Label htmlFor="idNumber" className="text-xs uppercase tracking-widest" >
 								ID / Passport Number
 							</Label>
 							<div className="relative">
@@ -210,7 +210,7 @@ const PhaseDetails = () => {
 
 				<FieldGroup label="ID Type">
 					<div className="flex flex-col gap-2">
-						<Label htmlFor="idType" className="text-xs uppercase tracking-widest font-semibold" style={LABEL_STYLE}>
+						<Label htmlFor="idType" className="text-xs uppercase tracking-widest" >
 							ID Type
 						</Label>
 						<Select

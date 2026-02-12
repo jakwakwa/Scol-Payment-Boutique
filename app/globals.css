@@ -9,7 +9,7 @@
    ========================================================================== */
 
 :root {
-  --gold-50: #FFF8E7;
+  /* --gold-50: #FFF8E7;
   --gold-100: #FFEFC2;
   --gold-200: #FFE08A;
   --gold-300: #FFD054;
@@ -18,7 +18,30 @@
   --gold-600: #D4891A;
   --gold-700: #AE6B12;
   --gold-800: #8B520F;
-  --gold-900: #6B3F0D;
+  --gold-900: #6B3F0D; */
+
+	--gold-50: rgba(255, 225, 105, 1);
+--gold-100: rgba(250, 214, 67, 1);
+--gold-200: rgba(237, 197, 49, 1);
+--gold-300: rgba(219, 180, 44, 1);
+--gold-400: rgba(201, 162, 39, 1);
+--gold-500: rgba(182, 145, 33, 1);
+--gold-600: rgba(164, 126, 27, 1);
+--gold-700: rgba(146, 108, 21, 1);
+--gold-800: rgba(128, 91, 16, 1);
+--gold-900: rgba(110, 76, 13, 1);
+--dark-goldenrod: rgba(92, 61, 10, 1);
+
+/* SCSS Gradient */
+--gradient-top: linear-gradient(0deg, #ffe169ff, #fad643ff, #edc531ff, #dbb42cff, #c9a227ff, #b69121ff, #a47e1bff, #926c15ff, #805b10ff, #6e4c0dff);
+--gradient-right: linear-gradient(90deg, #ffe169ff, #fad643ff, #edc531ff, #dbb42cff, #c9a227ff, #b69121ff, #a47e1bff, #926c15ff, #805b10ff, #6e4c0dff);
+--gradient-bottom: linear-gradient(180deg, #ffe169ff, #fad643ff, #edc531ff, #dbb42cff, #c9a227ff, #b69121ff, #a47e1bff, #926c15ff, #805b10ff, #6e4c0dff);
+--gradient-left: linear-gradient(270deg, #ffe169ff, #fad643ff, #edc531ff, #dbb42cff, #c9a227ff, #b69121ff, #a47e1bff, #926c15ff, #805b10ff, #6e4c0dff);
+--gradient-top-right: linear-gradient(45deg, #ffe169ff, #fad643ff, #edc531ff, #dbb42cff, #c9a227ff, #b69121ff, #a47e1bff, #926c15ff, #805b10ff, #6e4c0dff);
+--gradient-bottom-right: linear-gradient(135deg, #ffe169ff, #fad643ff, #edc531ff, #dbb42cff, #c9a227ff, #b69121ff, #a47e1bff, #926c15ff, #805b10ff, #6e4c0dff);
+--gradient-top-left: linear-gradient(225deg, #ffe169ff, #fad643ff, #edc531ff, #dbb42cff, #c9a227ff, #b69121ff, #a47e1bff, #926c15ff, #805b10ff, #6e4c0dff);
+--gradient-bottom-left: linear-gradient(315deg, #ffe169ff, #fad643ff, #edc531ff, #dbb42cff, #c9a227ff, #b69121ff, #a47e1bff, #926c15ff, #805b10ff, #6e4c0dff);
+--gradient-radial: radial-gradient(#ffe169ff, #fad643ff, #edc531ff, #dbb42cff, #c9a227ff, #b69121ff, #a47e1bff, #926c15ff, #805b10ff, #6e4c0dff);
 
   --charcoal-50: #f5f5f5;
   --charcoal-100: #e0e0e0;

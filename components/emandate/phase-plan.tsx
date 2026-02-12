@@ -32,11 +32,12 @@ const PhasePlan = () => {
 
 	return (
 		<div className="space-y-3">
+			<div className="flex flex-row gap-2.5">
 			<FieldGroup label="Product Type">
 				<div className="flex flex-col gap-2.5">
 					<Label
 						htmlFor="productType"
-						className="text-xs uppercase tracking-widest font-semibold"
+						className="text-xs uppercase tracking-widest"
 						style={{ color: "rgba(245, 166, 35, 0.45)" }}
 					>
 						Product Type
@@ -68,6 +69,7 @@ const PhasePlan = () => {
 							))}
 						</SelectContent>
 					</Select>
+
 					{errors.productType && (
 						<p className="text-red-400 text-xs mt-0.5 shake">
 							{errors.productType.message}
@@ -80,7 +82,7 @@ const PhasePlan = () => {
 				<div className="flex flex-col gap-2.5">
 					<Label
 						htmlFor="subscriptionPlan"
-						className="text-xs uppercase tracking-widest font-semibold"
+					className="text-xs uppercase tracking-widest"
 						style={{ color: "rgba(245, 166, 35, 0.45)" }}
 					>
 						Subscription Plan
@@ -120,7 +122,7 @@ const PhasePlan = () => {
 					)}
 				</div>
 			</FieldGroup>
-
+			</div>
 			{bothSelected && (
 				<div className="flex items-center gap-2 pt-2 px-4 animate-in fade-in-0 slide-in-from-bottom-2 duration-300">
 					<CheckCircle className="w-4 h-4 text-green-400" />
