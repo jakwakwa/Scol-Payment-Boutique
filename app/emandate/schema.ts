@@ -9,29 +9,29 @@ import { z } from "zod";
  * Returns true if the check digit (last digit) passes the modulus-10 check.
  */
 export function isValidSaId(id: string): boolean {
-	if (!/^\d{13}$/.test(id)) return false;
+  if (!/^\d{13}$/.test(id)) return false;
 
-	// Validate date portion (YYMMDD)
-	const month = Number.parseInt(id.substring(2, 4), 10);
-	const day = Number.parseInt(id.substring(4, 6), 10);
-	if (month < 1 || month > 12 || day < 1 || day > 31) return false;
+  // Validate date portion (YYMMDD)
+  const month = Number.parseInt(id.substring(2, 4), 10);
+  const day = Number.parseInt(id.substring(4, 6), 10);
+  if (month < 1 || month > 12 || day < 1 || day > 31) return false;
 
-	// Luhn algorithm
-	let sum = 0;
-	for (let i = 0; i < 12; i++) {
-		const digit = Number.parseInt(id[i], 10);
-		if (i % 2 === 0) {
-			// Odd positions (1-indexed) – add as-is
-			sum += digit;
-		} else {
-			// Even positions (1-indexed) – double, then sum digits
-			const doubled = digit * 2;
-			sum += doubled > 9 ? doubled - 9 : doubled;
-		}
-	}
+  // Luhn algorithm
+  let sum = 0;
+  for (let i = 0; i < 12; i++) {
+    const digit = Number.parseInt(id[i], 10);
+    if (i % 2 === 0) {
+      // Odd positions (1-indexed) – add as-is
+      sum += digit;
+    } else {
+      // Even positions (1-indexed) – double, then sum digits
+      const doubled = digit * 2;
+      sum += doubled > 9 ? doubled - 9 : doubled;
+    }
+  }
 
-	const checkDigit = (10 - (sum % 10)) % 10;
-	return checkDigit === Number.parseInt(id[12], 10);
+  const checkDigit = (10 - (sum % 10)) % 10;
+  return checkDigit === Number.parseInt(id[12], 10);
 }
 
 /**
