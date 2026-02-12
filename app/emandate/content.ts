@@ -2,7 +2,7 @@ import type {
   PhaseConfig,
   BankEntry,
   ProductOption,
-  PlanOption,
+  MandateTypeOption,
   AccountTypeOption,
   IdTypeOption,
   EMandateFormData,
@@ -52,18 +52,19 @@ export const phaseEmotions = {
 };
 
 // ---------------------------------------------------------------------------
-// Phase 1 – Choose Your Plan
+// Phase 1 – Mandate Selection
 // ---------------------------------------------------------------------------
-export const productOptions: ProductOption[] = [
-  { value: "client-service", label: "Client Service Testing" },
-  { value: "training", label: "StratCol Training" },
-  { value: "consulting", label: "Consulting Services" },
+export const mandateTypeOptions: MandateTypeOption[] = [
+  { value: "debit-order", label: "Debit Order" },
+  { value: "eft-collection", label: "EFT Collection" },
+  { value: "realtime-clearing", label: "Realtime Clearing" },
+  { value: "managed-collection", label: "Managed Collection" },
 ];
 
-export const planOptions: PlanOption[] = [
-  { value: "basic", label: "Basic Plan", price: "R299/month" },
-  { value: "professional", label: "Professional Plan", price: "R599/month" },
-  { value: "enterprise", label: "Enterprise Plan", price: "R999/month" },
+export const productOptions: ProductOption[] = [
+  { value: "standard", label: "Standard" },
+  { value: "premium-collections", label: "Premium Collections" },
+  { value: "call-centre", label: "Call Centre" },
 ];
 
 // ---------------------------------------------------------------------------
@@ -98,14 +99,14 @@ export const bankLabelMap: Record<string, string> = Object.fromEntries(
   bankOptions.map((b) => [b.value, b.label]),
 );
 
+/** Lookup map for human-readable mandate type labels */
+export const mandateTypeLabelMap: Record<string, string> = Object.fromEntries(
+  mandateTypeOptions.map((m) => [m.value, m.label]),
+);
+
 /** Lookup map for human-readable product labels */
 export const productLabelMap: Record<string, string> = Object.fromEntries(
   productOptions.map((p) => [p.value, p.label]),
-);
-
-/** Lookup map for human-readable plan labels (includes price) */
-export const planLabelMap: Record<string, string> = Object.fromEntries(
-  planOptions.map((p) => [p.value, `${p.label} \u2013 ${p.price}`]),
 );
 
 export const accountTypeOptions: AccountTypeOption[] = [
@@ -118,8 +119,8 @@ export const accountTypeOptions: AccountTypeOption[] = [
 // Default form values
 // ---------------------------------------------------------------------------
 export const defaultFormValues: EMandateFormData = {
+  mandateType: "",
   productType: "",
-  subscriptionPlan: "",
   firstName: "",
   lastName: "",
   email: "",
