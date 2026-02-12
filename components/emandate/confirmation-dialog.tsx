@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import {
 	Dialog,
 	DialogContent,
@@ -8,6 +9,8 @@ import {
 	DialogDescription,
 	DialogFooter,
 } from "@/components/ui/dialog";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Label } from "@/components/ui/label";
 import type { EMandateFormData } from "@/app/emandate/types";
 import {
 	pageCopy,
@@ -60,6 +63,17 @@ const ConfirmationDialog = ({
 	onConfirm,
 }: ConfirmationDialogProps) => {
 	const fullName = `${data.firstName} ${data.lastName}`.trim();
+	const [termsAccepted, setTermsAccepted] = useState(false);
+	const [privacyAccepted, setPrivacyAccepted] = useState(false);
+	const canSubmit = termsAccepted && privacyAccepted;
+
+	// Reset checkboxes when the dialog opens
+	useEffect(() => {
+		if (open) {
+			setTermsAccepted(false);
+			setPrivacyAccepted(false);
+		}
+	}, [open]);
 
 	return (
 		<Dialog open={open} onOpenChange={onOpenChange}>
@@ -161,8 +175,8 @@ const ConfirmationDialog = ({
 					</SummarySection>
 				</div>
 
-				{/* ── Security badge ─────────────────────────────── */}
-				<div className="mx-7 mb-2">
+				{/* ── Terms & Privacy ────────────────────────────── */}
+				<div className="px-7 space-y-3">
 					<div
 						className="rounded-xl py-2.5 px-4 border"
 						style={{
@@ -177,6 +191,40 @@ const ConfirmationDialog = ({
 							<ShieldCheck className="w-3.5 h-3.5 shrink-0" />
 							{pageCopy.securityNotice}
 						</p>
+					</div>
+
+					<div className="flex items-start space-x-3 group">
+						<Checkbox
+							id="dialog-terms"
+							checked={termsAccepted}
+							onCheckedChange={(checked) =>
+								setTermsAccepted(checked === true)
+							}
+							className="mt-0.5"
+						/>
+						<Label
+							htmlFor="dialog-terms"
+							className="text-xs leading-relaxed cursor-pointer text-white/50 group-hover:text-white/70 transition-colors"
+						>
+							{pageCopy.termsLabel}
+						</Label>
+					</div>
+
+					<div className="flex items-start space-x-3 group">
+						<Checkbox
+							id="dialog-privacy"
+							checked={privacyAccepted}
+							onCheckedChange={(checked) =>
+								setPrivacyAccepted(checked === true)
+							}
+							className="mt-0.5"
+						/>
+						<Label
+							htmlFor="dialog-privacy"
+							className="text-xs leading-relaxed cursor-pointer text-white/50 group-hover:text-white/70 transition-colors"
+						>
+							{pageCopy.privacyLabel}
+						</Label>
 					</div>
 				</div>
 
@@ -193,7 +241,11 @@ const ConfirmationDialog = ({
 					<button
 						type="button"
 						onClick={onConfirm}
-						className="gold-button flex items-center gap-2 text-sm"
+						disabled={!canSubmit}
+						className={cn(
+							"gold-button flex items-center gap-2 text-sm transition-opacity",
+							!canSubmit && "opacity-40 cursor-not-allowed",
+						)}
 					>
 						<CheckCircle className="w-4 h-4" />
 						Confirm &amp; Submit

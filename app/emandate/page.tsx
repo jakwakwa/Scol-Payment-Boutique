@@ -180,14 +180,24 @@ export default function EMandateOnboarding() {
 	}, [currentPhase, transitionToPhase]);
 
 	const handleOpenConfirmation = useCallback(async () => {
-		const schema = phaseSchemas[3];
-		const fieldNames = Object.keys(schema.shape) as (keyof EMandateFormData)[];
-		const valid = await trigger(fieldNames);
+		// Only validate banking fields — terms/privacy are handled in the dialog
+		const bankingFields: (keyof EMandateFormData)[] = [
+			"bankName",
+			"accountType",
+			"accountNumber",
+			"branchCode",
+		];
+		const valid = await trigger(bankingFields);
 		if (!valid) return;
 		setShowConfirmation(true);
 	}, [trigger]);
 
 	const handleConfirmedSubmit = useCallback(() => {
+		const { setValue } = methods;
+		// Mark terms accepted from the dialog checkboxes
+		setValue("termsAccepted", true);
+		setValue("privacyAccepted", true);
+
 		const data = getValues();
 		console.info("eMandate registration submitted:", data);
 		clearDraft();
@@ -197,7 +207,7 @@ export default function EMandateOnboarding() {
 			description: pageCopy.successMessage,
 			duration: 5000,
 		});
-	}, [getValues]);
+	}, [getValues, methods]);
 
 	const onSubmit = useCallback(
 		(_data: EMandateFormData) => {
