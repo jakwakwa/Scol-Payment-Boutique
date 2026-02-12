@@ -18,9 +18,11 @@ import {
 import FieldGroup from "@/components/shared/field-group";
 import { cn } from "@/lib/utils";
 
+const LABEL_STYLE = { color: "rgba(245, 166, 35, 0.45)" };
+const GOLD_DIM = "rgba(245, 166, 35, 0.25)";
+
 /**
- * Phase 2: Your Details
- * Contact + identity merged. Smart auto-detection, warm microcopy.
+ * Phase 2: Your Details — contact + identity with smart auto-detection.
  */
 const PhaseDetails = () => {
 	const {
@@ -34,18 +36,13 @@ const PhaseDetails = () => {
 	const idType = watch("idType");
 	const firstName = watch("firstName");
 
-	// Auto-detect ID type from input pattern
 	const detectIdType = useCallback(
 		(value: string) => {
 			if (!value || value.length < 3) return;
 			if (/^\d{13}$/.test(value)) {
-				if (idType !== "sa-id") {
-					setValue("idType", "sa-id", { shouldValidate: false });
-				}
+				if (idType !== "sa-id") setValue("idType", "sa-id", { shouldValidate: false });
 			} else if (/[a-zA-Z]/.test(value)) {
-				if (idType === "sa-id") {
-					setValue("idType", "passport", { shouldValidate: false });
-				}
+				if (idType === "sa-id") setValue("idType", "passport", { shouldValidate: false });
 			}
 		},
 		[idType, setValue],
@@ -58,24 +55,17 @@ const PhaseDetails = () => {
 	const isIdValid = idType === "sa-id" && isValidSaId(idNumber);
 	const dob = isIdValid ? extractDobFromSaId(idNumber) : null;
 
-	// Phone number handler: ensure +27 prefix stays
 	const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		let value = e.target.value;
-		value = value.replace(/[^\d+]/g, "");
-		if (!value.startsWith("+27")) {
-			value = "+27" + value.replace(/^\+?27?/, "");
-		}
-		if (value.length > 12) {
-			value = value.slice(0, 12);
-		}
+		let value = e.target.value.replace(/[^\d+]/g, "");
+		if (!value.startsWith("+27")) value = "+27" + value.replace(/^\+?27?/, "");
+		if (value.length > 12) value = value.slice(0, 12);
 		setValue("phone", value, { shouldValidate: true });
 	};
 
 	const handleIdNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const value = e.target.value;
 		if (idType === "sa-id") {
-			const cleaned = value.replace(/\D/g, "").slice(0, 13);
-			setValue("idNumber", cleaned, { shouldValidate: true });
+			setValue("idNumber", value.replace(/\D/g, "").slice(0, 13), { shouldValidate: true });
 		} else {
 			setValue("idNumber", value.slice(0, 20), { shouldValidate: true });
 		}
@@ -85,11 +75,10 @@ const PhaseDetails = () => {
 
 	return (
 		<div className="space-y-3">
-			{/* Warm greeting if we have a first name */}
 			{firstName && firstName.length >= 2 && (
 				<div className="flex items-center gap-2 px-4 py-1 animate-in fade-in-0 duration-500">
-					<Sparkles className="w-3.5 h-3.5 text-yellow-400/60" />
-					<p className="text-yellow-300/50 text-xs font-medium">
+					<Sparkles className="w-3.5 h-3.5" style={{ color: GOLD_DIM }} />
+					<p className="text-xs font-medium" style={{ color: GOLD_DIM }}>
 						Nice to meet you, {firstName}.
 					</p>
 				</div>
@@ -99,10 +88,7 @@ const PhaseDetails = () => {
 			<div className="grid grid-cols-1 md:grid-cols-2 gap-3">
 				<FieldGroup label="First Name">
 					<div className="flex flex-col gap-2">
-						<Label
-							htmlFor="firstName"
-							className="text-yellow-500/50 text-xs uppercase tracking-widest font-semibold"
-						>
+						<Label htmlFor="firstName" className="text-xs uppercase tracking-widest font-semibold" style={LABEL_STYLE}>
 							First Name
 						</Label>
 						<Input
@@ -113,20 +99,13 @@ const PhaseDetails = () => {
 							aria-invalid={!!errors.firstName}
 							{...register("firstName")}
 						/>
-						{errors.firstName && (
-							<p className="text-red-400 text-xs mt-0.5">
-								{errors.firstName.message}
-							</p>
-						)}
+						{errors.firstName && <p className="text-red-400 text-xs mt-0.5">{errors.firstName.message}</p>}
 					</div>
 				</FieldGroup>
 
 				<FieldGroup label="Last Name">
 					<div className="flex flex-col gap-2">
-						<Label
-							htmlFor="lastName"
-							className="text-yellow-500/50 text-xs uppercase tracking-widest font-semibold"
-						>
+						<Label htmlFor="lastName" className="text-xs uppercase tracking-widest font-semibold" style={LABEL_STYLE}>
 							Last Name
 						</Label>
 						<Input
@@ -137,11 +116,7 @@ const PhaseDetails = () => {
 							aria-invalid={!!errors.lastName}
 							{...register("lastName")}
 						/>
-						{errors.lastName && (
-							<p className="text-red-400 text-xs mt-0.5">
-								{errors.lastName.message}
-							</p>
-						)}
+						{errors.lastName && <p className="text-red-400 text-xs mt-0.5">{errors.lastName.message}</p>}
 					</div>
 				</FieldGroup>
 			</div>
@@ -150,10 +125,7 @@ const PhaseDetails = () => {
 			<div className="grid grid-cols-1 md:grid-cols-2 gap-3">
 				<FieldGroup label="Email">
 					<div className="flex flex-col gap-2">
-						<Label
-							htmlFor="email"
-							className="text-yellow-500/50 text-xs uppercase tracking-widest font-semibold"
-						>
+						<Label htmlFor="email" className="text-xs uppercase tracking-widest font-semibold" style={LABEL_STYLE}>
 							Email Address
 						</Label>
 						<Input
@@ -165,20 +137,13 @@ const PhaseDetails = () => {
 							aria-invalid={!!errors.email}
 							{...register("email")}
 						/>
-						{errors.email && (
-							<p className="text-red-400 text-xs mt-0.5">
-								{errors.email.message}
-							</p>
-						)}
+						{errors.email && <p className="text-red-400 text-xs mt-0.5">{errors.email.message}</p>}
 					</div>
 				</FieldGroup>
 
 				<FieldGroup label="Phone">
 					<div className="flex flex-col gap-2">
-						<Label
-							htmlFor="phone"
-							className="text-yellow-500/50 text-xs uppercase tracking-widest font-semibold"
-						>
+						<Label htmlFor="phone" className="text-xs uppercase tracking-widest font-semibold" style={LABEL_STYLE}>
 							Phone Number
 						</Label>
 						<Input
@@ -193,13 +158,9 @@ const PhaseDetails = () => {
 							aria-invalid={!!errors.phone}
 						/>
 						{errors.phone ? (
-							<p className="text-red-400 text-xs mt-0.5">
-								{errors.phone.message}
-							</p>
+							<p className="text-red-400 text-xs mt-0.5">{errors.phone.message}</p>
 						) : (
-							<p className="text-white/20 text-xs">
-								Pre-filled with +27 for SA numbers
-							</p>
+							<p className="text-white/15 text-xs">Pre-filled with +27 for SA numbers</p>
 						)}
 					</div>
 				</FieldGroup>
@@ -210,10 +171,7 @@ const PhaseDetails = () => {
 				<div className="md:col-span-2">
 					<FieldGroup label="ID Number">
 						<div className="flex flex-col gap-2">
-							<Label
-								htmlFor="idNumber"
-								className="text-yellow-500/50 text-xs uppercase tracking-widest font-semibold"
-							>
+							<Label htmlFor="idNumber" className="text-xs uppercase tracking-widest font-semibold" style={LABEL_STYLE}>
 								ID / Passport Number
 							</Label>
 							<div className="relative">
@@ -224,16 +182,8 @@ const PhaseDetails = () => {
 										errors.idNumber && "shake",
 										isIdValid && "border-green-500/30",
 									)}
-									placeholder={
-										idType === "sa-id"
-											? "Enter 13-digit SA ID"
-											: "Enter passport number"
-									}
-									inputMode={
-										idType === "sa-id"
-											? "numeric"
-											: "text"
-									}
+									placeholder={idType === "sa-id" ? "Enter 13-digit SA ID" : "Enter passport number"}
+									inputMode={idType === "sa-id" ? "numeric" : "text"}
 									value={idNumber}
 									onChange={handleIdNumberChange}
 									aria-invalid={!!errors.idNumber}
@@ -245,13 +195,9 @@ const PhaseDetails = () => {
 								)}
 							</div>
 							{errors.idNumber ? (
-								<p className="text-red-400 text-xs mt-0.5">
-									{errors.idNumber.message}
-								</p>
+								<p className="text-red-400 text-xs mt-0.5">{errors.idNumber.message}</p>
 							) : idNumber && !isIdValid && idType === "sa-id" && idNumber.length > 0 && idNumber.length < 13 ? (
-								<p className="text-white/20 text-xs">
-									{13 - idNumber.length} digits remaining
-								</p>
+								<p className="text-white/15 text-xs">{13 - idNumber.length} digits remaining</p>
 							) : null}
 							{dob && (
 								<p className="text-green-400/60 text-xs animate-in fade-in-0 slide-in-from-bottom-1 duration-200">
@@ -264,64 +210,48 @@ const PhaseDetails = () => {
 
 				<FieldGroup label="ID Type">
 					<div className="flex flex-col gap-2">
-						<Label
-							htmlFor="idType"
-							className="text-yellow-500/50 text-xs uppercase tracking-widest font-semibold"
-						>
+						<Label htmlFor="idType" className="text-xs uppercase tracking-widest font-semibold" style={LABEL_STYLE}>
 							ID Type
 						</Label>
 						<Select
 							value={idType}
-							onValueChange={(value) =>
-								setValue("idType", value, {
-									shouldValidate: true,
-								})
-							}
+							onValueChange={(value) => setValue("idType", value, { shouldValidate: true })}
 						>
 							<SelectTrigger className="stratcol-input" id="idType">
 								<SelectValue placeholder="ID Type" />
 							</SelectTrigger>
-							<SelectContent className="bg-stone-950/95 border-white/10 backdrop-blur-xl">
+							<SelectContent className="border-white/8 backdrop-blur-xl" style={{ background: "rgba(28, 28, 30, 0.97)" }}>
 								{idTypeOptions.map((opt) => (
 									<SelectItem
 										key={opt.value}
 										value={opt.value}
-										className="text-white/80 hover:bg-yellow-500/10 hover:text-yellow-200 focus:bg-yellow-500/10 focus:text-yellow-200"
+										className="text-white/80 hover:text-white focus:text-white"
 									>
 										{opt.label}
 									</SelectItem>
 								))}
 							</SelectContent>
 						</Select>
-						{errors.idType && (
-							<p className="text-red-400 text-xs mt-0.5 shake">
-								{errors.idType.message}
-							</p>
-						)}
-						{!errors.idType && (
-							<p className="text-white/20 text-xs">
-								Auto-detected from your input
-							</p>
-						)}
+						{errors.idType && <p className="text-red-400 text-xs mt-0.5 shake">{errors.idType.message}</p>}
+						{!errors.idType && <p className="text-white/15 text-xs">Auto-detected from your input</p>}
 					</div>
 				</FieldGroup>
 			</div>
 
-			{/* Security notice — glassmorphism style */}
-			<div className={cn(
-				"rounded-xl p-3.5 mt-2 backdrop-blur-sm border transition-all duration-500",
-				hasErrors
-					? "bg-red-500/5 border-red-500/10"
-					: "bg-yellow-400/5 border-yellow-400/10",
-			)}>
-				<p className={cn(
-					"text-xs flex items-center gap-2",
-					hasErrors ? "text-red-300/70" : "text-yellow-200/60",
-				)}>
+			{/* Security notice */}
+			<div
+				className={cn("rounded-2xl p-4 mt-2 border transition-all duration-500")}
+				style={{
+					background: hasErrors ? "rgba(239, 68, 68, 0.04)" : "rgba(245, 166, 35, 0.03)",
+					borderColor: hasErrors ? "rgba(239, 68, 68, 0.08)" : "rgba(245, 166, 35, 0.06)",
+				}}
+			>
+				<p
+					className="text-xs flex items-center gap-2"
+					style={{ color: hasErrors ? "rgba(239, 68, 68, 0.6)" : "rgba(245, 166, 35, 0.35)" }}
+				>
 					<Shield className="w-3.5 h-3.5 shrink-0" />
-					{hasErrors
-						? "Please check the highlighted fields above."
-						: pageCopy.securityNotice}
+					{hasErrors ? "Please check the highlighted fields above." : pageCopy.securityNotice}
 				</p>
 			</div>
 		</div>

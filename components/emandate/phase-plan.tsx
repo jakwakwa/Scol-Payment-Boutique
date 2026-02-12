@@ -17,8 +17,7 @@ import { CheckCircle } from "lucide-react";
 
 /**
  * Phase 1: Choose Your Plan
- * Two quick select fields with visual feedback.
- * Entirely tap-based, zero keystrokes. Feels like browsing, not filling a form.
+ * Entirely tap-based. Premium fintech aesthetic with rich gold accents.
  */
 const PhasePlan = () => {
 	const {
@@ -29,43 +28,40 @@ const PhasePlan = () => {
 
 	const productType = watch("productType");
 	const subscriptionPlan = watch("subscriptionPlan");
-
 	const bothSelected = !!productType && !!subscriptionPlan;
 
 	return (
 		<div className="space-y-3">
-			{/* Product Type */}
 			<FieldGroup label="Product Type">
 				<div className="flex flex-col gap-2.5">
 					<Label
 						htmlFor="productType"
-						className="text-yellow-500/50 text-xs uppercase tracking-widest font-semibold"
+						className="text-xs uppercase tracking-widest font-semibold"
+						style={{ color: "rgba(245, 166, 35, 0.45)" }}
 					>
 						Product Type
 					</Label>
 					<Select
 						value={productType}
 						onValueChange={(value) =>
-							setValue("productType", value, {
-								shouldValidate: true,
-							})
+							setValue("productType", value, { shouldValidate: true })
 						}
 					>
 						<SelectTrigger
 							className={cn(
 								"stratcol-input transition-all duration-300",
-								productType && "border-yellow-500/20",
+								productType && "border-[rgba(245,166,35,0.2)]",
 							)}
 							id="productType"
 						>
 							<SelectValue placeholder="What are you looking for?" />
 						</SelectTrigger>
-						<SelectContent className="bg-stone-950/95 border-white/10 backdrop-blur-xl">
+						<SelectContent className="border-white/8 backdrop-blur-xl" style={{ background: "rgba(28, 28, 30, 0.97)" }}>
 							{productOptions.map((opt) => (
 								<SelectItem
 									key={opt.value}
 									value={opt.value}
-									className="text-white/80 hover:bg-yellow-500/10 hover:text-yellow-200 focus:bg-yellow-500/10 focus:text-yellow-200 transition-colors"
+									className="text-white/80 hover:text-white focus:text-white transition-colors"
 								>
 									{opt.label}
 								</SelectItem>
@@ -80,41 +76,39 @@ const PhasePlan = () => {
 				</div>
 			</FieldGroup>
 
-			{/* Subscription Plan */}
 			<FieldGroup label="Subscription Plan">
 				<div className="flex flex-col gap-2.5">
 					<Label
 						htmlFor="subscriptionPlan"
-						className="text-yellow-500/50 text-xs uppercase tracking-widest font-semibold"
+						className="text-xs uppercase tracking-widest font-semibold"
+						style={{ color: "rgba(245, 166, 35, 0.45)" }}
 					>
 						Subscription Plan
 					</Label>
 					<Select
 						value={subscriptionPlan}
 						onValueChange={(value) =>
-							setValue("subscriptionPlan", value, {
-								shouldValidate: true,
-							})
+							setValue("subscriptionPlan", value, { shouldValidate: true })
 						}
 					>
 						<SelectTrigger
 							className={cn(
 								"stratcol-input transition-all duration-300",
-								subscriptionPlan && "border-yellow-500/20",
+								subscriptionPlan && "border-[rgba(245,166,35,0.2)]",
 							)}
 							id="subscriptionPlan"
 						>
 							<SelectValue placeholder="Choose the right fit" />
 						</SelectTrigger>
-						<SelectContent className="bg-stone-950/95 border-white/10 backdrop-blur-xl">
+						<SelectContent className="border-white/8 backdrop-blur-xl" style={{ background: "rgba(28, 28, 30, 0.97)" }}>
 							{planOptions.map((opt) => (
 								<SelectItem
 									key={opt.value}
 									value={opt.value}
-									className="text-white/80 hover:bg-yellow-500/10 hover:text-yellow-200 focus:bg-yellow-500/10 focus:text-yellow-200 transition-colors"
+									className="text-white/80 hover:text-white focus:text-white transition-colors"
 								>
 									<span className="font-medium">{opt.label}</span>
-									<span className="text-yellow-400/60 ml-2">{opt.price}</span>
+									<span className="ml-2" style={{ color: "rgba(245, 166, 35, 0.6)" }}>{opt.price}</span>
 								</SelectItem>
 							))}
 						</SelectContent>
@@ -127,11 +121,10 @@ const PhasePlan = () => {
 				</div>
 			</FieldGroup>
 
-			{/* Micro-interaction: confirmation when both selected */}
 			{bothSelected && (
 				<div className="flex items-center gap-2 pt-2 px-4 animate-in fade-in-0 slide-in-from-bottom-2 duration-300">
 					<CheckCircle className="w-4 h-4 text-green-400" />
-					<p className="text-green-400/80 text-xs font-medium">
+					<p className="text-green-400/70 text-xs font-medium">
 						Great choice! You can continue when you&apos;re ready.
 					</p>
 				</div>

@@ -7,11 +7,7 @@ interface PhaseProgressProps {
 }
 
 /**
- * Immersive 3-phase progress indicator with:
- * - Glowing active step dot with pulse animation
- * - Animated gradient bar with ambient glow
- * - Completed steps with celebratory checkmarks
- * - Emotionally intelligent labels
+ * Premium 3-phase progress indicator with rich gold accents.
  */
 const PhaseProgress = ({ currentPhase, labels }: PhaseProgressProps) => {
 	return (
@@ -25,18 +21,22 @@ const PhaseProgress = ({ currentPhase, labels }: PhaseProgressProps) => {
 
 					return (
 						<div key={label} className="flex items-center gap-2">
-							{/* Step indicator with glow */}
+							{/* Step indicator */}
 							<div
 								className={cn(
 									"relative flex items-center justify-center w-7 h-7 rounded-full text-xs font-bold transition-all duration-500",
-									isComplete &&
-										"bg-green-500/20 text-green-400 success-pulse",
-									isActive &&
-										"bg-yellow-500/20 text-yellow-300 glow-pulse",
-									!isActive &&
-										!isComplete &&
-										"bg-white/5 text-white/25",
+									isComplete && "text-green-400 success-pulse",
+									isActive && "glow-pulse",
+									!isActive && !isComplete && "text-white/20",
 								)}
+								style={{
+									background: isComplete
+										? "rgba(74, 222, 128, 0.12)"
+										: isActive
+											? "rgba(245, 166, 35, 0.15)"
+											: "rgba(255, 255, 255, 0.04)",
+									color: isActive ? "#F5A623" : undefined,
+								}}
 							>
 								{isComplete ? (
 									<CheckCircle className="w-4 h-4" />
@@ -44,9 +44,14 @@ const PhaseProgress = ({ currentPhase, labels }: PhaseProgressProps) => {
 									phaseNum
 								)}
 
-								{/* Active indicator ring */}
 								{isActive && (
-									<span className="absolute inset-0 rounded-full border-2 border-yellow-400/30 animate-ping" style={{ animationDuration: '2s' }} />
+									<span
+										className="absolute inset-0 rounded-full animate-ping"
+										style={{
+											border: "2px solid rgba(245, 166, 35, 0.2)",
+											animationDuration: "2s",
+										}}
+									/>
 								)}
 							</div>
 
@@ -54,12 +59,12 @@ const PhaseProgress = ({ currentPhase, labels }: PhaseProgressProps) => {
 							<span
 								className={cn(
 									"text-sm font-semibold tracking-wide transition-all duration-500",
-									isActive && "text-yellow-300",
-									isComplete && "text-green-400/70",
-									!isActive &&
-										!isComplete &&
-										"text-white/25",
+									isComplete && "text-green-400/60",
+									!isActive && !isComplete && "text-white/20",
 								)}
+								style={{
+									color: isActive ? "#F5A623" : undefined,
+								}}
 							>
 								{label}
 							</span>
@@ -68,7 +73,7 @@ const PhaseProgress = ({ currentPhase, labels }: PhaseProgressProps) => {
 				})}
 			</div>
 
-			{/* Animated progress bar with glow */}
+			{/* Animated progress bar */}
 			<div className="relative">
 				<div
 					className="progress-track"
