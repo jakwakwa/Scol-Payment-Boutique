@@ -14,8 +14,8 @@ import { Label } from "@/components/ui/label";
 import type { EMandateFormData } from "@/app/emandate/types";
 import {
   pageCopy,
+  mandateTypeLabelMap,
   productLabelMap,
-  planLabelMap,
   bankLabelMap,
   idTypeOptions,
 } from "@/app/emandate/content";
@@ -110,17 +110,17 @@ const ConfirmationDialog = ({
 
         {/* ── Body ────────────────────────────────────────── */}
         <div className="px-7 pb-0 m-1 grid grid-cols-1 md:grid-cols-2 gap-2">
-          {/* Plan section */}
-          <SummarySection title="Plan">
+          {/* Mandate section */}
+          <SummarySection title="Mandate">
             <SummaryItem
               icon={<Tag className="w-3.5 h-3.5" />}
-              label="Product"
-              value={productLabelMap[data.productType] || "—"}
+              label="Mandate Type"
+              value={mandateTypeLabelMap[data.mandateType] || "—"}
             />
             <SummaryItem
               icon={<CreditCard className="w-3.5 h-3.5" />}
-              label="Subscription"
-              value={planLabelMap[data.subscriptionPlan] || "—"}
+              label="Product Type"
+              value={productLabelMap[data.productType] || "—"}
             />
           </SummarySection>
 
