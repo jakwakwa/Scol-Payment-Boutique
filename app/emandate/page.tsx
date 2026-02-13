@@ -175,14 +175,30 @@ export default function EMandateOnboarding() {
   }, [currentPhase, transitionToPhase]);
 
   const handleOpenConfirmation = useCallback(async () => {
-    // Only validate banking fields — terms/privacy are handled in the dialog
-    const bankingFields: (keyof EMandateFormData)[] = [
-      "bankName",
-      "accountType",
-      "accountNumber",
-      "branchCode",
-    ];
-    const valid = await trigger(bankingFields);
+    // Validate all fields from phases 1–3 before opening confirmation.
+    const phasesToValidate = [1, 2, 3] as const;
+
+    const allFieldNames = phasesToValidate.flatMap((phase) => {
+      const schema = phaseSchemas[phase as keyof typeof phaseSchemas];
+      if (!schema) return [];
+
+      const shape =
+        "shape" in schema
+          ? schema.shape
+          : (
+              schema as {
+                _def: { schema: { shape: Record<string, unknown> } };
+              }
+            )._def.schema.shape;
+
+      return Object.keys(shape);
+    }) as (keyof EMandateFormData)[];
+
+    const uniqueFieldNames = Array.from(
+      new Set(allFieldNames),
+    ) as (keyof EMandateFormData)[];
+
+    const valid = await trigger(uniqueFieldNames);
     if (!valid) return;
     setShowConfirmation(true);
   }, [trigger]);
