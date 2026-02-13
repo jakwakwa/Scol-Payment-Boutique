@@ -222,9 +222,9 @@
   --destructive-foreground: #f5f0e8;
   --border: rgba(255 255 255 / 0.08);
   --input: rgba(255 255 255 / 0.06);
-  --ring: #0b7089; /* gold focus ring                 */
+  --ring: #0b7089; /* teal focus ring                  */
   --chart-1: #f5c87e; /* gold-500                        */
-  --chart-2: #1ad42a; /* gold-600                        */
+  --chart-2: #1ad42a; /* bright green (chart accent)     */
   --chart-3: #e5484d; /* warm red                        */
   --chart-4: #4ade80; /* green (success)                 */
   --chart-5: #ffc12e; /* gold-400                        */
