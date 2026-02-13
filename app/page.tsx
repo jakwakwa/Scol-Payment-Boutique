@@ -51,66 +51,27 @@ export default function PaymentSystemDashboard() {
     to: new Date(),
   });
 
-	return (
-		<div className="min-h-screen">
-			{/* Header */}
-			<header className="border-b border-border bg-card/80 backdrop-blur-sm">
-				<div className="container mx-auto px-6 py-4">
-					<div className="flex items-center justify-between">
-						<div className="flex items-center gap-4">
-							<div className="flex items-center gap-2">
-								<div className="h-8 w-8 rounded-full bg-primary flex items-center justify-center">
-									<span className="text-primary-foreground text-sm font-bold">
-										S
-									</span>
-								</div>
-								<h1 className="text-2xl font-bold text-card-foreground">
-									StratCol
-								</h1>
-							</div>
-							<Badge variant="secondary" className="text-xs">
-								Payment Hub
-							</Badge>
-						</div>
-					<div className="flex items-center gap-1">
-						<Tooltip>
-							<TooltipTrigger asChild>
-								<Link href="/analytics">
-									<Button variant="ghost" size="icon" className="size-9">
-										<BarChart3 className="h-4 w-4" />
-									</Button>
-								</Link>
-							</TooltipTrigger>
-							<TooltipContent side="bottom">View Analytics</TooltipContent>
-						</Tooltip>
-						<Tooltip>
-							<TooltipTrigger asChild>
-								<Link href="/integrations">
-									<Button variant="ghost" size="icon" className="size-9">
-										<Settings className="h-4 w-4" />
-									</Button>
-								</Link>
-							</TooltipTrigger>
-							<TooltipContent side="bottom">Manage Integrations</TooltipContent>
-						</Tooltip>
-						<div className="w-px h-5 bg-border mx-2" />
-						<Tooltip>
-							<TooltipTrigger asChild>
-								<Button variant="ghost" size="icon" className="size-9">
-									<Bell className="h-4 w-4" />
-								</Button>
-							</TooltipTrigger>
-							<TooltipContent side="bottom">Notifications</TooltipContent>
-						</Tooltip>
-						<div className="h-8 w-8 rounded-full bg-primary flex items-center justify-center ml-2">
-							<span className="text-primary-foreground text-sm font-medium">
-								JD
-							</span>
-						</div>
-					</div>
-					</div>
-				</div>
-			</header>
+  return (
+    <div className="min-h-screen">
+      <div className="container mx-auto px-6 py-8">
+        {/* Quick Stats */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium text-card-foreground">
+                Active Payment Links
+              </CardTitle>
+              <ExternalLink className="h-4 w-4 gold-gradient-icon" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold text-card-foreground">
+                1,247
+              </div>
+              <p className="text-xs text-muted-foreground">
+                +12% from last month
+              </p>
+            </CardContent>
+          </Card>
 
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
@@ -385,76 +346,30 @@ export default function PaymentSystemDashboard() {
             </Card>
           </TabsContent>
 
-					{/* Recent Activity */}
-						<Card>
-							<CardHeader>
-								<CardTitle>Recent Activity</CardTitle>
-								<CardDescription>
-									Latest payment links and eMandate registrations
-								</CardDescription>
-							</CardHeader>
-							<CardContent>
-								<div className="space-y-4">
-									{[
-										{
-											type: "Payment Link",
-											amount: "R 1,250.00",
-											status: "Active",
-											time: "2 hours ago",
-										},
-										{
-											type: "eMandate",
-											amount: "R 299.00",
-											status: "Completed",
-											time: "4 hours ago",
-										},
-										{
-											type: "Payment Link",
-											amount: "R 850.00",
-											status: "Paid",
-											time: "6 hours ago",
-										},
-										{
-											type: "eMandate",
-											amount: "R 199.00",
-											status: "Pending",
-											time: "8 hours ago",
-										},
-									].map((activity, index) => (
-										<div
-											key={`${activity.type}-${index}`}
-											className="flex items-center justify-between p-3 border border-border rounded-md"
-										>
-											<div className="flex items-center gap-3">
-												<div className="h-2 w-2 rounded-full bg-primary"></div>
-												<div>
-													<p className="font-medium">{activity.type}</p>
-													<p className="text-sm text-muted-foreground">
-														{activity.amount}
-													</p>
-												</div>
-											</div>
-											<div className="text-right">
-												<Badge
-													variant={
-														activity.status === "Completed" ||
-														activity.status === "Paid"
-															? "default"
-															: "secondary"
-													}
-												>
-													{activity.status}
-												</Badge>
-												<p className="text-xs text-muted-foreground mt-1">
-													{activity.time}
-												</p>
-											</div>
-										</div>
-									))}
-								</div>
-							</CardContent>
-						</Card>
-					</TabsContent>
+          <TabsContent value="create" className="space-y-6">
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <CreditCard className="h-5 w-5 gold-gradient-icon" />
+                  Create Advanced Payment Link
+                </CardTitle>
+                <CardDescription>
+                  Configure detailed payment link settings with multi-PSP
+                  integration
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  {/* Left Column — Payment Details */}
+                  <div className="space-y-5">
+                    <div className="space-y-2">
+                      <Label htmlFor="paymentAmount">Payment Amount</Label>
+                      <Input
+                        id="paymentAmount"
+                        type="text"
+                        placeholder="R 0.00"
+                      />
+                    </div>
 
                     <div className="space-y-2">
                       <Label htmlFor="paymentDescription">
