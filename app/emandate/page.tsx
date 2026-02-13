@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback, useRef } from "react";
 import { useForm, FormProvider } from "react-hook-form";
-import { ArrowLeft, ArrowRight, CheckCircle, Sparkles } from "lucide-react";
+import { ArrowLeft, ArrowRight, CheckCircle } from "lucide-react";
 import { toast } from "sonner";
 
 import type { EMandateFormData } from "./types";
