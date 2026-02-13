@@ -37,37 +37,39 @@ export default function SiteNavbar() {
           <div className="flex items-center gap-1">
             <Tooltip>
               <TooltipTrigger asChild>
-                <Link href="/analytics">
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className={cn(
-                      "size-9",
-                      pathname === "/analytics" &&
-                        "bg-accent text-accent-foreground",
-                    )}
-                  >
+                <Button
+                  asChild
+                  variant="ghost"
+                  size="icon"
+                  className={cn(
+                    "size-9",
+                    pathname === "/analytics" &&
+                      "bg-accent text-accent-foreground",
+                  )}
+                >
+                  <Link href="/analytics">
                     <BarChart3 className="h-4 w-4" />
-                  </Button>
-                </Link>
+                  </Link>
+                </Button>
               </TooltipTrigger>
               <TooltipContent side="bottom">View Analytics</TooltipContent>
             </Tooltip>
             <Tooltip>
               <TooltipTrigger asChild>
-                <Link href="/integrations">
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className={cn(
-                      "size-9",
-                      pathname === "/integrations" &&
-                        "bg-accent text-accent-foreground",
-                    )}
-                  >
+                <Button
+                  asChild
+                  variant="ghost"
+                  size="icon"
+                  className={cn(
+                    "size-9",
+                    pathname === "/integrations" &&
+                      "bg-accent text-accent-foreground",
+                  )}
+                >
+                  <Link href="/integrations">
                     <Settings className="h-4 w-4" />
-                  </Button>
-                </Link>
+                  </Link>
+                </Button>
               </TooltipTrigger>
               <TooltipContent side="bottom">Manage Integrations</TooltipContent>
             </Tooltip>
